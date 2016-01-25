@@ -44,27 +44,31 @@ class DashboardMenuComposer
      */
     public function composer(View $view)
     {
-        $dashboardMenu = Cache::remember('dashboardMenu-user-' /*. $this->guard->user()->id */, 10, function () {
+        $viewMenu = [];
 
-            /**
-             * Тут надо перебрать всю меню на наличие прав, и удалить
-             * элементы к которым их нет
-             */
+        if ($this->guard->check()) {
+            $viewMenu = Cache::remember('dashboard-menu-user-' . $this->guard->user()->id, 10, function () {
 
-            $user = $this->guard->user();
-            $accessCollection = collect();
+                /**
+                 * Тут надо перебрать всю меню на наличие прав, и удалить
+                 * элементы к которым их нет
+                 */
 
-            foreach ($this->dashboardMenu as $key => $value) {
-                $accessElement = $value->filter(function ($item) use ($user) {
-                    return true;//$user->hasAccess($item['url']);
-                });
-                $accessCollection->put($key, $accessElement);
-            }
+                $user = $this->guard->user();
+                $accessCollection = collect();
 
-            return $accessCollection->all();
-        });
+                foreach ($this->dashboardMenu as $key => $value) {
+                    $accessElement = $value->filter(function ($item) use ($user) {
+                        return $user->hasAccess($item['url']);
+                    });
+                    $accessCollection->put($key, $accessElement);
+                }
 
-        $view->with('DashboardMenu', $dashboardMenu);
+                return $accessCollection->all();
+            });
+        }
+
+        $view->with('DashboardMenu', $viewMenu);
     }
 
 }
