@@ -1,0 +1,15 @@
+{
+  "name": "orchid/socket",
+  "description": "",
+  "authors": [
+    {
+      "name": "The Orchid",
+      "email": "bliz48rus@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Orchid\\Socket\\": ""
+    }
+  }
+}

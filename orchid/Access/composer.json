@@ -1,0 +1,34 @@
+{
+  "name": "orchid/access",
+  "description": "Role based access control package from Laravel Framework.",
+  "keywords": [
+    "framework",
+    "laravel",
+    "access",
+    "roles",
+    "rbac"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "tabuna",
+      "email": "bliz48rus@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "laravel/framework": "5.1.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Orchid\\Access\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "minimum-stability": "alpha",
+  "prefer-stable": true
+}

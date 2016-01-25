@@ -156,6 +156,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        Orchid\Settings\Providers\SettingsServiceProvider::class,
+        Orchid\Access\Providers\AccessServiceProvider::class,
+        Orchid\Dashboard\Providers\DashboardServiceProvider::class,
+        Orchid\Dashboard\Providers\RouteServiceProvider::class,
+        Orchid\Socket\Providers\SocketServiceProvider::class,
     ],
 
     /*
@@ -202,6 +208,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        'Module' => Pingpong\Modules\Facades\Module::class,
     ],
 
 ];

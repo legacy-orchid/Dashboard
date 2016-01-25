@@ -15,12 +15,31 @@
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "./orchid/Access/"
+        },
+        {
+            "type": "vcs",
+            "url": "./orchid/Dashboard/"
+        },
+        {
+            "type": "vcs",
+            "url": "./orchid/Settings/"
+        },
+        {
+            "type": "vcs",
+            "url": "./orchid/Socket/"
+        }
+    ],
     "autoload": {
         "classmap": [
             "database"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Orchid\\": "orchid/"
         }
     },
     "autoload-dev": {

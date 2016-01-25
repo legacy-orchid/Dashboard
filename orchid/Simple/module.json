@@ -1,0 +1,15 @@
+{
+  "name": "Socket",
+  "alias": "socket",
+  "description": "",
+  "keywords": [],
+  "active": 1,
+  "order": 0,
+  "providers": [
+    "Orchid\\Socket\\Providers\\SocketServiceProvider"
+  ],
+  "aliases": {},
+  "files": [
+    "start.php"
+  ]
+}
