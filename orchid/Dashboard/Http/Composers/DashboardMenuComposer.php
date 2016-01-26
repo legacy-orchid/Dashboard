@@ -42,7 +42,7 @@ class DashboardMenuComposer
      *
      * @return void
      */
-    public function composer(View $view)
+    public function compose(View $view)
     {
         $viewMenu = [];
 
