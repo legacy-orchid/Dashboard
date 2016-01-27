@@ -1,5 +1,6 @@
 <?php namespace Orchid\Dashboard\Services\Menu;
 
+
 class DashboardMenu
 {
 
@@ -18,11 +19,44 @@ class DashboardMenu
 
 
     /**
+     * Views отображения
+     * @var
+     */
+    public $template;
+
+
+    /**
+     * Аргументы формирования меню
+     * для передачи во Views
+     * @var
+     */
+    public $arg;
+
+
+    /**
+     * Сортировка элемента меню
+     * @var
+     */
+    public $sort;
+
+
+    /**
+     * Обобщающий элемент
+     * @var
+     */
+    protected $item;
+
+
+    /**
      * DashboardMenu constructor.
      */
-    public function __construct()
+    public function __construct($location = null, $template = null, $arg = null, $sort = null)
     {
-        $this->modules = collect();
+        $this->container = collect();
+        $this->location = $location;
+        $this->template = $template;
+        $this->arg = $arg;
+        $this->sort = $sort;
     }
 
 
@@ -36,45 +70,59 @@ class DashboardMenu
     }
 
 
-    public function get($location = null)
+    /**
+     * @param $template
+     */
+    public function template($template)
     {
-        if (!is_null($location)) {
-            $this->location = $location;
-        }
-        $location = $this->location;
-        return $this->container->first(function ($key, $value) use ($location) {
-            return $location == $value;
-        });
+        $this->template = $template;
+    }
 
+    /**
+     * Передача аргументов
+     * @param $arg
+     */
+    public function with($arg)
+    {
+        $this->arg = $arg;
     }
 
 
-
-
-
-
-
-    /**
-     * @param string $position
-     * @param array  $element
-     */
-    public function addItems($position, array $element)
+    public function sortBy($sort)
     {
-        foreach ($element as $key => $value) {
-            array_add($this->$position, $key, $value);
-        }
+        $this->sort = $sort;
     }
 
 
     /**
-     * @param string $position
-     * @param string $key
-     *
-     * @return mixed
+     * Добавление нового элемента в контейнер
      */
-    public function removeItems($position, $key)
+    public function add()
     {
-        return array_pull($this->$position, $key);
+        $this->item = collect([
+            'location' => $this->location,
+            'template' => $this->template,
+            'arg' => $this->arg,
+            'sort' => $this->sort,
+
+        ]);
+        $this->container->push($this->item);
+    }
+
+
+    /**
+     * Сгенерирование меню по вьюхам
+     * @param $location
+     */
+    public function render($location)
+    {
+        $html = '';
+        foreach ($this->container->where('location', $location)->sortBy('sort') as $key => $value) {
+            $html .= view($value['template'],
+                collect(['items' => $value['arg']])
+            );
+        }
+        return $html;
     }
 
 

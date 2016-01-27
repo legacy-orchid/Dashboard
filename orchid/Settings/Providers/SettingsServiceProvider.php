@@ -1,6 +1,7 @@
 <?php namespace Orchid\Settings\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Orchid\Dashboard\Services\Menu\DashboardMenu;
 
 class SettingsServiceProvider extends ServiceProvider
 {
@@ -17,10 +18,13 @@ class SettingsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(DashboardMenu $dashboardMenu)
     {
+
         $this->registerConfig();
         $this->registerDatabase();
+
+        $this->registerMenu($dashboardMenu);
 
     }
 
@@ -45,6 +49,37 @@ class SettingsServiceProvider extends ServiceProvider
             __DIR__ . '/../Database/Migrations/' => database_path('migrations'),
         ], 'migrations');
     }
+
+
+
+    protected function registerMenu(DashboardMenu $dashboardMenu = null){
+
+        $settingsMenu = collect([
+            'item' => [
+                        'url' => 'http://google.com',
+                        'name' => 'Настройки',
+                        ],
+            'item' => [
+                'url' => 'http://google.com',
+                'name' => 'Настройки',
+            ],
+            'item' => [
+                'url' => 'http://google.com',
+                'name' => 'Настройки',
+            ]
+        ]);
+
+        $dashboardMenu ->place('leftMenu');
+         $dashboardMenu              ->template('dashboard::partials.leftMenu');
+          $dashboardMenu             ->with($settingsMenu);
+          $dashboardMenu             ->sortBy(1);
+        $dashboardMenu             ->add();
+
+
+
+    }
+
+
 
     /**
      * Register the service provider.
