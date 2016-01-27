@@ -1,6 +1,7 @@
 <?php namespace Orchid\Access\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Orchid\Dashboard\Services\Menu\DashboardMenu;
 
 class AccessServiceProvider extends ServiceProvider
 {
@@ -17,9 +18,10 @@ class AccessServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(DashboardMenu $dashboardMenu)
     {
         $this->registerDatabase();
+        $this->registerMenu($dashboardMenu);
     }
 
     protected function registerDatabase()
@@ -27,6 +29,21 @@ class AccessServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../Database/Migrations/' => database_path('migrations'),
         ], 'migrations');
+    }
+
+    protected function registerMenu(DashboardMenu $dashboardMenu = null)
+    {
+
+        $settingsMenu = collect([
+            'user' => [
+                'label' => 'Пользователи',
+                'url' => 'http://google.com',
+                'icon' => 'fa fa-user',
+                'permissions' => [],
+            ]
+        ]);
+
+        $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $settingsMenu, 500);
     }
 
     /**

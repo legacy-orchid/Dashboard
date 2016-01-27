@@ -55,25 +55,13 @@ class SettingsServiceProvider extends ServiceProvider
     protected function registerMenu(DashboardMenu $dashboardMenu = null){
 
         $settingsMenu = collect([
-            'item' => [
+            'Settings' => [
                         'url' => 'http://google.com',
                         'name' => 'Настройки',
-                        ],
-            'item' => [
-                'url' => 'http://google.com',
-                'name' => 'Настройки',
-            ],
-            'item' => [
-                'url' => 'http://google.com',
-                'name' => 'Настройки',
             ]
         ]);
 
-        $dashboardMenu ->place('leftMenu');
-         $dashboardMenu              ->template('dashboard::partials.leftMenu');
-          $dashboardMenu             ->with($settingsMenu);
-          $dashboardMenu             ->sortBy(1);
-        $dashboardMenu             ->add();
+        $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $settingsMenu, 100);
 
 
 

@@ -50,19 +50,15 @@ class DashboardMenu
     /**
      * DashboardMenu constructor.
      */
-    public function __construct($location = null, $template = null, $arg = null, $sort = null)
+    public function __construct()
     {
         $this->container = collect();
-        $this->location = $location;
-        $this->template = $template;
-        $this->arg = $arg;
-        $this->sort = $sort;
     }
 
 
     /**
      * Установка положения меню
-     * @param $place
+     * @param $location
      */
     public function place($location)
     {
@@ -87,7 +83,9 @@ class DashboardMenu
         $this->arg = $arg;
     }
 
-
+    /**
+     * @param $sort
+     */
     public function sortBy($sort)
     {
         $this->sort = $sort;
@@ -96,26 +94,38 @@ class DashboardMenu
 
     /**
      * Добавление нового элемента в контейнер
+     * @param null $place
+     * @param null $template
+     * @param null $arg
+     * @param int $sort
      */
-    public function add()
+    public function add($place = null, $template = null, $arg = null, $sort = 500)
     {
-        $this->item = collect([
+        $this->location = $place;
+        $this->template = $template;
+        $this->arg = $arg;
+        $this->sort = $sort;
+
+        $this->item = [
             'location' => $this->location,
             'template' => $this->template,
             'arg' => $this->arg,
             'sort' => $this->sort,
+        ];
 
-        ]);
         $this->container->push($this->item);
+
     }
 
 
     /**
      * Сгенерирование меню по вьюхам
      * @param $location
+     * @return string
      */
     public function render($location)
     {
+        dd($this->container);
         $html = '';
         foreach ($this->container->where('location', $location)->sortBy('sort') as $key => $value) {
             $html .= view($value['template'],
