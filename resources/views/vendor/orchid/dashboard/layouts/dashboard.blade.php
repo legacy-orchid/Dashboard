@@ -359,7 +359,7 @@
                 <!-- / user -->
 
                 <!-- nav -->
-                {!! Dashboard::render('leftMenu') !!}
+                {!! Dashboard::Menu()->render('leftMenu') !!}
                 <!-- nav -->
 
                 <!-- aside footer -->

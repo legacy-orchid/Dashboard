@@ -1,15 +1,23 @@
-<?php
+<?php namespace Orchid\Dashboard\Facades;
 
-namespace Orchid\Dashboard\Facades;
-
+use App;
+use Config;
 use Illuminate\Support\Facades\Facade;
-use Orchid\Dashboard\Services\Menu\DashboardMenu;
 
 class DashboardFacade extends Facade
 {
 
-    protected static function getFacadeAccessor() {
-        return DashboardMenu::class;
+
+    public static function __callStatic($method, $args)
+    {
+        $Facades = Config::get('dashboard.Facades');
+        foreach ($Facades as $key => $value) {
+            if ($key == $method) {
+                return static::resolveFacadeInstance($value);
+            }
+        }
+
     }
+
 
 }
