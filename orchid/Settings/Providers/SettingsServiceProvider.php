@@ -57,7 +57,7 @@ class SettingsServiceProvider extends ServiceProvider
         $settingsMenu = collect([
             'Settings' => [
                         'url' => 'http://google.com',
-                        'name' => 'Настройки',
+                'label' => 'Настройки',
             ]
         ]);
 
