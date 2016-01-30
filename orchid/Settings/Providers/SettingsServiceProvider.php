@@ -13,7 +13,7 @@ class SettingsServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = true;
+    protected $defer = false;
 
     /**
      * Boot the application events.
@@ -62,7 +62,7 @@ class SettingsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        //
     }
 
     /**
