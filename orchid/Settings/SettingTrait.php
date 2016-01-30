@@ -34,17 +34,9 @@ trait SettingTrait
      */
     public function get($key, $default = null)
     {
-        $config = config('orchid.package.settings');
-
-        if ($config['status']) {
-            return Cache::remember(implode(",", (array)$key), $config['times'], function () use ($key, $default) {
-                return $this->getNoCache($key, $default);
-            });
-        } else {
+        return Cache::rememberForever(implode(",", (array)$key), function () use ($key, $default) {
             return $this->getNoCache($key, $default);
-        }
-
-
+        });
     }
 
 
@@ -58,11 +50,9 @@ trait SettingTrait
     {
         if (is_array($key)) {
             $result = $this->whereIn('key', $key)->get();
-
             return empty($result) ? $default : $result;
         } else {
             $result = $this->where('key', $key)->first();
-
             return is_null($result) ? $default : $result;
         }
     }

@@ -125,11 +125,12 @@ class DashboardMenu
      */
     public function render($location)
     {
-        dd($this->container);
+        //       dd($this->container);
         $html = '';
         foreach ($this->container->where('location', $location)->sortBy('sort') as $key => $value) {
-            $html .= view($value['template'],
-                collect(['items' => $value['arg']])
+            $html .= view($value['template'], [
+                    'items' => $value['arg'],
+                ]
             );
         }
         return $html;

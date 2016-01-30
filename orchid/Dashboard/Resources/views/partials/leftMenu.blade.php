@@ -2,7 +2,7 @@
     <li>
         <a href="{{$value['url']}}">
             <i class="fa fa-tachometer"></i>
-            <span>{{$value['name']}}</span>
+            <span>{{$value['label']}}</span>
         </a>
     </li>
 @endforeach

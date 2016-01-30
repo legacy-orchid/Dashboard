@@ -2,6 +2,8 @@
 
 use Illuminate\Support\ServiceProvider;
 use Orchid\Dashboard\Services\Menu\DashboardMenu;
+use Orchid\Settings\Models\Settings;
+use Orchid\Settings\Observer\SettingsObserver;
 
 class SettingsServiceProvider extends ServiceProvider
 {
@@ -11,7 +13,7 @@ class SettingsServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = false;
+    protected $defer = true;
 
     /**
      * Boot the application events.
@@ -20,28 +22,15 @@ class SettingsServiceProvider extends ServiceProvider
      */
     public function boot(DashboardMenu $dashboardMenu)
     {
+        Settings::observe(new SettingsObserver);
 
-        $this->registerConfig();
+
+        include __DIR__ . '/../Http/routes.php';
+
         $this->registerDatabase();
-
         $this->registerMenu($dashboardMenu);
-
     }
 
-    /**
-     * Register config.
-     *
-     * @return void
-     */
-    protected function registerConfig()
-    {
-        $this->publishes([
-            __DIR__ . '/../Config/orchid.php' => config_path('orchid.php'),
-        ]);
-        $this->mergeConfigFrom(
-            __DIR__ . '/../Config/orchid.php', 'orchid'
-        );
-    }
 
     protected function registerDatabase()
     {
@@ -51,19 +40,16 @@ class SettingsServiceProvider extends ServiceProvider
     }
 
 
-
     protected function registerMenu(DashboardMenu $dashboardMenu = null){
 
         $settingsMenu = collect([
             'Settings' => [
-                        'url' => 'http://google.com',
-                        'name' => 'Настройки',
+                'url'   => 'http://google.com',
+                'label' => 'Настройки',
             ]
         ]);
 
         $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $settingsMenu, 100);
-
-
 
     }
 
@@ -76,7 +62,7 @@ class SettingsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 
     /**
