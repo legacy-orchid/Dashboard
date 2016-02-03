@@ -34,6 +34,7 @@ class AccessServiceProvider extends ServiceProvider
     protected function registerMenu(DashboardMenu $dashboardMenu = null)
     {
 
+        /*
         $settingsMenu = collect([
             'user' => [
                 'label' => 'Пользователи',
@@ -44,6 +45,7 @@ class AccessServiceProvider extends ServiceProvider
         ]);
 
         $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $settingsMenu, 500);
+        */
     }
 
     /**

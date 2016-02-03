@@ -168,28 +168,30 @@
  *  Мои изменения
  */
 
+.open {
+	> .dropdown-menu.dropdown-full {
+		display: block;
+		height: 100%;
+		position: fixed;
+		top: 10px;
+		left: 0;
+		padding-top: 50px;
+		width: 300px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		margin-right: 0;
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+	.dropdown-lvl {
+		margin-left: 199px;
+		.dropdown-lvl {
+			margin-left: 497px;
+			.dropdown-lvl {
+				margin-left: 795px;
+			}
+		}
 
-.open > .dropdown-menu.dropdown-full{
-	display: block;
-	height: 100%;
-	position: fixed;
-	top: 10px;
-	left: 0;
-	padding-top: 50px;
-	width: 300px;
-	overflow-y: auto;
-	overflow-x: hidden;
-	margin-right: 0;
-	margin-bottom: 0;
-	margin-top: 0;
-}
+	}
 
-.dropdown-lvl-1{
-	margin-left: 199px!important;
-}
-.dropdown-lvl-2{
-	margin-left: 497px!important;
-}
-.dropdown-lvl-3{
-	margin-left: 795px!important;
 }

@@ -128,7 +128,7 @@
                                 <i class="fa fa-pencil-square-o"></i>
                                 <span>Записи</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-full dropdown-lvl-1" aria-labelledby="dropdownMenu1">
+                            <ul class="dropdown-menu dropdown-full dropdown-lvl" aria-labelledby="dropdownMenu1">
                                 <li class="dropdown-header">Интерфейс и данные</li>
 
 
@@ -143,7 +143,7 @@
                                         Общие записи
                                         <i class="fa fa-fw fa-angle-right pull-right text"></i>
                                     </a>
-                                    <ul class="dropdown-menu dropdown-full dropdown-lvl-2">
+                                    <ul class="dropdown-menu dropdown-full dropdown-lvl">
                                         <li class="dropdown-header">Типы</li>
                                         <li><a href="#"><i class="fa fa-file-text-o"></i> Страницы</a></li>
                                         <li><a href="#"><i class="fa fa-newspaper-o"></i> Новости</a></li>
@@ -160,7 +160,7 @@
                                         Общие блоки
                                         <i class="fa fa-fw fa-angle-right pull-right text"></i>
                                     </a>
-                                    <ul class="dropdown-menu dropdown-full dropdown-lvl-2">
+                                    <ul class="dropdown-menu dropdown-full dropdown-lvl">
                                         <li class="dropdown-header">Типы</li>
                                         <li><a href="#">Dropdown Link 1</a></li>
                                         <li><a href="#">Dropdown Link 2</a></li>
@@ -169,7 +169,7 @@
                                         <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle"
                                                                                  data-toggle="dropdown">Dropdown Link
                                                 4</a>
-                                            <ul class="dropdown-menu dropdown-full dropdown-lvl-3">
+                                            <ul class="dropdown-menu dropdown-full dropdown-lvl">
                                                 <li><a href="#">Dropdown Submenu Link 4.1</a></li>
                                                 <li><a href="#">Dropdown Submenu Link 4.2</a></li>
                                                 <li><a href="#">Dropdown Submenu Link 4.3</a></li>
@@ -246,7 +246,7 @@
                                 <i class="fa fa-wrench"></i>
                                 <span>Инструменты</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-full dropdown-lvl-1" aria-labelledby="dropdownMenu1">
+                            <ul class="dropdown-menu dropdown-full dropdown-lvl" aria-labelledby="dropdownMenu1">
                                 <li class="dropdown-header">Управление записями</li>
                                 <li><a href="#"><i class="fa fa-wrench"></i> Типы записей</a></li>
                                 <li><a href="#"><i class="fa fa-suitcase"></i> Категории</a></li>
@@ -257,7 +257,7 @@
                                         <i class="fa fa-users"></i>
                                         Пользователи
                                         <i class="fa fa-fw fa-angle-right pull-right text"></i></a>
-                                    <ul class="dropdown-menu dropdown-full dropdown-lvl-2">
+                                    <ul class="dropdown-menu dropdown-full dropdown-lvl">
                                         <li class="dropdown-header">Пользователи</li>
                                         <li><a href="#"><i class="fa fa-user"></i> Учасники</a></li>
                                         <li><a href="#"><i class="fa fa-lock"></i> Роли</a></li>
@@ -276,7 +276,7 @@
                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="fa fa-area-chart"></i> Продажи
                                         <i class="fa fa-fw fa-angle-right pull-right text"></i></a>
-                                    <ul class="dropdown-menu dropdown-full dropdown-lvl-2">
+                                    <ul class="dropdown-menu dropdown-full dropdown-lvl">
                                         <li class="dropdown-header">Статистика</li>
                                         <li><a href="#"><i class="fa fa-credit-card"></i> Заказы</a></li>
                                         <li><a href="#"><i class="fa fa-percent"></i> Налоги</a></li>
@@ -291,7 +291,7 @@
                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="fa fa-cube"></i> Товары
                                         <i class="fa fa-fw fa-angle-right pull-right text"></i></a>
-                                    <ul class="dropdown-menu dropdown-full dropdown-lvl-2">
+                                    <ul class="dropdown-menu dropdown-full dropdown-lvl">
                                         <li class="dropdown-header">Статистика</li>
                                         <li><a href="#">Просмотренно</a></li>
                                         <li><a href="#">Куплено</a></li>
@@ -303,7 +303,7 @@
                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="fa fa-group"></i> Клиенты
                                         <i class="fa fa-fw fa-angle-right pull-right text"></i></a>
-                                    <ul class="dropdown-menu dropdown-full dropdown-lvl-2">
+                                    <ul class="dropdown-menu dropdown-full dropdown-lvl">
                                         <li class="dropdown-header">Статистика</li>
                                         <li><a href="#">Клиенты на сайте</a></li>
                                         <li><a href="#">Активность клиентов</a></li>
@@ -329,7 +329,7 @@
                                 <i class="fa fa-cogs icon"></i>
                                 <span>Система</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-full dropdown-lvl-1" aria-labelledby="dropdownMenu1">
+                            <ul class="dropdown-menu dropdown-full dropdown-lvl" aria-labelledby="dropdownMenu1">
                                 <li class="dropdown-header">Настройки</li>
                                 <li><a href="#"><i class="fa fa-globe"></i> Веб домены</a></li>
                                 <li><a href="#"><i class="fa fa-book"></i> Константы</a></li>
@@ -345,7 +345,7 @@
 
                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
                                         <b class="caret"></b></a>
-                                    <ul class="dropdown-menu dropdown-full dropdown-lvl-2">
+                                    <ul class="dropdown-menu dropdown-full dropdown-lvl">
                                         <li><a href="#">Dropdown Link 1</a></li>
                                         <li><a href="#">Dropdown Link 2</a></li>
                                         <li><a href="#">Dropdown Link 3</a></li>
@@ -353,7 +353,7 @@
                                         <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle"
                                                                                  data-toggle="dropdown">Dropdown Link
                                                 4</a>
-                                            <ul class="dropdown-menu dropdown-full dropdown-lvl-3">
+                                            <ul class="dropdown-menu dropdown-full dropdown-lvl">
                                                 <li><a href="#">Dropdown Submenu Link 4.1</a></li>
                                                 <li><a href="#">Dropdown Submenu Link 4.2</a></li>
                                                 <li><a href="#">Dropdown Submenu Link 4.3</a></li>

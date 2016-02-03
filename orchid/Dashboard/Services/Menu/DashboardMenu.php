@@ -129,7 +129,7 @@ class DashboardMenu
         $html = '';
         foreach ($this->container->where('location', $location)->sortBy('sort') as $key => $value) {
             $html .= view($value['template'],
-                collect(['items' => $value['arg']])
+                collect($value['arg'])
             );
         }
         return $html;
