@@ -3,10 +3,9 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Orchid\Dashboard\Http\Composers\DashboardMenuComposer;
 use Orchid\Dashboard\Services\Menu\DashboardMenu;
 use View;
-use Orchid\Dashboard\Http\Composers\DashboardMenuComposer;
-use Orchid\Dashboard\Providers\RouteServiceProvider;
 
 class DashboardServiceProvider extends ServiceProvider
 {
@@ -24,13 +23,14 @@ class DashboardServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router)
+    public function boot(Router $router, DashboardMenu $dashboardMenu)
     {
 
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
 
+        $this->registerMenu($dashboardMenu);
 
         //Композер для меню
         View::composer('dashboard:*', DashboardMenuComposer::class);
@@ -87,6 +87,48 @@ class DashboardServiceProvider extends ServiceProvider
             return $path . '/vendor/orchid/dashboard';
         }, \Config::get('view.paths')), [$sourcePath]), 'dashboard');
     }
+
+
+    /**
+     * Регистрация элементов меню
+     * @param DashboardMenu|null $dashboardMenu
+     */
+    protected function registerMenu(DashboardMenu $dashboardMenu = null)
+    {
+        $panelMenu = [
+            'slug' => 'Dashboard',
+            'icon' => 'fa fa-tachometer',
+            'url' => '#',
+            'label' => 'Панель',
+        ];
+        $postMenu = [
+            'slug' => 'Posts',
+            'icon' => 'fa fa-pencil-square-o',
+            'url' => '#',
+            'label' => 'Записи',
+            'childs' => true
+        ];
+        $toolsMenu = [
+            'slug' => 'Tools',
+            'icon' => 'fa fa-wrench',
+            'url' => '#',
+            'label' => 'Инструменты',
+            'childs' => true
+        ];
+        $systemsMenu = [
+            'slug' => 'Systems',
+            'icon' => 'fa fa-cogs',
+            'url' => '#',
+            'label' => 'Система',
+            'childs' => true
+        ];
+
+        $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $panelMenu, 1);
+        $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $postMenu, 100);
+        $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $toolsMenu, 500);
+        $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $systemsMenu, 1000);
+    }
+
 
     /**
      * Register the service provider.

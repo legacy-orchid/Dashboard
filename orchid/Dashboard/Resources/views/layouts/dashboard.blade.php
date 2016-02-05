@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>App Name - @yield('title')</title>
-    <link href="/css/app.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ elixir("css/app.css") }}">
 
     @stack('stylesheet')
 
@@ -479,7 +479,28 @@
     <!-- content -->
     <div id="content" class="app-content" role="main">
         <div class="app-content-body ">
+            <loading-bar
+                    class="someClass"
+                    id="someId"
+                    progress="10%"
+                    direction="left"
+                    error="true">
+            </loading-bar>
+
+
             @yield('content')
+
+            <div id="app">
+                <h1>Hello App!</h1>
+                <p>
+                    <!-- use v-link directive for navigation. -->
+                    <a v-link="{ path: '/foo', activeClass: 'active' }">Go to Foo</a>
+                    <a v-link="{ path: '/bar', activeClass: 'active' }">Go to Bar</a>
+                </p>
+                <!-- route outlet -->
+                <router-view></router-view>
+            </div>
+
         </div>
     </div>
     <!-- /content -->
@@ -500,9 +521,7 @@
 </div>
 
 
-<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
+<script src="{{elixir('js/app.js')}}" type="text/javascript"></script>
 
 <script>
     (function ($) {

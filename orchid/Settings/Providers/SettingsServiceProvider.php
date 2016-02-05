@@ -28,7 +28,7 @@ class SettingsServiceProvider extends ServiceProvider
         include __DIR__ . '/../Http/routes.php';
 
         $this->registerDatabase();
-        $this->registerMenu($dashboardMenu);
+        //$this->registerMenu($dashboardMenu);
     }
 
 

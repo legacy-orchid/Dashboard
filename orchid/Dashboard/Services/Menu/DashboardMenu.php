@@ -118,6 +118,7 @@ class DashboardMenu
     }
 
 
+
     /**
      * Сгенерирование меню по вьюхам
      * @param $location
