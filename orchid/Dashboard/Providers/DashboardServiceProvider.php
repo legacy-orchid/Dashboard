@@ -44,13 +44,7 @@ class DashboardServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $langPath = base_path('resources/lang/vendor/orchid/dashboard');
-
-        if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'dashboard');
-        } else {
-            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'dashboard');
-        }
+        $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'dashboard');
     }
 
     /**

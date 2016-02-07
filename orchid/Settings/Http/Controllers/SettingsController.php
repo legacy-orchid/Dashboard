@@ -2,13 +2,7 @@
 
     namespace Orchid\Settings\Http\Controllers;
 
-    use Flash;
-    use Illuminate\Http\Request;
-    use Orchid\Settings\Http\Controllers\Controller;
-    use Orchid\Settings\Requests;
-    use Orchid\Settings\Http\Requests\SettingsRequest;
-    use Orchid\Access\Models\Roles;
-    use Orchid\Settings\Models\Setting;
+    use Orchid\Settings\Models\Settings;
 
     class SettingsController extends Controller
     {
@@ -19,6 +13,9 @@
          */
         public function index()
         {
+
+            Settings::paginate(15);
+            dd('test');
             return view('admin.settings.index', [
                 'Roles' => Roles::lists('name', 'id'),
             ]);

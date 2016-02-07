@@ -2,8 +2,8 @@
 
     namespace Orchid\Dashboard\Providers;
 
-    use Illuminate\Routing\Router;
     use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+    use Illuminate\Routing\Router;
 
     class RouteServiceProvider extends ServiceProvider
     {
@@ -26,8 +26,6 @@
          */
         public function boot(Router $router)
         {
-            //
-
             parent::boot($router);
         }
 

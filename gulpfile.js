@@ -17,9 +17,9 @@ elixir(function(mix) {
         "./public/components/jquery/dist/jquery.min.js",
         "./public/components/bootstrap/dist/js/bootstrap.min.js",
         "./public/components/vue/dist/vue.min.js",
-       // "./public/components/vue-resource/dist/vue-resource.min.js",
-        "./public/components/vue-router/dist/vue-router.min.js",
-        "./resources/assets/js"
+        "./public/components/vue-resource/dist/vue-resource.min.js",
+        //"./public/components/vue-router/dist/vue-router.min.js",
+        "./resources/assets/js/partials/leftMenu.js"
     ], 'public/js/app.js');
 
     mix.version(["public/css/app.css","public/js/app.js"]);

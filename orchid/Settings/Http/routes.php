@@ -1,3 +1,7 @@
 <?php
 
-    Route::get('/', 'DashboardController@index');
+
+Route::get('settings', [
+    'as' => 'settings',
+    'uses' => 'Orchid\Settings\Http\Controllers\SettingsController@index'
+]);

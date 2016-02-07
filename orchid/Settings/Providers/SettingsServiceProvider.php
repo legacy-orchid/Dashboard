@@ -28,7 +28,7 @@ class SettingsServiceProvider extends ServiceProvider
         include __DIR__ . '/../Http/routes.php';
 
         $this->registerDatabase();
-        //$this->registerMenu($dashboardMenu);
+        $this->registerMenu($dashboardMenu);
     }
 
 
@@ -45,46 +45,15 @@ class SettingsServiceProvider extends ServiceProvider
         $settingsMenu = [
             'slug' => 'Settings',
             'icon' => 'fa fa-cog',
-                'url'   => 'http://google.com',
-                'label' => 'Настройки',
-            'childs' => true
-        ];
-
-
-        $cildsSettingsMenu = [
-            'slug' => 'ChildsSettings',
-            'icon' => 'fa fa-cog',
-            'url' => 'http://google.com',
-            'label' => 'Настройки2',
-            'groupname' => 'Общие настройки',
-        ];
-
-
-        $cildsSettingsMenu2 = [
-            'slug' => 'ChildsSettings2',
-            'icon' => 'fa fa-cog',
-            'url' => 'http://google.com',
-            'label' => 'Настройки3',
+            'url' => route('settings'),
+            'label' => trans('dashboard::menu.Constants'),
+            'groupname' => trans('dashboard::menu.General settings'),
+            'childs' => false,
             'divider' => true,
-            'childs' => true
         ];
 
 
-        $cildsSettingsMenu3 = [
-            'slug' => 'ChildsSettingsgregr',
-            'icon' => 'fa fa-cog',
-            'url' => 'http://google.com',
-            'label' => 'Настройки4',
-        ];
-
-
-
-        $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $settingsMenu, 100);
-        $dashboardMenu->add('Settings', 'dashboard::partials.leftMenu', $cildsSettingsMenu, 98);
-        $dashboardMenu->add('Settings', 'dashboard::partials.leftMenu', $cildsSettingsMenu2, 99);
-        $dashboardMenu->add('ChildsSettings2', 'dashboard::partials.leftMenu', $cildsSettingsMenu3, 99);
-
-
+        $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $settingsMenu, 100);
     }
 
 
