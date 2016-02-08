@@ -4,11 +4,12 @@ var Foo = Vue.extend({
 
 var Bar = Vue.extend({
     template: '<p>This is bar!</p>',
+    components:{
+        'loading-bar':VueLoadingBar
+    },
     route: {
         activate: function (transition) {
-            alert(VueLoadingBar);
-            console.log(VueLoadingBar);
-            //VueLoadingBar.progress(0,50);
+            VueLoadingBar.progress(0,50);
             transition.next();
         },
         canDeactivate: function (transition) {
