@@ -159,12 +159,6 @@ return [
 
 
         Orchid\Dashboard\Providers\DashboardServiceProvider::class,
-        Orchid\Dashboard\Providers\RouteServiceProvider::class,
-
-        Orchid\Access\Providers\AccessServiceProvider::class,
-        Orchid\Settings\Providers\SettingsServiceProvider::class,
-        Orchid\Socket\Providers\SocketServiceProvider::class,
-
     ],
 
     /*

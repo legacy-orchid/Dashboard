@@ -32,6 +32,7 @@ class DashboardServiceProvider extends ServiceProvider
 
         $this->registerMenu($dashboardMenu);
 
+        $this->registerProviders();
         //Композер для меню
         View::composer('dashboard:*', DashboardMenuComposer::class);
 
@@ -136,6 +137,18 @@ class DashboardServiceProvider extends ServiceProvider
             return new DashboardMenu();
         });
     }
+
+
+    public function registerProviders()
+    {
+        $this->app->register('Orchid\\Dashboard\\Providers\\RouteServiceProvider');
+        $this->app->register('Orchid\\Dashboard\\Providers\\ConsoleServiceProvider');
+        $this->app->register('Orchid\\Dashboard\\Providers\\SocketServiceProvider');
+        $this->app->register('Orchid\\Dashboard\\Providers\\SettingsServiceProvider');
+    }
+
+
+
 
     /**
      * Get the services provided by the provider.

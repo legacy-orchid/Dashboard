@@ -7,6 +7,11 @@
       "email": "bliz48rus@gmail.com"
     }
   ],
+  "require": {
+    "php": ">=5.5.9",
+    "laravel/framework": ">5.1.*",
+    "cboden/ratchet": "^0.3.4"
+  },
   "files": [
     "helpers.php"
   ],
@@ -14,5 +19,12 @@
     "psr-4": {
       "Orchid\\Dashboard\\": ""
     }
-  }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "minimum-stability": "alpha",
+  "prefer-stable": true
 }

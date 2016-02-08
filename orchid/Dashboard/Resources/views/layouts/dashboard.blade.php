@@ -1,7 +1,4 @@
-@yield('content')
-
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -10,6 +7,41 @@
     <title>App Name - @yield('title')</title>
 
     <link rel="stylesheet" href="{{ elixir("css/app.css") }}">
+
+    <style>
+        .loading-bar{
+            transition:all 0.3s ease;
+            -moz-transition:all 0.3s ease;
+            -webkit-transition:all 0.3s ease;
+            -o-transition:all 0.3s ease;
+        }
+        .loading-bar{
+            position: fixed;
+            top: 50px;
+            background: #27c24c;
+            height: 3px;
+            opacity: 1;
+        }
+        .to-right.loading-bar{
+            left: 200px;
+        }
+        .to-left.loading-bar{
+            right: 0;
+        }
+        .full.loading-bar{
+            transition:all 0.1s ease;
+            -moz-transition:all 0.1s ease;
+            -webkit-transition:all 0.1s ease;
+            -o-transition:all 0.1s ease;
+            height: 0;
+            opacity: 0;
+        }
+        .error.loading-bar{
+            background: #f05050;
+        }
+        </style>
+
+
 
     @stack('stylesheet')
 
@@ -162,14 +194,14 @@
 
     <!-- content -->
     <div id="content" class="app-content" role="main">
-        <div class="app-content-body ">
+        <div class="app-content-body" id="app-content-body">
             <loading-bar
-                    class="someClass"
-                    id="someId"
-                    progress="10%"
-                    direction="left"
+                    class="loading-bar-progress"
+                    id="progress"
+                    direction="right"
                     error="true">
             </loading-bar>
+
 
 
             @yield('content')
