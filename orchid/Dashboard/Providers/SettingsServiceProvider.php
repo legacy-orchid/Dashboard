@@ -1,9 +1,9 @@
 <?php namespace Orchid\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Orchid\Dashboard\Models\Setting;
+use Orchid\Dashboard\Observer\SettingObserver;
 use Orchid\Dashboard\Services\Menu\DashboardMenu;
-use Orchid\Dashboard\Models\Settings;
-use Orchid\Dashboard\Observer\SettingsObserver;
 
 class SettingsServiceProvider extends ServiceProvider
 {
@@ -22,7 +22,7 @@ class SettingsServiceProvider extends ServiceProvider
      */
     public function boot(DashboardMenu $dashboardMenu)
     {
-        Settings::observe(new SettingsObserver);
+        Setting::observe(new SettingObserver);
         $this->registerMenu($dashboardMenu);
     }
 

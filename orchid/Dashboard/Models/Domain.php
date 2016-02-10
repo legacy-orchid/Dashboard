@@ -1,15 +1,14 @@
 <?php namespace Orchid\Dashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Kyslik\ColumnSortable\Sortable;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
-class Language extends Model
+class Domain extends Model
 {
-    use Sortable, SearchableTrait;
+    use SearchableTrait;
 
 
-    protected $table = 'language';
+    protected $table = 'domains';
 
 
     /**
@@ -19,21 +18,15 @@ class Language extends Model
      */
     protected $searchable = [
         'columns' => [
-            'name' => 3,
-            'code' => 1,
+            'url' => 3,
+            'prefix' => 1,
         ],
     ];
 
 
     protected $fillable = [
-        'name',
-        'code',
-        'status',
-    ];
-
-
-    protected $casts = [
-        'status' => 'boolean',
+        'url',
+        'prefix',
     ];
 
 

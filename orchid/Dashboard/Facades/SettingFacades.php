@@ -1,9 +1,9 @@
 <?php namespace Orchid\Dashboard\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Orchid\Dashboard\Models\Settings;
+use Orchid\Dashboard\Models\Setting;
 
-class SettingsFacades extends Facade
+class SettingFacades extends Facade
 {
     /**
      * Получить зарегистрированное имя компонента.
@@ -12,6 +12,6 @@ class SettingsFacades extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return Settings::class;
+        return Setting::class;
     }
 }

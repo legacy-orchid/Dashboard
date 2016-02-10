@@ -2,15 +2,17 @@
 
 use Cache;
 
-class SettingsObserver
+class SettingObserver
 {
     public function saved($model)
     {
         Cache::flush();
+        return $model;
     }
 
     public function deleting($model)
     {
         Cache::flush();
+        return $model;
     }
 }
