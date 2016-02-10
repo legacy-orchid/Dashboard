@@ -25,18 +25,32 @@ class DashboardServiceProvider extends ServiceProvider
      */
     public function boot(Router $router, DashboardMenu $dashboardMenu)
     {
-
+        $this->registerDatabase();
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
 
-        $this->registerMenu($dashboardMenu);
 
+        $this->registerMenu($dashboardMenu);
         $this->registerProviders();
         //Композер для меню
         View::composer('dashboard:*', DashboardMenuComposer::class);
 
     }
+
+
+    /**
+     * Register migrate.
+     *
+     * @return void
+     */
+    protected function registerDatabase()
+    {
+        $this->publishes([
+            __DIR__ . '/../Database/Migrations/' => database_path('migrations'),
+        ], 'migrations');
+    }
+
 
     /**
      * Register translations.
@@ -124,6 +138,13 @@ class DashboardServiceProvider extends ServiceProvider
         $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $systemsMenu, 1000);
     }
 
+    public function registerProviders()
+    {
+        $this->app->register('Orchid\\Dashboard\\Providers\\RouteServiceProvider');
+        $this->app->register('Orchid\\Dashboard\\Providers\\ConsoleServiceProvider');
+        $this->app->register('Orchid\\Dashboard\\Providers\\SocketServiceProvider');
+        $this->app->register('Orchid\\Dashboard\\Providers\\SettingsServiceProvider');
+    }
 
     /**
      * Register the service provider.
@@ -137,18 +158,6 @@ class DashboardServiceProvider extends ServiceProvider
             return new DashboardMenu();
         });
     }
-
-
-    public function registerProviders()
-    {
-        $this->app->register('Orchid\\Dashboard\\Providers\\RouteServiceProvider');
-        $this->app->register('Orchid\\Dashboard\\Providers\\ConsoleServiceProvider');
-        $this->app->register('Orchid\\Dashboard\\Providers\\SocketServiceProvider');
-        $this->app->register('Orchid\\Dashboard\\Providers\\SettingsServiceProvider');
-    }
-
-
-
 
     /**
      * Get the services provided by the provider.

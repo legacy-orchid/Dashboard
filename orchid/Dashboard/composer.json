@@ -1,16 +1,20 @@
 {
-  "name": "orchid/dashboard",
-  "description": "",
+  "name": "orchid/orchid",
+  "description": "The Orchid CMF for website",
   "authors": [
     {
-      "name": "The Orchid",
+      "name": "tabuna",
       "email": "bliz48rus@gmail.com"
+    },
+    {
+      "name": "mamau"
     }
   ],
   "require": {
     "php": ">=5.5.9",
     "laravel/framework": ">5.1.*",
-    "cboden/ratchet": "^0.3.4"
+    "cboden/ratchet": "^0.3.4",
+    "guzzlehttp/guzzle": "~6.0"
   },
   "files": [
     "helpers.php"

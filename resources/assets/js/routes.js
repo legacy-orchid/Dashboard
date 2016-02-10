@@ -1,30 +1,43 @@
 var Foo = Vue.extend({
-    template: '<p>This is foo!</p>'
+    template: '<h1>{{title}}</h1>',
+    el: '#app',
+    data: {
+        title: 'Изучаем Vue.js!',
+        todos: []
+    },
+    methods: {
+        addTodo: function () {
+            var text = this.newTodo.trim();
+            if (text) {
+                this.todos.push({text: text, status: false});
+                this.newTodo = ''
+            }
+        },
+        removeTodo: function (index) {
+            this.todos.splice(index, 1)
+        },
+        finishTodo: function (index) {
+            alert(index);
+        }
+    },
 })
 
 var Bar = Vue.extend({
     template: '<p>This is bar!</p>',
     components:{
         'loading-bar':VueLoadingBar
-    },
-    route: {
-        activate: function (transition) {
-            VueLoadingBar.progress(0,50);
-            transition.next();
-        },
-        canDeactivate: function (transition) {
-            transition.abort()
-        }
-    },
+    }
 });
 
 
+var App = Vue.extend({});
 
-var App = Vue.extend({})
-
-var router = new VueRouter()
+var router = new VueRouter();
 
 router.map({
+    '/': {
+        component: Foo
+    },
     '/foo': {
         component: Foo
     },
@@ -36,7 +49,3 @@ router.map({
 
 
 router.start(App, '#app-content-body');
-
-
-
-// VueLoadingBar
