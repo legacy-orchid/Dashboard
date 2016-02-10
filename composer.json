@@ -18,19 +18,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "./orchid/Access/"
-        },
-        {
-            "type": "vcs",
             "url": "./orchid/Dashboard/"
-        },
-        {
-            "type": "vcs",
-            "url": "./orchid/Settings/"
-        },
-        {
-            "type": "vcs",
-            "url": "./orchid/Socket/"
         }
     ],
     "autoload": {
