@@ -1,11 +1,12 @@
-<?php namespace Orchid\Dashboard\Models;
+<?php
+
+namespace Orchid\Dashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Dashboard\Services\Access\RoleAccess;
 
 class Role extends Model
 {
-
     use RoleAccess;
 
     /**
@@ -27,5 +28,4 @@ class Role extends Model
         'slug',
         'permissions',
     ];
-
 }

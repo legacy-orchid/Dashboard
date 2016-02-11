@@ -1,5 +1,6 @@
-<?php namespace Orchid\Dashboard\Http\Middleware;
+<?php
 
+namespace Orchid\Dashboard\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
@@ -7,7 +8,6 @@ use Route;
 
 class AccessMiddleware
 {
-
     protected $auth;
     protected $routeActive;
 
@@ -36,5 +36,4 @@ class AccessMiddleware
             abort(404);
         }
     }
-
 }

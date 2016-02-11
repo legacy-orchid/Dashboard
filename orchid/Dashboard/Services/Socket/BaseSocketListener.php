@@ -1,25 +1,25 @@
 <?php
-    namespace Orchid\Dashboard\Services\Socket;
 
-    use Ratchet\ConnectionInterface;
-    use Ratchet\MessageComponentInterface;
+namespace Orchid\Dashboard\Services\Socket;
 
-    class BaseSocketListener implements MessageComponentInterface
+use Ratchet\ConnectionInterface;
+use Ratchet\MessageComponentInterface;
+
+class BaseSocketListener implements MessageComponentInterface
+{
+    public function onOpen(ConnectionInterface $conn)
     {
-
-        public function onOpen(ConnectionInterface $conn)
-        {
-        }
-
-        public function onMessage(ConnectionInterface $from, $msg)
-        {
-        }
-
-        public function onClose(ConnectionInterface $conn)
-        {
-        }
-
-        public function onError(ConnectionInterface $conn, \Exception $e)
-        {
-        }
     }
+
+    public function onMessage(ConnectionInterface $from, $msg)
+    {
+    }
+
+    public function onClose(ConnectionInterface $conn)
+    {
+    }
+
+    public function onError(ConnectionInterface $conn, \Exception $e)
+    {
+    }
+}

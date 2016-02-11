@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Models;
+<?php
+
+namespace Orchid\Dashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
@@ -7,9 +9,7 @@ class Domain extends Model
 {
     use SearchableTrait;
 
-
     protected $table = 'domains';
-
 
     /**
      * Searchable rules.
@@ -23,11 +23,8 @@ class Domain extends Model
         ],
     ];
 
-
     protected $fillable = [
         'url',
         'prefix',
     ];
-
-
 }

@@ -1,10 +1,11 @@
-<?php namespace Orchid\Dashboard\Providers;
+<?php
+
+namespace Orchid\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
 class SocketServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -14,8 +15,6 @@ class SocketServiceProvider extends ServiceProvider
 
     /**
      * Boot the application events.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -23,28 +22,22 @@ class SocketServiceProvider extends ServiceProvider
 //        $this->registerProviders();
     }
 
-
     /**
      * Register config.
-     *
-     * @return void
      */
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__ . '/../Config/socket.php' => config_path('socket.php'),
-            __DIR__ . '/../Services/Socket/routes.php' => app_path('/Socket/routes.php'),
+            __DIR__.'/../Config/socket.php' => config_path('socket.php'),
+            __DIR__.'/../Services/Socket/routes.php' => app_path('/Socket/routes.php'),
         ]);
         $this->mergeConfigFrom(
-            __DIR__ . '/../Config/socket.php', 'socket'
+            __DIR__.'/../Config/socket.php', 'socket'
         );
     }
 
-
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -61,6 +54,4 @@ class SocketServiceProvider extends ServiceProvider
             'Orchid\Dashboard\Providers\ConsoleServiceProvider',
         ];
     }
-
-
 }

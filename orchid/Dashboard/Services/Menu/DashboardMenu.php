@@ -1,51 +1,51 @@
-<?php namespace Orchid\Dashboard\Services\Menu;
+<?php
 
+namespace Orchid\Dashboard\Services\Menu;
 
 class DashboardMenu
 {
-
     /**
-     *  Положение меню
+     *  Положение меню.
+     *
      * @var
      */
     public $location;
 
-
     /**
-     * Содержимое всех мею
+     * Содержимое всех мею.
+     *
      * @var
      */
     public $container;
 
-
     /**
-     * Views отображения
+     * Views отображения.
+     *
      * @var
      */
     public $template;
 
-
     /**
      * Аргументы формирования меню
-     * для передачи во Views
+     * для передачи во Views.
+     *
      * @var
      */
     public $arg;
 
-
     /**
-     * Сортировка элемента меню
+     * Сортировка элемента меню.
+     *
      * @var
      */
     public $sort;
 
-
     /**
      * Обобщающий элемент
+     *
      * @var
      */
     protected $item;
-
 
     /**
      * DashboardMenu constructor.
@@ -55,16 +55,15 @@ class DashboardMenu
         $this->container = collect();
     }
 
-
     /**
-     * Установка положения меню
+     * Установка положения меню.
+     *
      * @param $location
      */
     public function place($location)
     {
         $this->location = $location;
     }
-
 
     /**
      * @param $template
@@ -75,7 +74,8 @@ class DashboardMenu
     }
 
     /**
-     * Передача аргументов
+     * Передача аргументов.
+     *
      * @param $arg
      */
     public function with($arg)
@@ -91,13 +91,13 @@ class DashboardMenu
         $this->sort = $sort;
     }
 
-
     /**
      * Добавление нового элемента в контейнер
+     *
      * @param null $place
      * @param null $template
      * @param null $arg
-     * @param int $sort
+     * @param int  $sort
      */
     public function add($place = null, $template = null, $arg = null, $sort = 500)
     {
@@ -114,14 +114,13 @@ class DashboardMenu
         ];
 
         $this->container->push($this->item);
-
     }
-
-
 
     /**
      * Сгенерирование меню по вьюхам
+     *
      * @param $location
+     *
      * @return string
      */
     public function render($location)
@@ -133,8 +132,7 @@ class DashboardMenu
                 collect($value['arg'])
             );
         }
+
         return $html;
     }
-
-
 }

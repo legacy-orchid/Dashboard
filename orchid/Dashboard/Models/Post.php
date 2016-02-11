@@ -1,10 +1,11 @@
-<?php namespace Orchid\Dashboard\Models;
+<?php
+
+namespace Orchid\Dashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-
     protected $table = 'posts';
 
     protected $fillable = [
@@ -12,6 +13,4 @@ class Post extends Model
         'users_id',
         'domains_id',
     ];
-
-
 }

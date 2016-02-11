@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Facades;
+<?php
+
+namespace Orchid\Dashboard\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use Orchid\Dashboard\Models\Setting;

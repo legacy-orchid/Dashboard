@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Http\Composers;
+<?php
+
+namespace Orchid\Dashboard\Http\Composers;
 
 use Cache;
 use Illuminate\Contracts\Auth\Guard;
@@ -7,19 +9,16 @@ use Orchid\Dashboard\Services\Menu\DashboardMenu;
 
 class DashboardMenuComposer
 {
-
     /**
      * The user repository implementation.
      *
-     * @var $adminMenu
+     * @var
      */
     public $dashboardMenu;
-
 
     /**
      * @var
      */
-
     protected $guard;
 
     /**
@@ -38,18 +37,16 @@ class DashboardMenuComposer
     /**
      * Bind data to the view.
      *
-     * @param  View $view
-     *
-     * @return void
+     * @param View $view
      */
     public function compose(View $view)
     {
         $viewMenu = [];
 
         if ($this->guard->check()) {
-            $viewMenu = Cache::remember('dashboard-menu-user-' . $this->guard->user()->id, 10, function () {
+            $viewMenu = Cache::remember('dashboard-menu-user-'.$this->guard->user()->id, 10, function () {
 
-                /**
+                /*
                  * Тут надо перебрать всю меню на наличие прав, и удалить
                  * элементы к которым их нет
                  */
@@ -70,5 +67,4 @@ class DashboardMenuComposer
 
         $view->with('DashboardMenu', $viewMenu);
     }
-
 }

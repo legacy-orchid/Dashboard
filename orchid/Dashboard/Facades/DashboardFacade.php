@@ -1,13 +1,12 @@
-<?php namespace Orchid\Dashboard\Facades;
+<?php
 
-use App;
+namespace Orchid\Dashboard\Facades;
+
 use Config;
 use Illuminate\Support\Facades\Facade;
 
 class DashboardFacade extends Facade
 {
-
-
     public static function __callStatic($method, $args)
     {
         $Facades = Config::get('dashboard.Facades');
@@ -16,8 +15,5 @@ class DashboardFacade extends Facade
                 return static::resolveFacadeInstance($value);
             }
         }
-
     }
-
-
 }

@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Providers;
+<?php
+
+namespace Orchid\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Orchid\Dashboard\Models\Setting;
@@ -7,7 +9,6 @@ use Orchid\Dashboard\Services\Menu\DashboardMenu;
 
 class SettingsServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -17,18 +18,15 @@ class SettingsServiceProvider extends ServiceProvider
 
     /**
      * Boot the application events.
-     *
-     * @return void
      */
     public function boot(DashboardMenu $dashboardMenu)
     {
-        Setting::observe(new SettingObserver);
+        Setting::observe(new SettingObserver());
         $this->registerMenu($dashboardMenu);
     }
 
-
-    protected function registerMenu(DashboardMenu $dashboardMenu = null){
-
+    protected function registerMenu(DashboardMenu $dashboardMenu = null)
+    {
         $settingsMenu = [
             'slug' => 'Settings',
             'icon' => 'fa fa-cog',
@@ -42,12 +40,8 @@ class SettingsServiceProvider extends ServiceProvider
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $settingsMenu, 100);
     }
 
-
-
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -63,5 +57,4 @@ class SettingsServiceProvider extends ServiceProvider
     {
         return [];
     }
-
 }

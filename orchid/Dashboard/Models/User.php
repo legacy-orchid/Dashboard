@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Models;
+<?php
+
+namespace Orchid\Dashboard\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -9,14 +11,12 @@ use Orchid\Dashboard\Services\Access\UserAccess;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
-
     use Authenticatable, CanResetPassword, UserAccess;
 
     /**
      * @var
      */
     protected static $rolesModel = Role::class;
-
 
     /**
      * The database table used by the model.
@@ -42,6 +42,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         'password',
         'remember_token',
     ];
-
-
 }

@@ -1,8 +1,9 @@
-<?php namespace Orchid\Dashboard\Services\Access;
+<?php
+
+namespace Orchid\Dashboard\Services\Access;
 
 trait RoleAccess
 {
-
     /**
      * @return mixed
      */
@@ -32,7 +33,7 @@ trait RoleAccess
     /**
      * Get mutator for the "permissions" attribute.
      *
-     * @param  mixed $permissions
+     * @param mixed $permissions
      *
      * @return array
      */
@@ -44,9 +45,7 @@ trait RoleAccess
     /**
      * Set mutator for the "permissions" attribute.
      *
-     * @param  mixed $permissions
-     *
-     * @return void
+     * @param mixed $permissions
      */
     public function setPermissionsAttribute(array $permissions)
     {
@@ -76,5 +75,4 @@ trait RoleAccess
     {
         return $this->users;
     }
-
 }

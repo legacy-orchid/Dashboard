@@ -4,12 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
 class CreateUsersPermissionsTable extends Migration
-    {
-
-        /**
+{
+    /**
          * Run the migrations.
-         *
-         * @return void
          */
         public function up()
         {
@@ -18,11 +15,8 @@ class CreateUsersPermissionsTable extends Migration
             });
         }
 
-
         /**
          * Reverse the migrations.
-         *
-         * @return void
          */
         public function down()
         {
@@ -30,5 +24,4 @@ class CreateUsersPermissionsTable extends Migration
                 $table->dropColumn('permissions');
             });
         }
-
-    }
+}

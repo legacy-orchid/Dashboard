@@ -4,12 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
 class CreateRolesTable extends Migration
-    {
-
-        /**
+{
+    /**
          * Run the migrations.
-         *
-         * @return void
          */
         public function up()
         {
@@ -22,15 +19,11 @@ class CreateRolesTable extends Migration
             });
         }
 
-
         /**
          * Reverse the migrations.
-         *
-         * @return void
          */
         public function down()
         {
             Schema::drop('roles');
         }
-
-    }
+}

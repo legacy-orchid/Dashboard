@@ -1,17 +1,18 @@
-<?php namespace Orchid\Dashboard\Services\Settings;
+<?php
+
+namespace Orchid\Dashboard\Services\Settings;
 
 use Cache;
 
 trait SettingTrait
 {
-
     /**
      * @param string       $key
      * @param string|array $value
      *
      * Быстрая запись
      *
-     * @return boolean
+     * @return bool
      */
     public function set($key, $value)
     {
@@ -22,9 +23,7 @@ trait SettingTrait
                 'value' => $value,
             ])
             ->save();
-
     }
-
 
     /**
      * @param string|array $key
@@ -34,29 +33,27 @@ trait SettingTrait
      */
     public function get($key, $default = null)
     {
-        return Cache::rememberForever(implode(",", (array)$key), function () use ($key, $default) {
+        return Cache::rememberForever(implode(',', (array) $key), function () use ($key, $default) {
             return $this->getNoCache($key, $default);
         });
     }
 
-
     /**
      * @param      $key
      * @param null $default
-     *
-     * @return null
      */
     public function getNoCache($key, $default = null)
     {
         if (is_array($key)) {
             $result = $this->whereIn('key', $key)->get();
+
             return empty($result) ? $default : $result;
         } else {
             $result = $this->where('key', $key)->first();
+
             return is_null($result) ? $default : $result;
         }
     }
-
 
     /**
      * @param $key
@@ -71,6 +68,4 @@ trait SettingTrait
             return $this->where('key', $key)->delete();
         }
     }
-
-
 }

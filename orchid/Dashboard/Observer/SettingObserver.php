@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Observer;
+<?php
+
+namespace Orchid\Dashboard\Observer;
 
 use Cache;
 

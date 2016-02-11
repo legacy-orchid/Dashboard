@@ -1,15 +1,14 @@
-<?php namespace Orchid\Dashboard\Database\Seeders;
+<?php
+
+namespace Orchid\Dashboard\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
 class DashboardDatabaseSeeder extends Seeder
 {
-
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
@@ -17,5 +16,4 @@ class DashboardDatabaseSeeder extends Seeder
 
         // $this->call("OthersTableSeeder");
     }
-
 }

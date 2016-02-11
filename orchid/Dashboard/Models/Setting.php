@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Models;
+<?php
+
+namespace Orchid\Dashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Dashboard\Services\Settings\SettingTrait;
@@ -17,6 +19,4 @@ class Setting extends Model
     protected $casts = [
         'value' => 'array',
     ];
-
-
 }

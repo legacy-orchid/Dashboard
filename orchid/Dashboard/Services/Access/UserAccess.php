@@ -1,8 +1,9 @@
-<?php namespace Orchid\Dashboard\Services\Access;
+<?php
+
+namespace Orchid\Dashboard\Services\Access;
 
 trait UserAccess
 {
-
     /**
      * Returns the roles model.
      *
@@ -16,9 +17,7 @@ trait UserAccess
     /**
      * Sets the roles model.
      *
-     * @param  string $rolesModel
-     *
-     * @return void
+     * @param string $rolesModel
      */
     public static function setRolesModel($rolesModel)
     {
@@ -28,7 +27,7 @@ trait UserAccess
     /**
      * Get mutator for the "permissions" attribute.
      *
-     * @param  mixed $permissions
+     * @param mixed $permissions
      *
      * @return array
      */
@@ -40,9 +39,7 @@ trait UserAccess
     /**
      * Set mutator for the "permissions" attribute.
      *
-     * @param  mixed $permissions
-     *
-     * @return void
+     * @param mixed $permissions
      */
     public function setPermissionsAttribute(array $permissions)
     {
@@ -111,7 +108,6 @@ trait UserAccess
         $this->roles()->save($Role);
     }
 
-
     /**
      * @param $Role
      */
@@ -128,6 +124,4 @@ trait UserAccess
         $this->roles()->remove();
         $this->roles()->saveMany($Roles);
     }
-
-
 }

@@ -1,5 +1,6 @@
-<?php namespace Orchid\Dashboard\Providers;
+<?php
 
+namespace Orchid\Dashboard\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
@@ -9,8 +10,6 @@ use View;
 
 class DashboardServiceProvider extends ServiceProvider
 {
-
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -20,8 +19,6 @@ class DashboardServiceProvider extends ServiceProvider
 
     /**
      * Boot the application events.
-     *
-     * @return void
      */
     public function boot(Router $router, DashboardMenu $dashboardMenu)
     {
@@ -30,76 +27,64 @@ class DashboardServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
 
-
         $this->registerMenu($dashboardMenu);
         $this->registerProviders();
         //Композер для меню
         View::composer('dashboard:*', DashboardMenuComposer::class);
-
     }
-
 
     /**
      * Register migrate.
-     *
-     * @return void
      */
     protected function registerDatabase()
     {
         $this->publishes([
-            __DIR__ . '/../Database/Migrations/' => database_path('migrations'),
+            __DIR__.'/../Database/Migrations/' => database_path('migrations'),
         ], 'migrations');
     }
 
-
     /**
      * Register translations.
-     *
-     * @return void
      */
     public function registerTranslations()
     {
-        $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'dashboard');
+        $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'dashboard');
     }
 
     /**
      * Register config.
-     *
-     * @return void
      */
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__ . '/../Config/config.php' => config_path('dashboard.php'),
+            __DIR__.'/../Config/config.php' => config_path('dashboard.php'),
         ]);
         $this->mergeConfigFrom(
-            __DIR__ . '/../Config/config.php', 'dashboard'
+            __DIR__.'/../Config/config.php', 'dashboard'
         );
     }
 
     /**
      * Register views.
-     *
-     * @return void
      */
     public function registerViews()
     {
         $viewPath = base_path('resources/views/vendor/orchid/dashboard');
 
-        $sourcePath = __DIR__ . '/../Resources/views';
+        $sourcePath = __DIR__.'/../Resources/views';
 
         $this->publishes([
             $sourcePath => $viewPath,
         ]);
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/vendor/orchid/dashboard';
+            return $path.'/vendor/orchid/dashboard';
         }, \Config::get('view.paths')), [$sourcePath]), 'dashboard');
     }
 
-
     /**
-     * Регистрация элементов меню
+     * Регистрация элементов меню.
+     *
      * @param DashboardMenu|null $dashboardMenu
      */
     protected function registerMenu(DashboardMenu $dashboardMenu = null)
@@ -115,21 +100,21 @@ class DashboardServiceProvider extends ServiceProvider
             'icon' => 'fa fa-pencil-square-o',
             'url' => '#',
             'label' => 'Записи',
-            'childs' => true
+            'childs' => true,
         ];
         $toolsMenu = [
             'slug' => 'Tools',
             'icon' => 'fa fa-wrench',
             'url' => '#',
             'label' => 'Инструменты',
-            'childs' => true
+            'childs' => true,
         ];
         $systemsMenu = [
             'slug' => 'Systems',
             'icon' => 'fa fa-cogs',
             'url' => '#',
             'label' => 'Система',
-            'childs' => true
+            'childs' => true,
         ];
 
         $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $panelMenu, 1);
@@ -148,8 +133,6 @@ class DashboardServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -170,6 +153,4 @@ class DashboardServiceProvider extends ServiceProvider
 
         ];
     }
-
-
 }
