@@ -157,6 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 
+        //Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
 
         Orchid\Dashboard\Providers\DashboardServiceProvider::class,
     ],

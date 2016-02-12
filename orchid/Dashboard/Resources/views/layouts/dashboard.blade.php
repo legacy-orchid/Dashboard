@@ -8,39 +8,6 @@
 
     <link rel="stylesheet" href="{{ elixir("css/app.css") }}">
 
-    <style>
-        .loading-bar{
-            transition:all 0.3s ease;
-            -moz-transition:all 0.3s ease;
-            -webkit-transition:all 0.3s ease;
-            -o-transition:all 0.3s ease;
-        }
-        .loading-bar{
-            position: fixed;
-            top: 50px;
-            background: #27c24c;
-            height: 3px;
-            opacity: 1;
-        }
-        .to-right.loading-bar{
-            left: 200px;
-        }
-        .to-left.loading-bar{
-            right: 0;
-        }
-        .full.loading-bar{
-            transition:all 0.1s ease;
-            -moz-transition:all 0.1s ease;
-            -webkit-transition:all 0.1s ease;
-            -o-transition:all 0.1s ease;
-            height: 0;
-            opacity: 0;
-        }
-        .error.loading-bar{
-            background: #f05050;
-        }
-        </style>
-
 
 
     @stack('stylesheet')
@@ -228,6 +195,7 @@
 
 
 <script src="{{elixir('js/app.js')}}" type="text/javascript"></script>
+<script src="/js/router.js" type="text/javascript"></script>
 
 
 @stack('scripts')

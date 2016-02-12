@@ -1,7 +1,8 @@
-<?php namespace Orchid\Dashboard\Console;
+<?php
+
+namespace Orchid\Dashboard\Console;
 
 use Illuminate\Console\GeneratorCommand;
-use Symfony\Component\Console\Input\InputOption;
 
 class MakeListener extends GeneratorCommand
 {
@@ -33,20 +34,18 @@ class MakeListener extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/listener.stub';
+        return __DIR__.'/stubs/listener.stub';
     }
 
     /**
      * Get the default namespace for the class.
      *
-     * @param  string $rootNamespace
+     * @param string $rootNamespace
      *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Socket\Listener';
+        return $rootNamespace.'\Socket\Listener';
     }
-
-
 }

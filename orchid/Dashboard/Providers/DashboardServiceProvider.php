@@ -125,10 +125,16 @@ class DashboardServiceProvider extends ServiceProvider
 
     public function registerProviders()
     {
-        $this->app->register('Orchid\\Dashboard\\Providers\\RouteServiceProvider');
-        $this->app->register('Orchid\\Dashboard\\Providers\\ConsoleServiceProvider');
-        $this->app->register('Orchid\\Dashboard\\Providers\\SocketServiceProvider');
-        $this->app->register('Orchid\\Dashboard\\Providers\\SettingsServiceProvider');
+
+        $this->app->register(\Kyslik\ColumnSortable\ColumnSortableServiceProvider::class);
+
+
+        $this->app->register(\Orchid\Dashboard\Providers\RouteServiceProvider::class);
+        $this->app->register(\Orchid\Dashboard\Providers\ConsoleServiceProvider::class);
+        $this->app->register(\Orchid\Dashboard\Providers\SocketServiceProvider::class);
+        $this->app->register(\Orchid\Dashboard\Providers\SettingsServiceProvider::class);
+
+
     }
 
     /**

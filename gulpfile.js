@@ -1,5 +1,6 @@
 var elixir = require('laravel-elixir');
 var browserify = require('browserify');
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -16,12 +17,11 @@ elixir(function(mix) {
     mix.scripts([
         "./public/components/jquery/dist/jquery.min.js",
         "./public/components/bootstrap/dist/js/bootstrap.min.js",
-        "./public/components/vue/dist/vue.js",
-        "./resources/assets/js/partials/vue-loading-bar.js",
-        "./public/components/vue-resource/dist/vue-resource.min.js",
-        "./public/components/vue-router/dist/vue-router.min.js",
-        "./resources/assets/js/routes.js",
         "./resources/assets/js/partials/leftMenu.js"
     ], 'public/js/app.js');
     mix.version(["public/css/app.css","public/js/app.js"]);
+
+    mix.browserify('router.js')
+
+
 });

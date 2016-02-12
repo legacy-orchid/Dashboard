@@ -9,68 +9,7 @@
         <small class="text-muted">Будьте осторожны при изменении</small>
     </div>
 
-
-
     <div class="wrapper-md" id="settings-container">
-
-
-        <div class="panel panel-default">
-            <div class="panel-heading font-bold">Системные параметры</div>
-
-
-            <div class="panel-body">
-                <form class="form-horizontal" action="" method="post">
-
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Название</label>
-
-                        <div class="col-lg-10">
-                            <input type="text" name="name" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="line line-dashed b-b line-lg"></div>
-
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Slug</label>
-
-                        <div class="col-lg-10">
-                            <input type="text" name="slug" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="line line-dashed b-b line-lg"></div>
-
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Значение</label>
-
-                        <div class="col-lg-10">
-                            <input type="text" name="value" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="line line-dashed b-b line-lg"></div>
-
-                    <div class="form-group text-center">
-                        <div class="col-md-6">
-                            {!! csrf_field() !!}
-                            <button type="submit" class="btn btn-sm btn-info">Создать</button>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <a href="" class="btn btn-sm btn-danger">Стандартный
-                                режим</a>
-                        </div>
-
-                    </div>
-
-
-                </form>
-            </div>
-        </div>
-
 
         <div class="panel panel-default">
             <div class="panel-heading font-bold">Системные параметры</div>
@@ -100,18 +39,15 @@
                     <table class="table table-striped b-t b-light">
                         <thead>
                         <tr>
-                            <th>@sortablelink ('name','Имя')</th>
-                            <th>@sortablelink ('slug','Slug')</th>
+                            <th>@sortablelink ('key','Ключ')</th>
                             <th>@sortablelink ('updated_at','Последние изменение')</th>
                             <th>Управление</th>
-
                         </tr>
                         </thead>
                         <tbody>
                         @foreach ($Settings as $setting)
                             <tr>
-                                <td>{{ $setting->name }}</td>
-                                <td>{{ $setting->slug }}</td>
+                                <td>{{ $setting->key }}</td>
                                 <td>{{ $setting->updated_at }}</td>
                                 <td>
 
