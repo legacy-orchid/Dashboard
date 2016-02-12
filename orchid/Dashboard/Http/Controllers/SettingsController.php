@@ -8,8 +8,8 @@ class SettingsController extends Controller
 {
     public function index()
     {
-        return view('dashboard::container.settings', [
-            'Settings' => Setting::sortable()->paginate(15),
-        ]);
+        return response()->json(
+            Setting::sortable()->paginate(15)
+        );
     }
 }

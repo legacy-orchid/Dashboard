@@ -1,5 +1,5 @@
 var elixir = require('laravel-elixir');
-var browserify = require('browserify');
+require('laravel-elixir-vueify');
 
 /*
  |--------------------------------------------------------------------------
