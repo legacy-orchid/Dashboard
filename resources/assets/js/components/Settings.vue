@@ -31,6 +31,13 @@
 
             <div class="panel-body row">
 
+                <pre>
+                    {{ settings | json }}
+
+                    {{settingsResource | json }}
+                </pre>
+
+
                 <div class="table-responsive">
                     <table class="table table-striped b-t b-light">
                         <thead>
@@ -43,7 +50,7 @@
                         <tbody>
 
                         <tr v-for="setting in settings">
-                            <td>setting->key</td>
+                            <td>{{setting}}</td>
                             <td>$setting->updated_at</td>
                             <td>
 
@@ -117,28 +124,39 @@
 </template>
 <script>
     export default{
-        data(){
-            settings: []
+        data:{
+            settings: {},
+            settingsResource: null,
+            pagination: {
+                page: 1,
+                previous: false,
+                next: false
+            }
         },
         ready : function()
         {
-         alert('Тут должна быть Ajax загрузка');
-            // GET request
             this.$http({url: '/dashboard/settings', method: 'GET'}).then(function (response) {
-                // success callback
-
-                alert('good');
-
-                //Сам массив, но его меты атрибуты всё равно будут нужны ;(
-                this.settings = response.data.data;
-
-
-                console.log(this.settings);
-
+                this.$set('settings', response.data);
+                this.fetchSettingsPaginate();
             }, function (response) {
-                // error callback
                 alert('Error load');
             });
-        }
+        },
+        methods: {
+            fetchSettingsPaginate: function(direction){
+                if (direction === 'previous'){
+                    --this.pagination.page;
+                }
+                else if (direction === 'next'){
+                    ++this.pagination.page;
+                }
+
+                this.settingsResource.get({page: this.pagination.page}, function(data){
+                    this.settings = data.data;
+                    this.pagination.next = data.next_page_url;
+                    this.pagination.previous = data.prev_page_url;
+                });
+            }
+        },
     }
 </script>
