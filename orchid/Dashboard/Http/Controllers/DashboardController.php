@@ -2,7 +2,7 @@
 
 namespace Orchid\Dashboard\Http\Controllers;
 
-class Dashboard extends Controller
+class DashboardController extends Controller
 {
     public function index()
     {

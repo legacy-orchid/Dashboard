@@ -5,8 +5,9 @@ namespace Orchid\Dashboard\Http\Requests;
 use Orchid\Dashboard\Http\Requests\Request;
 use Illuminate\Support\Facades\Auth;
 use Auth;
+use Config;
 
-class Settings extends Request
+class UsersRequests extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +26,8 @@ class Settings extends Request
      */
     public function rules()
     {
+        // Тут надо сделать большую универсальность, типо авторизация по телефону email или login
         return [
-            'key' => 'required|unique:settings,key,' . $this->get('key'),
-            'value' => 'required',
         ];
     }
 }

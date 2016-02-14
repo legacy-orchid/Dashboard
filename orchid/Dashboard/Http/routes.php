@@ -1,12 +1,9 @@
 <?php
 
-    Route::get('/', 'Dashboard@index');
+    Route::get('/', 'DashboardController@index');
 
-/*
-    Route::get('settings', [
-        'as' => 'settings',
-        'uses' => 'SettingsController@index',
-    ]);
-*/
 
-    Route::resource('settings', 'Settings');
+
+    Route::resource('settings', 'SettingsController',['only' => [
+        'index', 'show', 'store', 'update', 'destroy'
+    ]]);
