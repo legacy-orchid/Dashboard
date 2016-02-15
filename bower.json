@@ -1,5 +1,5 @@
 {
-  "name": "Mitiwer",
+  "name": "OrchidTheme",
   "version": "0.0.1",
   "authors": [
     "Tabuna",
@@ -17,7 +17,6 @@
   ],
   "dependencies": {
     "animate.css": "3.*",
-    "bootstrap": "3.*",
     "bootstrap-daterangepicker": "1.*",
     "bootstrap-filestyle": "1.*",
     "bootstrap-slider": "*",
