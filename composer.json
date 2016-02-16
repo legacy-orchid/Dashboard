@@ -1,5 +1,5 @@
 {
-  "name": "orchid/orchid",
+  "name": "orchid/dashboard",
   "description": "The Orchid CMF for WebSite",
   "authors": [
     {
@@ -23,7 +23,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "orchid\\dashboard\\": ""
+      "Orchid\\dashboard\\": ""
     }
   },
   "extra": {
