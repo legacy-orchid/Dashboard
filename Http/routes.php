@@ -3,7 +3,7 @@
     Route::get('/', 'DashboardController@index');
 
 
-
-    Route::resource('settings', 'SettingsController',['only' => [
+Route::resource('settings', 'SettingsController', [
+    'only' => [
         'index', 'show', 'store', 'update', 'destroy'
     ]]);

@@ -6,7 +6,7 @@
             'Menu' => Orchid\Dashboard\Services\Menu\DashboardMenu::class,
         ],
 
-        'Routes' => [
+        'Widgets' => [
 
         ],
     ];

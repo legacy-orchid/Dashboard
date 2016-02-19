@@ -28,6 +28,7 @@ class ConsoleServiceProvider extends ServiceProvider
     protected $commands = [
         'Server',
         'MakeListener',
+        'MakeWidget',
     ];
 
     /**

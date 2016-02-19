@@ -30,8 +30,8 @@ class RouteServiceProvider extends ServiceProvider
             /*
              * bindings
              */
-            $router->bind('settings',function($value){
-                 return Setting::where('key',$value)->firstOrFail();
+            $router->bind('settings', function ($value) {
+                return Setting::where('key', $value)->firstOrFail();
             });
         }
 
