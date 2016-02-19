@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Orchid\Dashboard\Http\Composers\DashboardMenuComposer;
 use Orchid\Dashboard\Services\Menu\DashboardMenu;
 use View;
+use Blade;
 
 class DashboardServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,14 @@ class DashboardServiceProvider extends ServiceProvider
         $this->registerProviders();
         //Композер для меню
         View::composer('dashboard:*', DashboardMenuComposer::class);
+
+
+        Blade::directive('widget', function ($key) {
+            $widget = new \Orchid\Dashboard\Services\Widget\Widget();
+            return $widget->get($widget);
+        });
+
+
     }
 
     /**
@@ -70,7 +79,6 @@ class DashboardServiceProvider extends ServiceProvider
     public function registerViews()
     {
         $viewPath = base_path('resources/views/vendor/orchid/dashboard');
-
         $sourcePath = __DIR__.'/../Resources/views';
 
         $this->publishes([
