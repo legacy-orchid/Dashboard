@@ -22,11 +22,7 @@ trait SeoTrait
      */
     public function generate($id = null)
     {
-
-
         if (is_null($id)) {
-
-
             if (is_null(Route::current())) {
                 return [
                     'title' => [],
@@ -69,7 +65,6 @@ trait SeoTrait
         }
 
         return $meta;
-
     }
 
     /**
@@ -99,6 +94,4 @@ trait SeoTrait
         }
         return $allowGetRoutes;
     }
-
-
 }

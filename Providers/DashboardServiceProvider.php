@@ -38,8 +38,6 @@ class DashboardServiceProvider extends ServiceProvider
             $widget = new \Orchid\Dashboard\Services\Widget\Widget();
             return $widget->get($widget);
         });
-
-
     }
 
     /**
