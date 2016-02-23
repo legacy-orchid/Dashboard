@@ -2,7 +2,7 @@
 
 use Orchid\Dashboard\Models\User;
 use Validator;
-use Orchid\Dashboard\Http\Controller;
+use Orchid\Dashboard\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

@@ -1,6 +1,6 @@
 <?php namespace Orchid\Dashboard\Http\Controllers\Auth;
 
-use Orchid\Dashboard\Http\Controller;
+use Orchid\Dashboard\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller
