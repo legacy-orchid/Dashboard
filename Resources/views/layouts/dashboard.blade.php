@@ -7,9 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" id="csrf-token">
     <title>App Name - @yield('title')</title>
 
-    <link rel="stylesheet" href="{{ elixir("css/app.css") }}">
-
-
+    <link rel="stylesheet" href="/orchid/css/orchid.css">
 
     @stack('stylesheet')
 
@@ -188,7 +186,7 @@
 </div>
 
 
-<script src="{{elixir('js/app.js')}}" type="text/javascript"></script>
+<script src="/orchid/js/app.js" type="text/javascript"></script>
 <script src="/js/router.js" type="text/javascript"></script>
 
 

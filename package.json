@@ -8,7 +8,6 @@
     "bootstrap-less": "^3.3.8",
 
 
-    //Слав если тебе это не нужно удаляй
 
     "babel-preset-es2015": "~6.5.0",
     "babel-preset-react": "~6.5.0",

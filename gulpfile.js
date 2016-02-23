@@ -13,15 +13,11 @@ require('laravel-elixir-vueify');
  */
 
 elixir(function(mix) {
-    mix.less('app.less','public/css/app.css');
+    mix.less('./Resources/assets/less/app.less', './Resources/dist/css/orchid.css');
     mix.scripts([
-        "./public/components/jquery/dist/jquery.min.js",
-        "./public/components/bootstrap/dist/js/bootstrap.min.js",
-        "./resources/assets/js/partials/leftMenu.js"
-    ], 'public/js/app.js');
-    mix.version(["public/css/app.css","public/js/app.js"]);
-
-    mix.browserify('router.js')
-
-
+        "./Resources/assets/vendor/jquery/dist/jquery.min.js",
+        "./Resources/assets/vendor/bootstrap/dist/js/bootstrap.min.js",
+        "./Resources/assets/js/partials/leftMenu.js"
+    ], './Resources/dist/js/orchid.js');
+    mix.browserify('./Resources/dist/js/router.js')
 });
