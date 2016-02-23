@@ -32,11 +32,8 @@ class DashboardServiceProvider extends ServiceProvider
         $this->registerProviders();
         //Композер для меню
         View::composer('dashboard:*', DashboardMenuComposer::class);
-
-
         Blade::directive('widget', function ($key) {
-            $widget = new \Orchid\Dashboard\Services\Widget\Widget();
-            return $widget->get($widget);
+            return "<?php echo (new \\Orchid\\Dashboard\\Services\\Widget\\Widget)->get({$key}); ?>";
         });
     }
 
