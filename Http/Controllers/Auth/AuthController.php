@@ -28,6 +28,18 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/dashboard';
 
+
+    /**
+     * @var string
+     */
+    protected $loginView = 'dashboard::auth.login';
+
+    /**
+     * @var string
+     */
+    protected $registerView = 'dashboard::auth.register';
+
+
     /**
      * Create a new authentication controller instance.
      *

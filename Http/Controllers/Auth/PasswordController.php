@@ -19,6 +19,16 @@ class PasswordController extends Controller
     use ResetsPasswords;
 
     /**
+     * @var string
+     */
+    protected $linkRequestView = 'dashboard::auth.passwords.email';
+
+    /**
+     * @var string
+     */
+    protected $resetView = 'dashboard::auth.passwords.reset';
+
+    /**
      * Create a new password controller instance.
      *
      * @return void
