@@ -22,7 +22,7 @@ Laravel is accessible, yet powerful, providing powerful tools needed for large, 
 ```
 
 ```php
-    'Dashboard' =>  Orchid\Dashboard\Facades\DashboardFacade::class,
+    'Orchid' =>  Orchid\Dashboard\Facades\DashboardFacade::class,
 ```
 
 ## Vendor Publish

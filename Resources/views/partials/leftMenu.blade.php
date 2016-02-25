@@ -10,7 +10,7 @@
             <span>{{$label}}</span>
         </a>
         <ul class="dropdown-menu dropdown-full dropdown-lvl" aria-labelledby="dropdownMenu-{{$slug}}">
-            {!! Dashboard::Menu()->render($slug) !!}
+            {!! Orchid::Menu()->render($slug) !!}
         </ul>
     </li>
 
