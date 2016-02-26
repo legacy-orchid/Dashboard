@@ -3,8 +3,8 @@
 Homestead.yaml
 Homestead.json
 .env
-/.idea/
+/.idea
 .phpstorm.meta.php
 _ide_helper.php
-/public/bower_components/*
-Resources/assets/vendor/
+/public/bower_components
+Resources/assets/vendor
