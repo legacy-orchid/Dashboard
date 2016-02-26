@@ -52,16 +52,12 @@ class DashboardMenuComposer
                  */
 
                 $user = $this->guard->user();
-                $accessCollection = collect();
 
-                foreach ($this->dashboardMenu as $key => $value) {
-                    $accessElement = $value->filter(function ($item) use ($user) {
-                        return $user->hasAccess($item['url']);
-                    });
-                    $accessCollection->put($key, $accessElement);
-                }
+                $accessCollection = $this->dashboardMenu->container->filter(function ($item) use ($user) {
+                    return $user->hasAccess($item['arg']['url']);
+                });
 
-                return $accessCollection->all();
+                return $accessCollection;
             });
         }
 
