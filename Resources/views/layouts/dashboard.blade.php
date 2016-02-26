@@ -107,7 +107,7 @@
                         <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                             <span>{{trans('dashboard::menu.Navigation')}}</span>
                         </li>
-                        {!! Dashboard::Menu()->render('leftMenu') !!}
+                        {!! Orchid::Menu()->render('leftMenu') !!}
 
                         <li class="line dk"></li>
 
