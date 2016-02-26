@@ -4,7 +4,6 @@ namespace Orchid\Dashboard\Http\Requests;
 
 use Orchid\Dashboard\Http\Requests\Request;
 use Illuminate\Support\Facades\Auth;
-use Auth;
 use Config;
 
 class UsersRequests extends Request
