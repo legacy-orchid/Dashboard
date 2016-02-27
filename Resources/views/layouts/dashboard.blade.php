@@ -186,8 +186,7 @@
 </div>
 
 
-<script src="/orchid/js/app.js" type="text/javascript"></script>
-<script src="/js/router.js" type="text/javascript"></script>
+<script src="/orchid/js/orchid.js" type="text/javascript"></script>
 
 
 @stack('scripts')
