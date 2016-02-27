@@ -30,7 +30,7 @@ class SettingsServiceProvider extends ServiceProvider
         $settingsMenu = [
             'slug' => 'Settings',
             'icon' => 'fa fa-cog',
-            'url' => '/dashboard/settings', //route('settings'),
+            'url' => '/dashboard/#!/settings', //route('settings'),
             'label' => trans('dashboard::menu.Constants'),
             'groupname' => trans('dashboard::menu.General settings'),
             'childs' => false,
