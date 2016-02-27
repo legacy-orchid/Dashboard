@@ -49,7 +49,7 @@
                         </thead>
                         <tbody>
 
-                        <tr v-for="setting in settings.data">
+                        <tr v-for="setting in settings">
                             <td>{{setting}}</td>
                             <td>$setting->updated_at</td>
                             <td>

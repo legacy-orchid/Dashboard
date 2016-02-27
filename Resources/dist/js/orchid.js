@@ -65,7 +65,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                     this.fetchSettingsPaginate();
                 }, function (response) {
                     alert('Error load');
-                });
+        });
             },
             methods: {
                 fetchSettingsPaginate: function fetchSettingsPaginate(direction) {
@@ -73,19 +73,19 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                         --this.pagination.page;
                     } else if (direction === 'next') {
                         ++this.pagination.page;
-                    }
+            }
 
                     this.settingsResource.get({page: this.pagination.page}, function (data) {
                         this.settings = data.data;
                         this.pagination.next = data.next_page_url;
                         this.pagination.previous = data.prev_page_url;
                     });
-                }
+        }
             }
         };
         if (module.exports.__esModule) module.exports = module.exports.default
         ;
-        (typeof module.exports === "function" ? module.exports.options : module.exports).template = "\n\n<div class=\"bg-light lter b-b wrapper-md\">\n    <h1 class=\"m-n font-thin h3\">Системные константы</h1>\n    <small class=\"text-muted\">Будьте осторожны при изменении</small>\n</div>\n\n<div class=\"wrapper-md\" id=\"settings-container\">\n\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading font-bold\">Системные константы</div>\n\n\n        <div class=\"row wrapper\">\n            <div class=\"col-sm-5 m-b-xs\">\n            </div>\n            <div class=\"col-sm-4\">\n            </div>\n            <div class=\"col-sm-3\">\n                <form action=\"\">\n                    <div class=\"input-group\">\n                        <input type=\"text\" class=\"input-sm form-control\" name=\"search\" placeholder=\"Поиск ...\">\n      <span class=\"input-group-btn\">\n        <button class=\"btn btn-sm btn-default\" type=\"submit\">Найти!</button>\n      </span>\n                    </div>\n                </form>\n            </div>\n        </div>\n\n\n        <div class=\"panel-body row\">\n\n            <pre>                    {{ settings | json }}\n\n                {{settingsResource | json }}\n            </pre>\n\n\n            <div class=\"table-responsive\">\n                <table class=\"table table-striped b-t b-light\">\n                    <thead>\n                    <tr>\n                        <th>Ключ</th>\n                        <th>Последние изменение</th>\n                        <th>Управление</th>\n                    </tr>\n                    </thead>\n                    <tbody>\n\n                    <tr v-for=\"setting in settings\">\n                        <td>{{setting}}</td>\n                        <td>$setting-&gt;updated_at</td>\n                        <td>\n\n                            <div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\">\n                                <a href=\"route('admin.settings.edit',$setting->slug) \" class=\"btn btn-default\"><span class=\"fa fa-edit\"></span> </a>\n                                <a href=\"#\" data-toggle=\"modal\" data-target=\"#Modal-$setting->slug\" class=\"btn btn-danger\">\n                                    <i class=\"fa fa-trash\"></i>\n                                </a>\n                            </div>\n\n\n                        </td>\n                    </tr>\n\n\n                    </tbody>\n                </table>\n            </div>\n\n        </div>\n\n\n        <div class=\"modal fade\" id=\"settings-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\n            <div class=\"modal-dialog\">\n                <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">×</span></button>\n                        <h4 class=\"modal-title\" id=\"myModalLabel\">Удалить\n                            ?</h4>\n                    </div>\n                    <div class=\"modal-body\">\n                        Вы действительно хотите удалить\n                    </div>\n                    <div class=\"modal-footer\">\n                        <form action=\"\" method=\"post\">\n                            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Нет\n                            </button>\n                            <button type=\"submit\" class=\"btn btn-danger\">Да</button>\n                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                            <input type=\"hidden\" name=\"_token\" value=\"csrf_token()\">\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n\n\n\n        <footer class=\"panel-footer\">\n            <div class=\"row\">\n                <div class=\"col-sm-offset-4 col-sm-4 text-center\">\n                    <small class=\"text-muted inline m-t-sm m-b-sm\">Всего\n                        элементов: </small>\n                </div>\n                <div class=\"col-sm-4 text-right text-center-xs\">\n\n                </div>\n            </div>\n        </footer>\n    </div>\n</div>\n\n\n"
+        (typeof module.exports === "function" ? module.exports.options : module.exports).template = "\n\n<div class=\"bg-light lter b-b wrapper-md\">\n    <h1 class=\"m-n font-thin h3\">Системные константы</h1>\n    <small class=\"text-muted\">Будьте осторожны при изменении</small>\n</div>\n\n<div class=\"wrapper-md\" id=\"settings-container\">\n\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading font-bold\">Системные константы</div>\n\n\n        <div class=\"row wrapper\">\n            <div class=\"col-sm-5 m-b-xs\">\n            </div>\n            <div class=\"col-sm-4\">\n            </div>\n            <div class=\"col-sm-3\">\n                <form action=\"\">\n                    <div class=\"input-group\">\n                        <input type=\"text\" class=\"input-sm form-control\" name=\"search\" placeholder=\"Поиск ...\">\n      <span class=\"input-group-btn\">\n        <button class=\"btn btn-sm btn-default\" type=\"submit\">Найти!</button>\n      </span>\n                    </div>\n                </form>\n            </div>\n        </div>\n\n\n        <div class=\"panel-body row\">\n\n            <pre>                    {{ settings | json }}\n\n                {{settingsResource | json }}\n            </pre>\n\n\n            <div class=\"table-responsive\">\n                <table class=\"table table-striped b-t b-light\">\n                    <thead>\n                    <tr>\n                        <th>Ключ</th>\n                        <th>Последние изменение</th>\n                        <th>Управление</th>\n                    </tr>\n                    </thead>\n                    <tbody>\n\n                    <tr v-for=\"setting in settings.data\">\n                        <td>{{setting}}</td>\n                        <td>$setting-&gt;updated_at</td>\n                        <td>\n\n                            <div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\">\n                                <a href=\"route('admin.settings.edit',$setting->slug) \" class=\"btn btn-default\"><span class=\"fa fa-edit\"></span> </a>\n                                <a href=\"#\" data-toggle=\"modal\" data-target=\"#Modal-$setting->slug\" class=\"btn btn-danger\">\n                                    <i class=\"fa fa-trash\"></i>\n                                </a>\n                            </div>\n\n\n                        </td>\n                    </tr>\n\n                    </tbody>\n                </table>\n            </div>\n\n        </div>\n\n\n        <div class=\"modal fade\" id=\"settings-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\n            <div class=\"modal-dialog\">\n                <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">×</span></button>\n                        <h4 class=\"modal-title\" id=\"myModalLabel\">Удалить\n                            ?</h4>\n                    </div>\n                    <div class=\"modal-body\">\n                        Вы действительно хотите удалить\n                    </div>\n                    <div class=\"modal-footer\">\n                        <form action=\"\" method=\"post\">\n                            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Нет\n                            </button>\n                            <button type=\"submit\" class=\"btn btn-danger\">Да</button>\n                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                            <input type=\"hidden\" name=\"_token\" value=\"csrf_token()\">\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n\n\n\n        <footer class=\"panel-footer\">\n            <div class=\"row\">\n                <div class=\"col-sm-offset-4 col-sm-4 text-center\">\n                    <small class=\"text-muted inline m-t-sm m-b-sm\">Всего\n                        элементов: </small>\n                </div>\n                <div class=\"col-sm-4 text-right text-center-xs\">\n\n                </div>\n            </div>\n        </footer>\n    </div>\n</div>\n\n\n"
         if (module.hot) {
             (function () {
                 module.hot.accept()
@@ -168,8 +168,8 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                 while (++queueIndex < len) {
                     if (currentQueue) {
                         currentQueue[queueIndex].run();
-                    }
-                }
+            }
+        }
                 queueIndex = -1;
                 len = queue.length;
             }
@@ -578,7 +578,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
                         if (name) {
                             return headers[_.toLower(name)];
-                        }
+                }
 
                         return headers;
                     };
@@ -614,7 +614,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                     } else {
 
                         headers[name] = value;
-                    }
+            }
 
                 });
             }
@@ -667,7 +667,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
                     delete window[callback];
                     document.body.removeChild(script);
-                };
+        };
 
                 script.onload = handler;
                 script.onerror = handler;
@@ -703,7 +703,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                     response.statusText = xdr.statusText;
 
                     resolve(response);
-                };
+        };
 
                 xdr.timeout = 0;
                 xdr.onload = handler;
@@ -796,7 +796,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
                     if (!xhrCors) {
                         request.client = xdrClient;
-                    }
+            }
 
                     request.emulateHTTP = false;
                 }
@@ -1162,7 +1162,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                             return new Vue.Promise(executor, this);
                         }.bind(this);
                     }
-                }
+        }
 
             });
         }
@@ -1231,7 +1231,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
                         if (count === iterable.length) {
                             resolve(result);
-                        }
+                }
                     };
                 }
 
@@ -1266,9 +1266,9 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
                     if (x !== null && typeof x === 'object' && typeof then === 'function') {
                         then.call(x, function (x) {
-                            if (!called) {
-                                promise.resolve(x);
-                            }
+                    if (!called) {
+                        promise.resolve(x);
+                    }
                             called = true;
 
                         }, function (r) {
@@ -1278,7 +1278,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                             called = true;
                         });
                         return;
-                    }
+            }
                 } catch (e) {
                     if (!called) {
                         promise.reject(e);
@@ -1324,17 +1324,17 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                                     resolve(onResolved.call(undefined, promise.value));
                                 } else {
                                     resolve(promise.value);
-                                }
+                        }
                             } else if (promise.state === REJECTED) {
                                 if (typeof onRejected === 'function') {
                                     resolve(onRejected.call(undefined, promise.value));
                                 } else {
                                     reject(promise.value);
                                 }
-                            }
+                    }
                         } catch (e) {
                             reject(e);
-                        }
+                }
                     }
                 }
             });
@@ -1412,7 +1412,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
                         } else {
                             return exports.encodeReserved(literal);
-                        }
+                }
                     });
                 }
             };
@@ -1437,11 +1437,11 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                             value.filter(this.isDefined).forEach(function (value) {
                                 result.push(this.encodeValue(operator, value, this.isKeyOperator(operator) ? key : null));
                             }, this);
-                        } else {
+                } else {
                             Object.keys(value).forEach(function (k) {
                                 if (this.isDefined(value[k])) {
                                     result.push(this.encodeValue(operator, value[k], k));
-                                }
+                        }
                             }, this);
                         }
                     } else {
@@ -1456,7 +1456,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                                 if (this.isDefined(value[k])) {
                                     tmp.push(encodeURIComponent(k));
                                     tmp.push(this.encodeValue(operator, value[k].toString()));
-                                }
+                        }
                             }, this);
                         }
 
@@ -1464,8 +1464,8 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                             result.push(encodeURIComponent(key) + '=' + tmp.join(','));
                         } else if (tmp.length !== 0) {
                             result.push(tmp.join(','));
-                        }
-                    }
+                }
+            }
                 }
             } else {
                 if (operator === ';') {
@@ -1860,7 +1860,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                     serialize(params, value, key);
                 } else {
                     params.add(key, value);
-                }
+        }
             });
         }
 
@@ -2041,7 +2041,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                 for (key in obj) {
                     if (obj.hasOwnProperty(key)) {
                         iterator.call(obj[key], obj[key], key);
-                    }
+            }
                 }
             }
 
@@ -2086,14 +2086,14 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                 if (deep && (_.isPlainObject(source[key]) || _.isArray(source[key]))) {
                     if (_.isPlainObject(source[key]) && !_.isPlainObject(target[key])) {
                         target[key] = {};
-                    }
+            }
                     if (_.isArray(source[key]) && !_.isArray(target[key])) {
                         target[key] = [];
                     }
                     merge(target[key], source[key], deep);
                 } else if (source[key] !== undefined) {
                     target[key] = source[key];
-                }
+        }
             }
         }
 
@@ -3403,7 +3403,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                                     }));
                                 } else {
                                     component.$set(key, val);
-                                }
+            }
                             });
                         }
                         if (promises.length) {
@@ -4703,7 +4703,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                                     fullPath += '&' + query.slice(1);
                                 } else {
                                     fullPath += query;
-                                }
+            }
                             }
                         }
                     } else {
@@ -5729,7 +5729,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                      * the text parser to re-compile the regular expressions.
                      *
                      * @type {Array<String>}
-                     */
+                 */
 
                     get: function get() {
                         return delimiters;
@@ -11894,7 +11894,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                         if (dirDef) {
                             pushDir(dirName, dirDef);
                         }
-                    }
+            }
                 }
 
                 /**
