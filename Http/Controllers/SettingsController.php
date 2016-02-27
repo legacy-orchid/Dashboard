@@ -2,69 +2,76 @@
 
 namespace Orchid\Dashboard\Http\Controllers;
 
-use Orchid\Dashboard\Http\Requests\UsersRequests;
-use Orchid\Dashboard\Models\User;
+use Orchid\Dashboard\Models\Setting;
+use Orchid\Dashboard\Http\Requests\SettingsRequest;
 
 class SettingsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return User
+     * @return Setting
      */
     public function index()
     {
-        return response()->json(
-            User::sortable()->paginate(15)
-        );
+        return view("dashboard::container.settings", [
+            'Settings' => Setting::sortable()->paginate(15)
+        ]);
+
+        /**
+         * Json
+        * return response()->json(
+         * Setting::sortable()->paginate(15)
+         * );
+         */
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param UsersRequests $request
+     * @param SettingRequest $settings
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(UsersRequests $request)
+    public function store(SettingRequest $settings)
     {
-        User::create($request);
+        Setting::create($settings);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param User $user
+     * @param Setting $setting
      *
-     * @return User
+     * @return SettingRequest
      */
-    public function show(User $user)
+    public function show(Setting $setting)
     {
-        return response()->json($user);
+        return response()->json($setting);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param UsersRequests $request
-     * @param User $user
+     * @param SettingRequest $request
+     * @param Setting $setting
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(UsersRequests $request, User $user)
+    public function update(SettingRequest $request, Setting $setting)
     {
-        $user->fill($request)->save();
+        $setting->fill($request)->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param User $user
+     * @param Setting $setting
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Setting $setting)
     {
-        $user->delete();
+        $setting->delete();
     }
 }

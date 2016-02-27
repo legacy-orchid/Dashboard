@@ -2,15 +2,15 @@
 
 namespace Orchid\Dashboard\Http\Controllers;
 
+use Orchid\Dashboard\Http\Requests\UsersRequests;
 use Orchid\Dashboard\Models\User;
-use Orchid\Dashboard\Http\Requests\UserRequest;
 
 class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Setting
+     * @return User
      */
     public function index()
     {
@@ -22,49 +22,49 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param SettingRequest $settings
+     * @param UsersRequests $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(SettingRequest $settings)
+    public function store(UsersRequests $request)
     {
-        Setting::create($settings);
+        User::create($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Setting $setting
+     * @param User $user
      *
-     * @return SettingRequest
+     * @return User
      */
-    public function show(Setting $setting)
+    public function show(User $user)
     {
-        return response()->json($setting);
+        return response()->json($user);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param SettingRequest $request
-     * @param Setting $setting
+     * @param UsersRequests $request
+     * @param User $user
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(SettingRequest $request, Setting $setting)
+    public function update(UsersRequests $request, User $user)
     {
-        $setting->fill($request)->save();
+        $user->fill($request)->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Setting $setting
+     * @param User $user
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Setting $setting)
+    public function destroy(User $user)
     {
-        $setting->delete();
+        $user->delete();
     }
 }
