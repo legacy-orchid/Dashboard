@@ -40,6 +40,7 @@ exports.default = {
     },
     methods: {
         loadData: function loadData() {
+            alert(this.data.pagination.per_page);
             var data = {
                 paginate: this.data.pagination.per_page,
                 page: this.data.pagination.current_page
