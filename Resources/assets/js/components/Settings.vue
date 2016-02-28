@@ -105,6 +105,9 @@
 
 
 
+            <!--<pagination :pagination="settings" :callback="loadData" :offset="3"></pagination> -->
+
+
 
             <footer class="panel-footer">
                 <div class="row">
@@ -132,31 +135,27 @@
                 current_page: 1
             }
         },
-        ready : function()
-        {
-            this.$http({url: '/dashboard/settings', method: 'GET'}).then(function (response) {
-                this.$set('settings', response.data.data);
-                this.$set('pagination', response.data.pagination);
-                //this.fetchSettingsPaginate();
-            }, function (response) {
-                alert('Error load');
-            });
+        ready: function (){
+          this.loadData();
         },
         methods: {
-            fetchSettingsPaginate: function(direction){
-                if (direction === 'previous'){
-                    --this.pagination.page;
-                }
-                else if (direction === 'next'){
-                    ++this.pagination.page;
-                }
+            loadData: function () {
+                var data = {
+                    paginate: this.data.pagination.per_page,
+                    page: this.data.pagination.current_page,
+                    /* additional parameters */
+                };
 
-                this.settingsResource.get({page: this.pagination.page}, function(data){
-                    this.settings = data.data;
-                    this.pagination.next = data.next_page_url;
-                    this.pagination.previous = data.prev_page_url;
+                this.$http.get('/dashboard/settings', data).then(function (response) {
+                    this.$set('settings', response.data.data);
+                    this.$set('pagination', response.data.pagination);
+                }, function(error) {
+                    alert('Error load');
                 });
             }
         },
+        components: {
+            //pagination: require('../modules/pagination.js')
+        }
     }
 </script>
