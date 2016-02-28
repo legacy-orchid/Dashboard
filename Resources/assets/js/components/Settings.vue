@@ -34,7 +34,6 @@
                 <pre>
                     {{ settings | json }}
 
-                    {{settingsResource | json }}
                 </pre>
 
 
@@ -123,20 +122,20 @@
 </template>
 <script>
     export default{
-        data:{
+        data: {
             settings: {},
-            settingsResource: null,
             pagination: {
-                page: 1,
-                previous: false,
-                next: false
+                total: 0, per_page: 12,
+                from: 1, to: 0,
+                current_page: 1
             }
         },
         ready : function()
         {
             this.$http({url: '/dashboard/settings', method: 'GET'}).then(function (response) {
-                this.$set('settings', response.data);
-                this.fetchSettingsPaginate();
+                this.$set('settings', response.data.data);
+                this.$set('pagination', response.data.pagination);
+                //this.fetchSettingsPaginate();
             }, function (response) {
                 alert('Error load');
             });
