@@ -27,26 +27,26 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = {
-    data: {
-        settings: {},
-        pagination: {
-            total: 0, per_page: 12,
-            from: 1, to: 0,
-            current_page: 1
-        }
+    data: function data() {
+        return {
+            settings: {},
+            pagination: {
+                total: 0, per_page: 12,
+                from: 1, to: 0,
+                current_page: 1
+            }
+        };
     },
     ready: function ready() {
         this.loadData();
     },
     methods: {
         loadData: function loadData() {
-            alert(this.data.pagination.per_page);
             var data = {
-                paginate: this.data.pagination.per_page,
-                page: this.data.pagination.current_page
+                paginate: this.pagination.per_page,
+                page: this.pagination.current_page
             };
 
-            /* additional parameters */
             this.$http.get('/dashboard/settings', data).then(function (response) {
                 this.$set('settings', response.data.data);
                 this.$set('pagination', response.data.pagination);
@@ -56,11 +56,11 @@ exports.default = {
         }
     },
     components: {
-        //pagination: require('../modules/pagination.js')
+        pagination: require('../modules/pagination.js')
     }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<div class=\"bg-light lter b-b wrapper-md\">\n    <h1 class=\"m-n font-thin h3\">Системные константы</h1>\n    <small class=\"text-muted\">Будьте осторожны при изменении</small>\n</div>\n\n<div class=\"wrapper-md\" id=\"settings-container\">\n\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading font-bold\">Системные константы</div>\n\n\n        <div class=\"row wrapper\">\n            <div class=\"col-sm-5 m-b-xs\">\n            </div>\n            <div class=\"col-sm-4\">\n            </div>\n            <div class=\"col-sm-3\">\n                <form action=\"\">\n                    <div class=\"input-group\">\n                        <input type=\"text\" class=\"input-sm form-control\" name=\"search\" placeholder=\"Поиск ...\">\n      <span class=\"input-group-btn\">\n        <button class=\"btn btn-sm btn-default\" type=\"submit\">Найти!</button>\n      </span>\n                    </div>\n                </form>\n            </div>\n        </div>\n\n\n        <div class=\"panel-body row\">\n\n            <pre>                    {{ settings | json }}\n\n            </pre>\n\n\n            <div class=\"table-responsive\">\n                <table class=\"table table-striped b-t b-light\">\n                    <thead>\n                    <tr>\n                        <th>Ключ</th>\n                        <th>Дата создания</th>\n                        <th>Последние изменение</th>\n                        <th>Управление</th>\n                    </tr>\n                    </thead>\n                    <tbody>\n\n                    <tr v-for=\"setting in settings\">\n                        <td>{{setting.key}}</td>\n                        <th>{{setting.created_at}}</th>\n                        <td>{{setting.updated_at}}</td>\n                        <td>\n\n                            <div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\">\n                                <a href=\"route('admin.settings.edit',$setting->slug) \" class=\"btn btn-default\"><span class=\"fa fa-edit\"></span> </a>\n                                <a href=\"#\" data-toggle=\"modal\" data-target=\"#Modal-$setting->slug\" class=\"btn btn-danger\">\n                                    <i class=\"fa fa-trash\"></i>\n                                </a>\n                            </div>\n\n\n                        </td>\n                    </tr>\n\n                    </tbody>\n                </table>\n            </div>\n\n        </div>\n\n\n        <div class=\"modal fade\" id=\"settings-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\n            <div class=\"modal-dialog\">\n                <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">×</span></button>\n                        <h4 class=\"modal-title\" id=\"myModalLabel\">Удалить\n                            ?</h4>\n                    </div>\n                    <div class=\"modal-body\">\n                        Вы действительно хотите удалить\n                    </div>\n                    <div class=\"modal-footer\">\n                        <form action=\"\" method=\"post\">\n                            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Нет\n                            </button>\n                            <button type=\"submit\" class=\"btn btn-danger\">Да</button>\n                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                            <input type=\"hidden\" name=\"_token\" value=\"csrf_token()\">\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n\n\n        <!--<pagination :pagination=\"settings\" :callback=\"loadData\" :offset=\"3\"></pagination> -->\n\n\n\n        <footer class=\"panel-footer\">\n            <div class=\"row\">\n                <div class=\"col-sm-offset-4 col-sm-4 text-center\">\n                    <small class=\"text-muted inline m-t-sm m-b-sm\">Всего\n                        элементов: </small>\n                </div>\n                <div class=\"col-sm-4 text-right text-center-xs\">\n\n                </div>\n            </div>\n        </footer>\n    </div>\n</div>\n\n\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<div class=\"bg-light lter b-b wrapper-md\">\n    <h1 class=\"m-n font-thin h3\">Системные константы</h1>\n    <small class=\"text-muted\">Будьте осторожны при изменении</small>\n</div>\n\n<div class=\"wrapper-md\" id=\"settings-container\">\n\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading font-bold\">Системные константы</div>\n\n\n        <div class=\"row wrapper\">\n            <div class=\"col-sm-5 m-b-xs\">\n            </div>\n            <div class=\"col-sm-4\">\n            </div>\n            <div class=\"col-sm-3\">\n                <form action=\"\">\n                    <div class=\"input-group\">\n                        <input type=\"text\" class=\"input-sm form-control\" name=\"search\" placeholder=\"Поиск ...\">\n      <span class=\"input-group-btn\">\n        <button class=\"btn btn-sm btn-default\" type=\"submit\">Найти!</button>\n      </span>\n                    </div>\n                </form>\n            </div>\n        </div>\n\n\n        <div class=\"panel-body row\">\n\n            <pre>                    {{ settings | json }}\n                {{ pagination | json }}\n                {{ settings.pagination | json }}\n            </pre>\n\n\n            <div class=\"table-responsive\">\n                <table class=\"table table-striped b-t b-light\">\n                    <thead>\n                    <tr>\n                        <th>Ключ</th>\n                        <th>Дата создания</th>\n                        <th>Последние изменение</th>\n                        <th>Управление</th>\n                    </tr>\n                    </thead>\n                    <tbody>\n\n                    <tr v-for=\"setting in settings\">\n                        <td>{{setting.key}}</td>\n                        <th>{{setting.created_at}}</th>\n                        <td>{{setting.updated_at}}</td>\n                        <td>\n\n                            <div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\">\n                                <a href=\"route('admin.settings.edit',$setting->slug) \" class=\"btn btn-default\"><span class=\"fa fa-edit\"></span> </a>\n                                <a href=\"#\" data-toggle=\"modal\" data-target=\"#Modal-$setting->slug\" class=\"btn btn-danger\">\n                                    <i class=\"fa fa-trash\"></i>\n                                </a>\n                            </div>\n\n\n                        </td>\n                    </tr>\n\n                    </tbody>\n                </table>\n            </div>\n\n        </div>\n\n\n        <div class=\"modal fade\" id=\"settings-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\n            <div class=\"modal-dialog\">\n                <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">×</span></button>\n                        <h4 class=\"modal-title\" id=\"myModalLabel\">Удалить\n                            ?</h4>\n                    </div>\n                    <div class=\"modal-body\">\n                        Вы действительно хотите удалить\n                    </div>\n                    <div class=\"modal-footer\">\n                        <form action=\"\" method=\"post\">\n                            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Нет\n                            </button>\n                            <button type=\"submit\" class=\"btn btn-danger\">Да</button>\n                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                            <input type=\"hidden\" name=\"_token\" value=\"csrf_token()\">\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n\n\n        <pagination :pagination=\"pagination\" :callback=\"loadData\" :offset=\"3\"></pagination>\n\n\n\n        <footer class=\"panel-footer\">\n            <div class=\"row\">\n                <div class=\"col-sm-offset-4 col-sm-4 text-center\">\n                    <small class=\"text-muted inline m-t-sm m-b-sm\">Всего\n                        элементов: </small>\n                </div>\n                <div class=\"col-sm-4 text-right text-center-xs\">\n\n                </div>\n            </div>\n        </footer>\n    </div>\n</div>\n\n\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -72,7 +72,64 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":30,"vue-hot-reload-api":4}],2:[function(require,module,exports){
+},{"../modules/pagination.js":2,"vue":31,"vue-hot-reload-api":5}],2:[function(require,module,exports){
+'use strict';
+
+module.exports = {
+    template: '<nav>' + '<ul class="pagination">' + '<li v-if="pagination.current_page > 1">' + '<a href="#" aria-label="Previous" @click.prevent="changePage(pagination.current_page - 1)">' + '<span aria-hidden="true">&laquo;</span>' + '</a>' + '</li>' + '<li v-for="num in array" :class="{\'active\': num == pagination.current_page}">' + '<a href="#" @click.prevent="changePage(num)">{{ num }}</a>' + '</li>' + '<li v-if="pagination.current_page < pagination.last_page">' + '<a href="#" aria-label="Next" @click.prevent="changePage(pagination.current_page + 1)">' + '<span aria-hidden="true">&raquo;</span>' + '</a>' + '</li>' + '</ul>' + '</nav>',
+    props: {
+        pagination: {
+            type: Object,
+            required: true
+        },
+        callback: {
+            type: Function,
+            required: true
+        },
+        offset: {
+            type: Number,
+            default: 4
+        }
+    },
+    computed: {
+        array: function array() {
+            if (!this.pagination.to) {
+                return [];
+            }
+
+            var from = this.pagination.current_page - this.offset;
+            if (from < 1) {
+                from = 1;
+            }
+
+            var to = from + this.offset * 2;
+            if (to >= this.pagination.last_page) {
+                to = this.pagination.last_page;
+            }
+
+            var arr = [];
+            while (from <= to) {
+                arr.push(from);
+                from++;
+            }
+
+            return arr;
+        }
+    },
+    watch: {
+        'pagination.per_page': function paginationPer_page() {
+            this.callback();
+        }
+    },
+    methods: {
+        changePage: function changePage(page) {
+            this.$set('pagination.current_page', page);
+            this.callback();
+        }
+    }
+};
+
+},{}],3:[function(require,module,exports){
 'use strict';
 
 var Vue = require('vue');
@@ -103,7 +160,7 @@ var App = Vue.extend({});
 
 router.start(App, '#app-content-body');
 
-},{"./components/Settings.vue":1,"vue":30,"vue-resource":18,"vue-router":29}],3:[function(require,module,exports){
+},{"./components/Settings.vue":1,"vue":31,"vue-resource":19,"vue-router":30}],4:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -196,7 +253,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var Vue // late bind
 var map = Object.create(null)
 var shimmed = false
@@ -496,7 +553,7 @@ function format (id) {
   return id.match(/[^\/]+\.vue$/)[0]
 }
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**
  * Before Interceptor.
  */
@@ -516,7 +573,7 @@ module.exports = {
 
 };
 
-},{"../util":28}],6:[function(require,module,exports){
+},{"../util":29}],7:[function(require,module,exports){
 /**
  * Base client.
  */
@@ -583,7 +640,7 @@ function parseHeaders(str) {
     return headers;
 }
 
-},{"../../promise":21,"../../util":28,"./xhr":9}],7:[function(require,module,exports){
+},{"../../promise":22,"../../util":29,"./xhr":10}],8:[function(require,module,exports){
 /**
  * JSONP client.
  */
@@ -633,7 +690,7 @@ module.exports = function (request) {
     });
 };
 
-},{"../../promise":21,"../../util":28}],8:[function(require,module,exports){
+},{"../../promise":22,"../../util":29}],9:[function(require,module,exports){
 /**
  * XDomain client (Internet Explorer).
  */
@@ -672,7 +729,7 @@ module.exports = function (request) {
     });
 };
 
-},{"../../promise":21,"../../util":28}],9:[function(require,module,exports){
+},{"../../promise":22,"../../util":29}],10:[function(require,module,exports){
 /**
  * XMLHttp client.
  */
@@ -724,7 +781,7 @@ module.exports = function (request) {
     });
 };
 
-},{"../../promise":21,"../../util":28}],10:[function(require,module,exports){
+},{"../../promise":22,"../../util":29}],11:[function(require,module,exports){
 /**
  * CORS Interceptor.
  */
@@ -763,7 +820,7 @@ function crossOrigin(request) {
     return (requestUrl.protocol !== originUrl.protocol || requestUrl.host !== originUrl.host);
 }
 
-},{"../util":28,"./client/xdr":8}],11:[function(require,module,exports){
+},{"../util":29,"./client/xdr":9}],12:[function(require,module,exports){
 /**
  * Header Interceptor.
  */
@@ -791,7 +848,7 @@ module.exports = {
 
 };
 
-},{"../util":28}],12:[function(require,module,exports){
+},{"../util":29}],13:[function(require,module,exports){
 /**
  * Service for sending network requests.
  */
@@ -891,7 +948,7 @@ Http.headers = {
 
 module.exports = _.http = Http;
 
-},{"../promise":21,"../util":28,"./before":5,"./client":6,"./cors":10,"./header":11,"./interceptor":13,"./jsonp":14,"./method":15,"./mime":16,"./timeout":17}],13:[function(require,module,exports){
+},{"../promise":22,"../util":29,"./before":6,"./client":7,"./cors":11,"./header":12,"./interceptor":14,"./jsonp":15,"./method":16,"./mime":17,"./timeout":18}],14:[function(require,module,exports){
 /**
  * Interceptor factory.
  */
@@ -938,7 +995,7 @@ function when(value, fulfilled, rejected) {
     return promise.then(fulfilled, rejected);
 }
 
-},{"../promise":21,"../util":28}],14:[function(require,module,exports){
+},{"../promise":22,"../util":29}],15:[function(require,module,exports){
 /**
  * JSONP Interceptor.
  */
@@ -958,7 +1015,7 @@ module.exports = {
 
 };
 
-},{"./client/jsonp":7}],15:[function(require,module,exports){
+},{"./client/jsonp":8}],16:[function(require,module,exports){
 /**
  * HTTP method override Interceptor.
  */
@@ -977,7 +1034,7 @@ module.exports = {
 
 };
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 /**
  * Mime Interceptor.
  */
@@ -1015,7 +1072,7 @@ module.exports = {
 
 };
 
-},{"../util":28}],17:[function(require,module,exports){
+},{"../util":29}],18:[function(require,module,exports){
 /**
  * Timeout Interceptor.
  */
@@ -1047,7 +1104,7 @@ module.exports = function () {
     };
 };
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /**
  * Install plugin.
  */
@@ -1102,7 +1159,7 @@ if (window.Vue) {
 
 module.exports = install;
 
-},{"./http":12,"./promise":21,"./resource":22,"./url":23,"./util":28}],19:[function(require,module,exports){
+},{"./http":13,"./promise":22,"./resource":23,"./url":24,"./util":29}],20:[function(require,module,exports){
 /**
  * Promises/A+ polyfill v1.1.4 (https://github.com/bramstein/promis)
  */
@@ -1283,7 +1340,7 @@ p.catch = function (onRejected) {
 
 module.exports = Promise;
 
-},{"../util":28}],20:[function(require,module,exports){
+},{"../util":29}],21:[function(require,module,exports){
 /**
  * URL Template v2.0.6 (https://github.com/bramstein/url-template)
  */
@@ -1435,7 +1492,7 @@ exports.encodeReserved = function (str) {
     }).join('');
 };
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 /**
  * Promise adapter.
  */
@@ -1546,7 +1603,7 @@ p.always = function (callback) {
 
 module.exports = Promise;
 
-},{"./lib/promise":19,"./util":28}],22:[function(require,module,exports){
+},{"./lib/promise":20,"./util":29}],23:[function(require,module,exports){
 /**
  * Service for interacting with RESTful services.
  */
@@ -1658,7 +1715,7 @@ Resource.actions = {
 
 module.exports = _.resource = Resource;
 
-},{"./util":28}],23:[function(require,module,exports){
+},{"./util":29}],24:[function(require,module,exports){
 /**
  * Service for URL templating.
  */
@@ -1790,7 +1847,7 @@ function serialize(params, obj, scope) {
 
 module.exports = _.url = Url;
 
-},{"../util":28,"./legacy":24,"./query":25,"./root":26,"./template":27}],24:[function(require,module,exports){
+},{"../util":29,"./legacy":25,"./query":26,"./root":27,"./template":28}],25:[function(require,module,exports){
 /**
  * Legacy Transform.
  */
@@ -1838,7 +1895,7 @@ function encodeUriQuery(value, spaces) {
         replace(/%20/g, (spaces ? '%20' : '+'));
 }
 
-},{"../util":28}],25:[function(require,module,exports){
+},{"../util":29}],26:[function(require,module,exports){
 /**
  * Query Parameter Transform.
  */
@@ -1864,7 +1921,7 @@ module.exports = function (options, next) {
     return url;
 };
 
-},{"../util":28}],26:[function(require,module,exports){
+},{"../util":29}],27:[function(require,module,exports){
 /**
  * Root Prefix Transform.
  */
@@ -1882,7 +1939,7 @@ module.exports = function (options, next) {
     return url;
 };
 
-},{"../util":28}],27:[function(require,module,exports){
+},{"../util":29}],28:[function(require,module,exports){
 /**
  * URL Template (RFC 6570) Transform.
  */
@@ -1900,7 +1957,7 @@ module.exports = function (options) {
     return url;
 };
 
-},{"../lib/url-template":20}],28:[function(require,module,exports){
+},{"../lib/url-template":21}],29:[function(require,module,exports){
 /**
  * Utility functions.
  */
@@ -2024,7 +2081,7 @@ function merge(target, source, deep) {
     }
 }
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 /*!
  * vue-router v0.7.11
  * (c) 2016 Evan You
@@ -4674,7 +4731,7 @@ function merge(target, source, deep) {
   return Router;
 
 }));
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 (function (process,global){
 /*!
  * Vue.js v1.0.16
@@ -14269,7 +14326,7 @@ if (devtools) {
 
 module.exports = Vue;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":3}]},{},[2]);
+},{"_process":4}]},{},[3]);
 
 //# sourceMappingURL=orchid-router.js.map
 

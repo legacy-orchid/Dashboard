@@ -33,7 +33,8 @@
 
                 <pre>
                     {{ settings | json }}
-
+                    {{ pagination | json }}
+                    {{ settings.pagination | json }}
                 </pre>
 
 
@@ -105,7 +106,7 @@
 
 
 
-            <!--<pagination :pagination="settings" :callback="loadData" :offset="3"></pagination> -->
+            <pagination :pagination="pagination" :callback="loadData" :offset="3"></pagination>
 
 
 
@@ -127,24 +128,22 @@
 </template>
 <script>
     export default{
-        data: {
+        data: function(){ return{
             settings: {},
             pagination: {
                 total: 0, per_page: 12,
                 from: 1, to: 0,
                 current_page: 1
             }
-        },
+        }},
         ready: function (){
           this.loadData();
         },
         methods: {
             loadData: function () {
-                alert(this.data.pagination.per_page);
                 var data = {
-                    paginate: this.data.pagination.per_page,
-                    page: this.data.pagination.current_page,
-                    /* additional parameters */
+                    paginate: this.pagination.per_page,
+                    page: this.pagination.current_page,
                 };
 
                 this.$http.get('/dashboard/settings', data).then(function (response) {
@@ -156,7 +155,7 @@
             }
         },
         components: {
-            //pagination: require('../modules/pagination.js')
+            pagination: require('../modules/pagination.js')
         }
     }
 </script>
