@@ -50,6 +50,7 @@ class ConsoleServiceProvider extends ServiceProvider
         foreach ($this->commands as $command) {
             $provides[] = $this->namespace.$command;
         }
+
         return $provides;
     }
 }

@@ -61,10 +61,10 @@ class DashboardServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__ . '/../Config/dashboard.php' => config_path('dashboard.php'),
+            __DIR__.'/../Config/dashboard.php' => config_path('dashboard.php'),
         ]);
         $this->mergeConfigFrom(
-            __DIR__ . '/../Config/dashboard.php', 'dashboard'
+            __DIR__.'/../Config/dashboard.php', 'dashboard'
         );
     }
 

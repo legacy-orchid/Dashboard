@@ -2,7 +2,6 @@
 
 namespace Orchid\Dashboard\Http\Requests;
 
-use Orchid\Dashboard\Http\Requests\Request;
 use Illuminate\Support\Facades\Auth;
 
 class SettingsRequest extends Request
@@ -25,7 +24,7 @@ class SettingsRequest extends Request
     public function rules()
     {
         return [
-            'key' => 'required|unique:settings,key,' . $this->get('key'),
+            'key' => 'required|unique:settings,key,'.$this->get('key'),
             'value' => 'required',
         ];
     }

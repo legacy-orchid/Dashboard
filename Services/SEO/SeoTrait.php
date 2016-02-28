@@ -1,19 +1,21 @@
-<?php namespace Orchid\Dashboard\Services\SEO;
+<?php
+
+namespace Orchid\Dashboard\Services\SEO;
 
 use Route;
 use App;
 
 trait SeoTrait
 {
-
     /**
      * @param null $id
      */
     public function render($id = null)
     {
         $meta = collect($this->generate($id));
+
         return view('seo::meta', [
-            'SeoMetaTags' => $meta
+            'SeoMetaTags' => $meta,
         ])->render();
     }
 
@@ -39,7 +41,6 @@ trait SeoTrait
         } else {
             $meta = $this->find('story_id', $id);
         }
-
 
         if (is_null($meta)) {
             return [
@@ -68,7 +69,8 @@ trait SeoTrait
     }
 
     /**
-     * Получение всех статических страниц
+     * Получение всех статических страниц.
+     *
      * @return \Illuminate\Support\Collection
      */
     public function staticGetRoute()
@@ -92,6 +94,7 @@ trait SeoTrait
                 $allowGetRoutes->push($key);
             }
         }
+
         return $allowGetRoutes;
     }
 }

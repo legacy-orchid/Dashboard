@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Facades;
+<?php
+
+namespace Orchid\Dashboard\Facades;
 
 use Orchid\Dashboard\Models\SEO;
 use Illuminate\Support\Facades\Facade;

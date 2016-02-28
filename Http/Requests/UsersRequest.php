@@ -2,11 +2,9 @@
 
 namespace Orchid\Dashboard\Http\Requests;
 
-use Orchid\Dashboard\Http\Requests\Request;
 use Illuminate\Support\Facades\Auth;
-use Config;
 
-class UsersRequests extends Request
+class UsersRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.

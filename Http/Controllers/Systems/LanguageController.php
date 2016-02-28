@@ -3,8 +3,7 @@
 namespace Orchid\Dashboard\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Orchid\Dashboard\Http\Controllers\Controller;
-use Orchid\Dashboard\Http\Requests;
+
 use Orchid\Dashboard\Models\Language;
 
 class LanguageController extends Controller
@@ -17,6 +16,7 @@ class LanguageController extends Controller
     public function index(Request $request)
     {
         $languages = Language::search($request->search)->sortable()->orderBy('status', 'Desc')->paginate(15);
+
         return response()->toJson($languages);
     }
 
@@ -32,7 +32,8 @@ class LanguageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -44,7 +45,8 @@ class LanguageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -55,7 +57,8 @@ class LanguageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -66,8 +69,9 @@ class LanguageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -78,7 +82,8 @@ class LanguageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

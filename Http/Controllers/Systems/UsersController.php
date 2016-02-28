@@ -47,7 +47,7 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param UsersRequests $request
-     * @param User $user
+     * @param User          $user
      *
      * @return \Illuminate\Http\Response
      */

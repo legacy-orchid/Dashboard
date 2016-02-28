@@ -3,7 +3,6 @@
 namespace Orchid\Dashboard\Http\Controllers;
 
 use Orchid\Dashboard\Models\Setting;
-use Orchid\Dashboard\Http\Requests\SettingsRequest;
 
 class SettingsController extends Controller
 {
@@ -47,7 +46,7 @@ class SettingsController extends Controller
      * Update the specified resource in storage.
      *
      * @param SettingRequest $request
-     * @param Setting $setting
+     * @param Setting        $setting
      *
      * @return \Illuminate\Http\Response
      */
