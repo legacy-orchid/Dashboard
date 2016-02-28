@@ -85,7 +85,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
         };
         if (module.exports.__esModule) module.exports = module.exports.default
         ;
-        (typeof module.exports === "function" ? module.exports.options : module.exports).template = "\n\n<div class=\"bg-light lter b-b wrapper-md\">\n    <h1 class=\"m-n font-thin h3\">Системные константы</h1>\n    <small class=\"text-muted\">Будьте осторожны при изменении</small>\n</div>\n\n<div class=\"wrapper-md\" id=\"settings-container\">\n\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading font-bold\">Системные константы</div>\n\n\n        <div class=\"row wrapper\">\n            <div class=\"col-sm-5 m-b-xs\">\n            </div>\n            <div class=\"col-sm-4\">\n            </div>\n            <div class=\"col-sm-3\">\n                <form action=\"\">\n                    <div class=\"input-group\">\n                        <input type=\"text\" class=\"input-sm form-control\" name=\"search\" placeholder=\"Поиск ...\">\n      <span class=\"input-group-btn\">\n        <button class=\"btn btn-sm btn-default\" type=\"submit\">Найти!</button>\n      </span>\n                    </div>\n                </form>\n            </div>\n        </div>\n\n\n        <div class=\"panel-body row\">\n\n            <pre>                    {{ settings | json }}\n\n                {{settingsResource | json }}\n            </pre>\n\n\n            <div class=\"table-responsive\">\n                <table class=\"table table-striped b-t b-light\">\n                    <thead>\n                    <tr>\n                        <th>Ключ</th>\n                        <th>Последние изменение</th>\n                        <th>Управление</th>\n                    </tr>\n                    </thead>\n                    <tbody>\n\n                    <tr v-for=\"setting in settings.data\">\n                        <td>{{setting}}</td>\n                        <td>$setting-&gt;updated_at</td>\n                        <td>\n\n                            <div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\">\n                                <a href=\"route('admin.settings.edit',$setting->slug) \" class=\"btn btn-default\"><span class=\"fa fa-edit\"></span> </a>\n                                <a href=\"#\" data-toggle=\"modal\" data-target=\"#Modal-$setting->slug\" class=\"btn btn-danger\">\n                                    <i class=\"fa fa-trash\"></i>\n                                </a>\n                            </div>\n\n\n                        </td>\n                    </tr>\n\n                    </tbody>\n                </table>\n            </div>\n\n        </div>\n\n\n        <div class=\"modal fade\" id=\"settings-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\n            <div class=\"modal-dialog\">\n                <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">×</span></button>\n                        <h4 class=\"modal-title\" id=\"myModalLabel\">Удалить\n                            ?</h4>\n                    </div>\n                    <div class=\"modal-body\">\n                        Вы действительно хотите удалить\n                    </div>\n                    <div class=\"modal-footer\">\n                        <form action=\"\" method=\"post\">\n                            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Нет\n                            </button>\n                            <button type=\"submit\" class=\"btn btn-danger\">Да</button>\n                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                            <input type=\"hidden\" name=\"_token\" value=\"csrf_token()\">\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n\n\n\n        <footer class=\"panel-footer\">\n            <div class=\"row\">\n                <div class=\"col-sm-offset-4 col-sm-4 text-center\">\n                    <small class=\"text-muted inline m-t-sm m-b-sm\">Всего\n                        элементов: </small>\n                </div>\n                <div class=\"col-sm-4 text-right text-center-xs\">\n\n                </div>\n            </div>\n        </footer>\n    </div>\n</div>\n\n\n"
+        (typeof module.exports === "function" ? module.exports.options : module.exports).template = "\n\n<div class=\"bg-light lter b-b wrapper-md\">\n    <h1 class=\"m-n font-thin h3\">Системные константы</h1>\n    <small class=\"text-muted\">Будьте осторожны при изменении</small>\n</div>\n\n<div class=\"wrapper-md\" id=\"settings-container\">\n\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading font-bold\">Системные константы</div>\n\n\n        <div class=\"row wrapper\">\n            <div class=\"col-sm-5 m-b-xs\">\n            </div>\n            <div class=\"col-sm-4\">\n            </div>\n            <div class=\"col-sm-3\">\n                <form action=\"\">\n                    <div class=\"input-group\">\n                        <input type=\"text\" class=\"input-sm form-control\" name=\"search\" placeholder=\"Поиск ...\">\n      <span class=\"input-group-btn\">\n        <button class=\"btn btn-sm btn-default\" type=\"submit\">Найти!</button>\n      </span>\n                    </div>\n                </form>\n            </div>\n        </div>\n\n\n        <div class=\"panel-body row\">\n\n            <pre>                    {{ settings | json }}\n\n                {{settingsResource | json }}\n            </pre>\n\n\n            <div class=\"table-responsive\">\n                <table class=\"table table-striped b-t b-light\">\n                    <thead>\n                    <tr>\n                        <th>Ключ</th>\n                        <th>Последние изменение</th>\n                        <th>Управление</th>\n                    </tr>\n                    </thead>\n                    <tbody>\n\n                    <tr v-for=\"setting in settings\">\n                        <td>{{setting}}</td>\n                        <td>$setting-&gt;updated_at</td>\n                        <td>\n\n                            <div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\">\n                                <a href=\"route('admin.settings.edit',$setting->slug) \" class=\"btn btn-default\"><span class=\"fa fa-edit\"></span> </a>\n                                <a href=\"#\" data-toggle=\"modal\" data-target=\"#Modal-$setting->slug\" class=\"btn btn-danger\">\n                                    <i class=\"fa fa-trash\"></i>\n                                </a>\n                            </div>\n\n\n                        </td>\n                    </tr>\n\n                    </tbody>\n                </table>\n            </div>\n\n        </div>\n\n\n        <div class=\"modal fade\" id=\"settings-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\n            <div class=\"modal-dialog\">\n                <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">×</span></button>\n                        <h4 class=\"modal-title\" id=\"myModalLabel\">Удалить\n                            ?</h4>\n                    </div>\n                    <div class=\"modal-body\">\n                        Вы действительно хотите удалить\n                    </div>\n                    <div class=\"modal-footer\">\n                        <form action=\"\" method=\"post\">\n                            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Нет\n                            </button>\n                            <button type=\"submit\" class=\"btn btn-danger\">Да</button>\n                            <input type=\"hidden\" name=\"_method\" value=\"DELETE\">\n                            <input type=\"hidden\" name=\"_token\" value=\"csrf_token()\">\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n\n\n\n        <footer class=\"panel-footer\">\n            <div class=\"row\">\n                <div class=\"col-sm-offset-4 col-sm-4 text-center\">\n                    <small class=\"text-muted inline m-t-sm m-b-sm\">Всего\n                        элементов: </small>\n                </div>\n                <div class=\"col-sm-4 text-right text-center-xs\">\n\n                </div>\n            </div>\n        </footer>\n    </div>\n</div>\n\n\n"
         if (module.hot) {
             (function () {
                 module.hot.accept()
@@ -183,7 +183,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
             if (arguments.length > 1) {
                 for (var i = 1; i < arguments.length; i++) {
                     args[i - 1] = arguments[i];
-                }
+        }
             }
             queue.push(new Item(fun, args));
             if (queue.length === 1 && !draining) {
@@ -988,7 +988,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                             return response;
                         });
                     });
-                };
+        };
             };
         };
 
@@ -1272,9 +1272,9 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                             called = true;
 
                         }, function (r) {
-                            if (!called) {
-                                promise.reject(r);
-                            }
+                    if (!called) {
+                        promise.reject(r);
+                    }
                             called = true;
                         });
                         return;
@@ -2089,7 +2089,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
             }
                     if (_.isArray(source[key]) && !_.isArray(target[key])) {
                         target[key] = [];
-                    }
+            }
                     merge(target[key], source[key], deep);
                 } else if (source[key] !== undefined) {
                     target[key] = source[key];
@@ -11872,7 +11872,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
                         } else {
                             arg = dirName;
                             pushDir('bind', publicDirectives.bind);
-                        }
+            }
                     } else
 
                     // normal directives
