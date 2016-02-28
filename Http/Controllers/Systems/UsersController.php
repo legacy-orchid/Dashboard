@@ -2,6 +2,8 @@
 
 namespace Orchid\Dashboard\Http\Controllers\Systems;
 
+
+use Orchid\Dashboard\Http\Controllers\Controller;
 use Orchid\Dashboard\Http\Requests\UsersRequests;
 use Orchid\Dashboard\Models\User;
 

@@ -2,6 +2,8 @@
 
 namespace Orchid\Dashboard\Http\Controllers\Systems;
 
+
+use Orchid\Dashboard\Http\Controllers\Controller;
 use Orchid\Dashboard\Models\Setting;
 
 class SettingsController extends Controller
