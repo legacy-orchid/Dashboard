@@ -8,6 +8,13 @@
         <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
             <i class="fa fa-user fa-fw"></i>
         </a>
+
+        <a href="#" class="btn no-shadow navbar-btn">
+            <i class="fa fa-globe"></i>
+        </a>
+
+
+
     </div>
     <!-- / buttons -->
 
@@ -209,10 +216,6 @@
         </li>
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle clear">
-              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="img/a0.jpg" alt="...">
-                <i class="on md b-white bottom"></i>
-              </span>
                 <span class="hidden-sm hidden-md">Черняев Александр</span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
