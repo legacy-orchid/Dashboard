@@ -2,7 +2,7 @@
 
 Route::get('/', 'DashboardController@index');
 
-Route::resource('settings', 'Systems/SettingsController', [
+Route::resource('settings', 'Systems\SettingsController', [
     'only' => [
         'index', 'show', 'store', 'update', 'destroy',
     ], ]);

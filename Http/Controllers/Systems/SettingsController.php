@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchid\Dashboard\Http\Controllers;
+namespace Orchid\Dashboard\Http\Controllers\Systems;
 
 use Orchid\Dashboard\Models\Setting;
 
