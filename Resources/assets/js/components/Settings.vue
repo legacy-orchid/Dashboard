@@ -42,6 +42,7 @@
                         <thead>
                         <tr>
                             <th>Ключ</th>
+                            <th>Дата создания</th>
                             <th>Последние изменение</th>
                             <th>Управление</th>
                         </tr>
@@ -49,8 +50,9 @@
                         <tbody>
 
                         <tr v-for="setting in settings">
-                            <td>{{setting}}</td>
-                            <td>$setting->updated_at</td>
+                            <td>{{setting.key}}</td>
+                            <th>{{setting.created_at}}</th>
+                            <td>{{setting.updated_at}}</td>
                             <td>
 
                                 <div class="btn-group pull-right" role="group" aria-label="...">
