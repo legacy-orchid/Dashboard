@@ -2,28 +2,25 @@
 @import "../vendor/bootstrap/less/bootstrap.less";
 @import "../vendor/font-awesome/less/font-awesome.less";
 
-@import "app.variables.less";
-@import "app.mixins.less";
+@import "theme/variables.less";
+@import "core/mixins.less";
 
+@import "core/reset.less";
+@import "core/layout.less";
+@import "core/nav.less";
+@import "core/nav.offscreen.less";
+@import "core/nav.dock.less";
 
-@import "main/index";
+@import "core/arrow.less";
+@import "core/buttons.less";
+@import "core/widgets.less";
+@import "core/modals.less";
 
-@import "app.reset.less";
-@import "app.layout.less";
-@import "app.nav.less";
-@import "app.nav.offscreen.less";
-@import "app.nav.dock.less";
+@import "core/components.less";
+@import "plugins/plugin.less";
+@import "core/item.less";
 
-@import "app.arrow.less";
-@import "app.buttons.less";
-@import "app.widgets.less";
-@import "app.modals.less";
+@import "theme/colors.less";
+@import "core/utilities.less";
 
-@import "app.components.less";
-@import "app.plugin.less";
-@import "app.item.less";
-
-@import "app.colors.less";
-@import "app.utilities.less";
-
-@import "app.butterbar.less";
+@import "core/butterbar.less";
