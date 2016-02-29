@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Orchid\Dashboard\Http\Controllers\Controller;
 use Orchid\Dashboard\Models\Role;
 
-class DomainsController extends Controller
+class RolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,6 +16,7 @@ class DomainsController extends Controller
     public function index(Request $request)
     {
         $roles = Role::search($request->search)->sortable()->paginate(15);
+
         return response()->toJson($roles);
     }
 

@@ -16,6 +16,7 @@ class DomainsController extends Controller
     public function index(Request $request)
     {
         $domains = Domain::search($request->search)->sortable()->paginate(15);
+
         return response()->toJson($domains);
     }
 

@@ -1,6 +1,8 @@
 {
   "name": "orchid/dashboard",
   "description": "The Orchid CMF for WebSite",
+  "type": "library",
+  "license": "Orchid",
   "authors": [
     {
       "name": "tabuna",
@@ -10,7 +12,6 @@
       "name": "mamau"
     }
   ],
-  "license": "Orchid",
   "require": {
     "php": ">=5.5.9",
     "laravel/framework": "5.*",
