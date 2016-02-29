@@ -1,5 +1,5 @@
 var elixir = require('laravel-elixir');
-require('laravel-elixir-vueify');
+var gulp = require('gulp');
 
 /*
  |--------------------------------------------------------------------------
@@ -14,11 +14,19 @@ require('laravel-elixir-vueify');
 
 elixir(function(mix) {
     mix.less('./Resources/assets/less/app.less', './Resources/dist/css/orchid.css');
-    mix.browserify('./Resources/assets/js/router.js', './Resources/assets/js/cache/orchid-router.js');
+
+    mix.styles([
+        "./Resources/assets/vendor/bootstrap/dist/css/bootstrap.min.css",
+        "./Resources/assets/vendor/font-awesome/css/font-awesome.min.css"
+    ], 'Resources/dist/css/orchid.css');
+
     mix.scripts([
+        "./Resources/assets/vendor/angular/angular.min.js",
         "./Resources/assets/vendor/jquery/dist/jquery.min.js",
         "./Resources/assets/vendor/bootstrap/dist/js/bootstrap.min.js",
-        "./Resources/assets/js/partials/leftMenu.js",
-        "./Resources/assets/js/cache/orchid-router.js",
+        "./Resources/assets/js/app.js",
+        "./Resources/assets/js/controller/**",
+        "./Resources/assets/js/service/**",
+        "./Resources/assets/js/directive/**"
     ], './Resources/dist/js/orchid.js');
 });
