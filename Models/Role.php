@@ -4,8 +4,9 @@ namespace Orchid\Dashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Dashboard\Services\Access\RoleAccess;
+use Orchid\Dashboard\Services\Access\RoleInterface;
 
-class Role extends Model
+class Role extends Model implements RoleInterface
 {
     use RoleAccess;
 
