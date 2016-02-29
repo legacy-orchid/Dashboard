@@ -20,7 +20,7 @@ class Widget implements WidgetContractInterface
         $widget = new $class();
 
         if ($widget->cache) {
-            return Cache::remember('Widgets-'.$key, $widget->cache, function ( Widget $widget) {
+            return Cache::remember('Widgets-'.$key, $widget->cache, function (Widget $widget) {
                 return $widget->run();
             });
         } else {
