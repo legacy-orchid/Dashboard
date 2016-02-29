@@ -2,7 +2,7 @@
   "name": "orchid/dashboard",
   "description": "The Orchid CMF for WebSite",
   "type": "library",
-  "license": "Orchid",
+  "license": "proprietary",
   "authors": [
     {
       "name": "tabuna",
