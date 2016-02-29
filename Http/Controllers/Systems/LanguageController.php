@@ -1,9 +1,9 @@
 <?php
 
-namespace Orchid\Dashboard\Http\Controllers;
+namespace Orchid\Dashboard\Http\Controllers\Systems;
 
 use Illuminate\Http\Request;
-
+use Orchid\Dashboard\Http\Controllers\Controller;
 use Orchid\Dashboard\Models\Language;
 
 class LanguageController extends Controller
