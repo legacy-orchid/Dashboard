@@ -2,7 +2,7 @@
 
 namespace Orchid\Dashboard\Services\Widget;
 
-interface WidgetContract
+interface WidgetContractInterface
 {
     /**
      * @param $key

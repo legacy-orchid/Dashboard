@@ -5,7 +5,7 @@ namespace Orchid\Dashboard\Services\Widget;
 use Config;
 use Cache;
 
-class Widget implements WidgetContract
+class Widget implements WidgetContractInterface
 {
     public $cache = 0;
 
