@@ -4,7 +4,7 @@
 
 
     <div id="app">
-
+wtf
         <router-view></router-view>
     </div>
 
