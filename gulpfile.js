@@ -22,6 +22,8 @@ elixir(function(mix) {
 
     mix.scripts([
         "./Resources/assets/vendor/angular/angular.min.js",
+        "./Resources/assets/vendor/angular-animate/angular-animate.min.js",
+        "./Resources/assets/vendor/angular-route/angular-route.min.js",
         "./Resources/assets/vendor/jquery/dist/jquery.min.js",
         "./Resources/assets/vendor/bootstrap/dist/js/bootstrap.min.js",
         "./Resources/assets/js/app.js",
