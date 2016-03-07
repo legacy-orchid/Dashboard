@@ -2,8 +2,8 @@
 
 namespace Orchid\Dashboard\Facades;
 
-use Orchid\Dashboard\Models\SEO;
 use Illuminate\Support\Facades\Facade;
+use Orchid\Dashboard\Models\SEO;
 
 class SEOFacades extends Facade
 {

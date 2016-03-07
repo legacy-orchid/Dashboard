@@ -21,7 +21,7 @@ class DomainsController extends Controller
         */
 
         return view('dashboard::container.systems.domains', [
-            'Domains' => Domain::search($request->input('search'))->sortable()->paginate(15)
+            'Domains' => Domain::search($request->input('search'))->sortable()->paginate(15),
         ]);
     }
 
