@@ -30,7 +30,6 @@
             </button>
             <!-- brand -->
             <a href="/" class="navbar-brand text-lt">
-                <i class="fa fa fa-bolt"></i>
                 <img src="/orchid/img/logo.svg" width="50px">
                 <span class="hidden-folded m-l-xs">Orchid</span>
             </a>
