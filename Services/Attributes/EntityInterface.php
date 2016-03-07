@@ -11,6 +11,4 @@ interface EntityInterface
      * @return mixed
      */
     public function getAttributes();
-
-
 }

@@ -4,10 +4,11 @@ namespace Orchid\Dashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Kyslik\ColumnSortable\Sortable;
 
 class Domain extends Model
 {
-    use SearchableTrait;
+    use SearchableTrait, Sortable;
 
     protected $table = 'domains';
 

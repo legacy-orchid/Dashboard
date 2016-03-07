@@ -40,7 +40,6 @@ class DashboardServiceProvider extends ServiceProvider
 
     protected function registerPublic()
     {
-
         $this->publishes([
             __DIR__.'/../Resources/dist/' => public_path('orchid'),
         ], 'public');

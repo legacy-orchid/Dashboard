@@ -5,10 +5,11 @@ namespace Orchid\Dashboard\Models;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Dashboard\Services\Settings\SettingTrait;
 use Kyslik\ColumnSortable\Sortable;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Setting extends Model
 {
-    use SettingTrait, Sortable;
+    use SettingTrait, Sortable, SearchableTrait;
 
     protected $table = 'settings';
 

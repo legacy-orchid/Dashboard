@@ -4,6 +4,7 @@ namespace Orchid\Dashboard\Http\Controllers\Systems;
 
 use Orchid\Dashboard\Http\Controllers\Controller;
 use Orchid\Dashboard\Models\Setting;
+use Request;
 
 class SettingsController extends Controller
 {
@@ -14,9 +15,15 @@ class SettingsController extends Controller
      */
     public function index()
     {
+        /*
         return response()->json(
             Setting::sortable()->paginate(15)
         );
+        */
+
+        return view('dashboard::container.systems.settings', [
+           'Settings' => Setting::search(Request::input('search'))->sortable()->paginate(15)
+        ]);
     }
 
     /**

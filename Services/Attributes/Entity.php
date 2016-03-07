@@ -7,7 +7,6 @@ trait Entity
      */
     public function attributes()
     {
-
     }
 
     /**
@@ -15,7 +14,5 @@ trait Entity
      */
     public function getAttributes()
     {
-
     }
-
 }
