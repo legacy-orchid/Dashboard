@@ -15,10 +15,8 @@ var gulp = require('gulp');
 elixir(function(mix) {
     mix.less('./Resources/assets/less/app.less', './Resources/dist/css/orchid.css');
 
-    mix.styles([
-        "./Resources/assets/vendor/bootstrap/dist/css/bootstrap.min.css",
-        "./Resources/assets/vendor/font-awesome/css/font-awesome.min.css"
-    ], 'Resources/dist/css/orchid.css');
+    mix.copy('./Resources/assets/vendor/bootstrap/dist/fonts/', './Resources/dist/fonts');
+    mix.copy('./Resources/assets/vendor/font-awesome/fonts/', './Resources/dist/fonts');
 
     mix.scripts([
         "./Resources/assets/vendor/angular/angular.min.js",

@@ -31,6 +31,7 @@
             <!-- brand -->
             <a href="/" class="navbar-brand text-lt">
                 <i class="fa fa fa-bolt"></i>
+                <img src="orchid.svg">
                 <span class="hidden-folded m-l-xs">Orchid</span>
             </a>
             <!-- / brand -->
