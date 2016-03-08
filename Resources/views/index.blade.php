@@ -13,7 +13,7 @@
             Ссылка 2
         </a>
     </div>
-    <div class="view-animate" ng-view></div>
+    <div class="view-animate"  ng-view></div>
 
 
 @stop

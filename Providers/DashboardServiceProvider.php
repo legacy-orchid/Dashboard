@@ -2,12 +2,12 @@
 
 namespace Orchid\Dashboard\Providers;
 
-use Blade;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Orchid\Dashboard\Http\Composers\DashboardMenuComposer;
 use Orchid\Dashboard\Services\Menu\DashboardMenu;
 use View;
+use Blade;
 
 class DashboardServiceProvider extends ServiceProvider
 {
@@ -141,6 +141,7 @@ class DashboardServiceProvider extends ServiceProvider
         $this->app->register(\Orchid\Dashboard\Providers\ConsoleServiceProvider::class);
         $this->app->register(\Orchid\Dashboard\Providers\SocketServiceProvider::class);
         $this->app->register(\Orchid\Dashboard\Providers\SettingsServiceProvider::class);
+        $this->app->register(\Orchid\Dashboard\Providers\MenuServiceProvider::class);
     }
 
     /**

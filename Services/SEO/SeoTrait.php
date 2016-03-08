@@ -2,8 +2,8 @@
 
 namespace Orchid\Dashboard\Services\SEO;
 
-use App;
 use Route;
+use App;
 
 trait SeoTrait
 {

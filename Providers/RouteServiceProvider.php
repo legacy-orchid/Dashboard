@@ -9,41 +9,41 @@ use Orchid\Dashboard\Models\Setting;
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * This namespace is applied to the controller routes in your routes file.
-     *
-     * In addition, it is set as the URL generator's root namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'Orchid\Dashboard\Http\Controllers';
-
-    /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @param \Illuminate\Routing\Router $router
-     */
-    public function boot(Router $router)
-    {
-        parent::boot($router);
-
-        /*
-         * bindings
+         * This namespace is applied to the controller routes in your routes file.
+         *
+         * In addition, it is set as the URL generator's root namespace.
+         *
+         * @var string
          */
-        $router->bind('settings', function ($value) {
-            return Setting::where('key', $value)->firstOrFail();
-        });
-    }
+        protected $namespace = 'Orchid\Dashboard\Http\Controllers';
 
-    /**
-     * Define the routes for the application.
-     *
-     * @param \Illuminate\Routing\Router $router
-     */
-    public function map(Router $router)
-    {
-        $router->group(['middleware' => 'web', 'prefix' => 'dashboard', 'namespace' => $this->namespace],
-            function ($router) {
-                require __DIR__.'/../Http/routes.php';
+        /**
+         * Define your route model bindings, pattern filters, etc.
+         *
+         * @param \Illuminate\Routing\Router $router
+         */
+        public function boot(Router $router)
+        {
+            parent::boot($router);
+
+            /*
+             * bindings
+             */
+            $router->bind('settings', function ($value) {
+                return Setting::where('key', $value)->firstOrFail();
             });
-    }
+        }
+
+        /**
+         * Define the routes for the application.
+         *
+         * @param \Illuminate\Routing\Router $router
+         */
+        public function map(Router $router)
+        {
+            $router->group(['middleware' => 'web', 'prefix' => 'dashboard', 'namespace' => $this->namespace],
+                function ($router) {
+                    require __DIR__.'/../Http/routes.php';
+            });
+        }
 }

@@ -32,9 +32,9 @@ class SettingsServiceProvider extends ServiceProvider
             'icon' => 'fa fa-cog',
             'url' => route('dashboard.settings.index'), //'/dashboard/#!/settings', //route('settings'),
             'label' => trans('dashboard::menu.Constants'),
-            'groupname' => trans('dashboard::menu.General settings'),
+            'groupname' => null,
             'childs' => false,
-            'divider' => true,
+            'divider' => false,
         ];
 
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $settingsMenu, 100);

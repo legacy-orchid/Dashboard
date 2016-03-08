@@ -12,7 +12,7 @@ var gulp = require('gulp');
  |
  */
 
-elixir(function (mix) {
+elixir(function(mix) {
     mix.less('./Resources/assets/less/app.less', './Resources/dist/css/orchid.css');
 
     mix.copy('./Resources/assets/vendor/bootstrap/dist/fonts/', './Resources/dist/fonts');

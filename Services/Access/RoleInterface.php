@@ -5,20 +5,6 @@ namespace Orchid\Dashboard\Services\Access;
 interface RoleInterface
 {
     /**
-     * Returns the users model.
-     *
-     * @return string
-     */
-    public static function getUsersModel();
-
-    /**
-     * Sets the users model.
-     *
-     * @param string $usersModel
-     */
-    public static function setUsersModel($usersModel);
-
-    /**
      * Returns the role's primary key.
      *
      * @return int
@@ -38,4 +24,18 @@ interface RoleInterface
      * @return \IteratorAggregate
      */
     public function getUsers();
+
+    /**
+     * Returns the users model.
+     *
+     * @return string
+     */
+    public static function getUsersModel();
+
+    /**
+     * Sets the users model.
+     *
+     * @param string $usersModel
+     */
+    public static function setUsersModel($usersModel);
 }
