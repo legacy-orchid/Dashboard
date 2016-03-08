@@ -22,6 +22,7 @@ return [
     'Categories' => 'Категории',
     'Tags' => 'Теги',
     'Users' => 'Пользователи',
+    'Groups' => 'Группы',
     'Settings' => 'Настройки',
     'Web domains' => 'Веб-домены',
     'Constants' => 'Константы',

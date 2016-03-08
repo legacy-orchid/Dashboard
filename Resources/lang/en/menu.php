@@ -21,6 +21,7 @@ return [
     'Categories' => 'Categories',
     'Tags' => 'Tags',
     'Users' => 'Users',
+    'Groups' => 'Groups',
     'Settings' => 'Settings',
     'Web domains' => 'Web domains',
     'Constants' => 'Constants',
