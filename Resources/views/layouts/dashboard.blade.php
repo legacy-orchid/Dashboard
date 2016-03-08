@@ -57,7 +57,6 @@
                         </li>
                         {!! Orchid::Menu()->render('leftMenu') !!}
 
-                        <li class="line dk"></li>
 
                         <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                             <span>{{trans('dashboard::menu.Components')}}</span>
@@ -73,8 +72,6 @@
                         </li>
 
 
-                        <li class="line dk hidden-folded"></li>
-
                     </ul>
                 </nav>
                 <!-- nav -->
@@ -86,7 +83,7 @@
                         <span class="pull-right pull-none-folded">60%</span>
                         <span class="hidden-folded">Закрытых заказов</span>
                     </div>
-                    <div class="progress progress-xxs m-t-sm dk">
+                    <div class="progress progress-xxs m-t-sm lter">
                         <div class="progress-bar progress-bar-info" style="width: 60%;">
                         </div>
                     </div>
@@ -94,7 +91,7 @@
                         <span class="pull-right pull-none-folded">35%</span>
                         <span class="hidden-folded">Заказов в процессе</span>
                     </div>
-                    <div class="progress progress-xxs m-t-sm dk">
+                    <div class="progress progress-xxs m-t-sm lter">
                         <div class="progress-bar progress-bar-primary" style="width: 35%;">
                         </div>
                     </div>
