@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" id="csrf-token">
-    <title>App Name - @yield('title')</title>
+    <title>Orchid - @yield('title')</title>
 
     <link rel="stylesheet" href="/orchid/css/orchid.css">
 
@@ -29,7 +29,7 @@
                 <i class="fa fa-bars"></i>
             </button>
             <!-- brand -->
-            <a href="/" class="navbar-brand text-lt">
+            <a href="{{route('dashboard.index')}}" class="navbar-brand text-lt">
                 <img src="/orchid/img/logo.svg" width="50px">
                 <span class="hidden-folded m-l-xs">Orchid</span>
             </a>
