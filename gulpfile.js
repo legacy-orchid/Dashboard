@@ -17,6 +17,7 @@ elixir(function(mix) {
 
     mix.copy('./Resources/assets/vendor/bootstrap/dist/fonts/', './Resources/dist/fonts');
     mix.copy('./Resources/assets/vendor/font-awesome/fonts/', './Resources/dist/fonts');
+    mix.copy('./Resources/assets/vendor/summernote/dist//fonts/', './Resources/dist/fonts');
 
     mix.scripts([
         "./Resources/assets/vendor/angular/angular.min.js",
@@ -28,6 +29,10 @@ elixir(function(mix) {
         "./Resources/assets/js/plugins/**",
         "./Resources/assets/js/controller/**",
         "./Resources/assets/js/service/**",
-        "./Resources/assets/js/directive/**"
+        "./Resources/assets/js/directive/**",
+
+
+
+        "./Resources/assets/vendor/summernote/dist/summernote.min.js"
     ], './Resources/dist/js/orchid.js');
 });
