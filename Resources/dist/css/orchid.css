@@ -11277,6 +11277,9 @@ fieldset[disabled] .btn-black.active {
 .btn-groups .btn {
   margin-bottom: 5px;
 }
+button.close {
+  font-size: 12px;
+}
 .list-icon i {
   font-size: 14px;
   width: 40px;

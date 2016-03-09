@@ -24,7 +24,6 @@ class MenuServiceProvider extends ServiceProvider
 
     protected function registerMenu(DashboardMenu $dashboardMenu = null)
     {
-
         $domainsMenu = [
             'slug' => 'Web domains',
             'icon' => 'fa fa-globe',
@@ -51,7 +50,7 @@ class MenuServiceProvider extends ServiceProvider
             'icon' => 'fa fa-bug',
             'url' => route('dashboard.domains.index'),
             'label' => trans('dashboard::menu.Logs'),
-            'groupname' => null,
+            'groupname' => trans('dashboard::menu.Errors'),
             'childs' => false,
             'divider' => true,
         ];
@@ -139,6 +138,37 @@ class MenuServiceProvider extends ServiceProvider
             'childs' => false,
             'divider' => true,
         ];
+
+
+
+
+        $postMenu = [
+            'slug' => 'Post',
+            'icon' => 'fa fa-pencil',
+            'url' => route('dashboard.domains.index'),
+            'label' => trans('dashboard::menu.Common posts'),
+            'groupname' => trans('dashboard::menu.The interface and data'),
+            'childs' => true,
+            'divider' => false,
+        ];
+
+
+
+
+        $blocksMenu = [
+            'slug' => 'Block',
+            'icon' => 'fa fa-cubes',
+            'url' => route('dashboard.domains.index'),
+            'label' => trans('dashboard::menu.Common blocks'),
+            'childs' => true,
+            'divider' => true,
+        ];
+
+
+
+
+        $dashboardMenu->add('Posts', 'dashboard::partials.leftMenu', $postMenu, 1);
+        $dashboardMenu->add('Posts', 'dashboard::partials.leftMenu', $blocksMenu, 2);
 
 
 

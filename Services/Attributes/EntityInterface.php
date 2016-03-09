@@ -1,6 +1,4 @@
-<?php
-
-namespace Orchid\Dashboard\Attributes\Access;
+<?php namespace Orchid\Dashboard\Attributes\Access;
 
 interface EntityInterface
 {

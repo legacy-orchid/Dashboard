@@ -25,6 +25,7 @@ elixir(function(mix) {
         "./Resources/assets/vendor/jquery/dist/jquery.min.js",
         "./Resources/assets/vendor/bootstrap/dist/js/bootstrap.min.js",
         "./Resources/assets/js/app.js",
+        "./Resources/assets/js/plugins/**",
         "./Resources/assets/js/controller/**",
         "./Resources/assets/js/service/**",
         "./Resources/assets/js/directive/**"

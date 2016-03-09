@@ -1,5 +1,11 @@
 @if(isset($childs) && $childs)
 
+
+
+    @if(isset($groupname))
+        <li class="dropdown-header">{{$groupname}}</li>
+    @endif
+
     <li class="dropdown">
         <a class="dropdown-toggle" type="button" id="dropdownMenu-{{$slug}}" data-toggle="dropdown" aria-haspopup="true"
            aria-expanded="false">
@@ -13,6 +19,12 @@
             {!! Orchid::Menu()->render($slug) !!}
         </ul>
     </li>
+
+
+
+    @if(isset($divider) && $divider == true)
+        <li class="divider"></li>
+    @endif
 
 @else
 

@@ -27,6 +27,7 @@ class DashboardServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+        $this->registerPublic();
 
         $this->registerMenu($dashboardMenu);
         $this->registerProviders();
@@ -37,12 +38,14 @@ class DashboardServiceProvider extends ServiceProvider
         });
     }
 
+
     protected function registerPublic()
     {
         $this->publishes([
             __DIR__.'/../Resources/dist/' => public_path('orchid'),
         ], 'public');
     }
+
 
     /**
      * Register migrate.
@@ -126,6 +129,8 @@ class DashboardServiceProvider extends ServiceProvider
             'label' => trans('dashboard::menu.Systems'),
             'childs' => true,
         ];
+
+
 
         $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $panelMenu, 1);
         $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $postMenu, 100);
