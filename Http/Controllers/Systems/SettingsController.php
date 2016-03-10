@@ -15,12 +15,6 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        /*
-        return response()->json(
-            Setting::sortable()->paginate(15)
-        );
-        */
-
         return view('dashboard::container.systems.settings', [
            'Settings' => Setting::search(Request::input('search'))->sortable()->paginate(15)
         ]);

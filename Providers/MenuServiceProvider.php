@@ -27,7 +27,7 @@ class MenuServiceProvider extends ServiceProvider
         $domainsMenu = [
             'slug' => 'Web domains',
             'icon' => 'fa fa-globe',
-            'url' => route('dashboard.domains.index'), //'/dashboard/#!/settings', //route('settings'),
+            'url' => route('dashboard.domains.index'),
             'label' => trans('dashboard::menu.Web domains'),
             'groupname' => trans('dashboard::menu.General settings'),
             'childs' => false,
@@ -37,7 +37,7 @@ class MenuServiceProvider extends ServiceProvider
         $localizationMenu = [
             'slug' => 'Localization',
             'icon' => 'fa fa-language',
-            'url' => route('dashboard.domains.index'), //'/dashboard/#!/settings', //route('settings'),
+            'url' => route('dashboard.language.index'),
             'label' => trans('dashboard::menu.Localization'),
             'groupname' => null,
             'childs' => false,
@@ -172,15 +172,11 @@ class MenuServiceProvider extends ServiceProvider
 
 
 
-
-
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $menuMenu, 1);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $typePostMenu, 2);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $categoryMenu, 3);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $tagsMenu, 4);
 
-        $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $usersMenu, 5);
-        $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $groupsMenu, 6);
 
 
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $seoMenu, 10);
@@ -190,6 +186,9 @@ class MenuServiceProvider extends ServiceProvider
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $errorMenu, 500);
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $localizationMenu, 300);
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $domainsMenu, 1);
+
+        $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $usersMenu, 501);
+        $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $groupsMenu, 601);
     }
 
     /**

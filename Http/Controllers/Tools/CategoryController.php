@@ -1,12 +1,12 @@
 <?php
 
-namespace Orchid\Dashboard\Http\Controllers\Systems;
+namespace Orchid\Dashboard\Http\Controllers\Tools;
 
 use Illuminate\Http\Request;
 use Orchid\Dashboard\Http\Controllers\Controller;
 use Orchid\Dashboard\Models\Domain;
 
-class DomainsController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class DomainsController extends Controller
      */
     public function index(Request $request)
     {
-        return view('dashboard::container.systems.domains', [
-            'Domains' => Domain::search($request->input('search'))->sortable()->paginate(15)
-        ]);
+
     }
 
     /**
@@ -38,8 +36,7 @@ class DomainsController extends Controller
      */
     public function store(Request $request)
     {
-        Domain::create($request->all());
-        abort(200);
+
     }
 
     /**
@@ -63,7 +60,7 @@ class DomainsController extends Controller
      */
     public function edit($id)
     {
-        return Domain::findOrFail($id)->toJson();
+
     }
 
     /**
@@ -76,7 +73,7 @@ class DomainsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Domain::findOrFail($id)->fill($request->all())->save();
+
     }
 
     /**
@@ -88,6 +85,6 @@ class DomainsController extends Controller
      */
     public function destroy($id)
     {
-        Domain::findOrFail($id)->delete('cascade');
+
     }
 }
