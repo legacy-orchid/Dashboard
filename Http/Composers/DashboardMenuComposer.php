@@ -50,7 +50,6 @@ class DashboardMenuComposer
                  * Тут надо перебрать всю меню на наличие прав, и удалить
                  * элементы к которым их нет
                  */
-
                 $user = $this->guard->user();
 
                 $accessCollection = $this->dashboardMenu->container->filter(function ($item) use ($user) {
