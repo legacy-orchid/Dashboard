@@ -47,7 +47,6 @@ class StaticPagesController extends Controller
      */
     public function update(Request $request, $url)
     {
-
         $url = base64_decode($url);
         $meta = SEO::where('route', $url)->first();
 
@@ -60,7 +59,5 @@ class StaticPagesController extends Controller
             $attr = $request->all();
             $meta->fill($attr)->save();
         }
-
     }
-
 }

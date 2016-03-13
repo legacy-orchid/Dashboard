@@ -14,7 +14,6 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-
     }
 
     /**
@@ -35,7 +34,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-
     }
 
     /**
@@ -59,7 +57,6 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-
     }
 
     /**
@@ -72,7 +69,6 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-
     }
 
     /**
@@ -84,6 +80,5 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-
     }
 }

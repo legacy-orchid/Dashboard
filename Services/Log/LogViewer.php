@@ -8,7 +8,7 @@ use Storage;
 class LogViewer
 {
 
-    const MAX_FILE_SIZE = 52428800;
+    const MAX_FILE_SIZE = 10485760;
     /**
      * @var string file
      */
@@ -145,12 +145,9 @@ class LogViewer
         foreach ($files as $key => $value) {
             if (!stripos($value, '.log')) {
                 unset($files[$key]);
-            } else {
-                //$files[$key] = storage_path('logs/'). $value;
             }
         }
 
         return array_values($files);
-
     }
 }

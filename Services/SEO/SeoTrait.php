@@ -3,7 +3,6 @@
 namespace Orchid\Dashboard\Services\SEO;
 
 use App;
-use Illuminate\Support\Facades\Config;
 use Route;
 
 trait SeoTrait

@@ -24,7 +24,6 @@ class MenuServiceProvider extends ServiceProvider
 
     protected function registerMenu(DashboardMenu $dashboardMenu = null)
     {
-
         $settingsMenu = [
             'slug' => 'Settings',
             'icon' => 'fa fa-cog',

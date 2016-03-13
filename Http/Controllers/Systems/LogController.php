@@ -3,10 +3,7 @@
 namespace Orchid\Dashboard\Http\Controllers\Systems;
 
 use File;
-use Illuminate\Http\Request;
 use Orchid\Dashboard\Http\Controllers\Controller;
-use Orchid\Dashboard\Http\Requests\UsersRequests;
-use Orchid\Dashboard\Models\User;
 use Orchid\Dashboard\Services\Log\LogViewer;
 
 class LogController extends Controller

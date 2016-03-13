@@ -19,7 +19,6 @@ class LanguageController extends Controller
         return view('dashboard::container.systems.language', [
             'Languages' => $Languages,
         ]);
-        //return response()->toJson($languages);
     }
 
     /**

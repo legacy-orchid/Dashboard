@@ -5,7 +5,6 @@ namespace Orchid\Dashboard\Http\Controllers\Tools;
 use Illuminate\Http\Request;
 use Orchid\Dashboard\Http\Controllers\Controller;
 
-
 class MenuController extends Controller
 {
     /**
@@ -15,7 +14,6 @@ class MenuController extends Controller
      */
     public function index(Request $request)
     {
-
     }
 
     /**
@@ -36,7 +34,6 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-
     }
 
     /**
@@ -60,7 +57,6 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-
     }
 
     /**
@@ -73,7 +69,6 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-
     }
 
     /**
@@ -85,6 +80,5 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-
     }
 }

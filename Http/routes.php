@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/',[
+Route::get('/', [
     'as' => 'dashboard.index', 'uses' => 'DashboardController@index'
 ]);
 
@@ -9,8 +9,6 @@ Route::get('/',[
 Route::group(['namespace' => 'Systems'], function () {
     Route::resource('settings', 'SettingsController');
     Route::resource('language', 'LanguageController');
-
-    //Route::resource('log', 'LogController');
     Route::controller('log', 'LogController', [
         'getIndex' => 'dashboard.log.index',
         'getShow' => 'dashboard.log.show',
