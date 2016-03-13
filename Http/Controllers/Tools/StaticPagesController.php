@@ -2,9 +2,11 @@
 
 namespace Orchid\Dashboard\Http\Controllers\Tools;
 
+use Config;
 use Illuminate\Http\Request;
+use Orchid;
 use Orchid\Dashboard\Http\Controllers\Controller;
-
+use SEO;
 
 class StaticPagesController extends Controller
 {
@@ -15,76 +17,50 @@ class StaticPagesController extends Controller
      */
     public function index(Request $request)
     {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
+        return view('dashboard::container.tools.static', [
+            'routes' => SEO::staticGetRoute(),
+            'baseUrl' => Config::get('app.url'),
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param string $url
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($url)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
+        $url = base64_decode($url);
+        $meta = SEO::where('route', $url)->first();
+        return $meta->toJson();
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param string $url
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $url)
     {
+
+        $url = base64_decode($url);
+        $meta = SEO::where('route', $url)->first();
+
+        if (is_null($meta)) {
+            $attr = $request->all();
+            $attr['route'] = $url;
+            $attr['url'] = $url;
+            SEO::create($attr);
+        } else {
+            $attr = $request->all();
+            $meta->fill($attr)->save();
+        }
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-
-    }
 }

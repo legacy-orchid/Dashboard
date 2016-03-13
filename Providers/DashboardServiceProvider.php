@@ -2,12 +2,12 @@
 
 namespace Orchid\Dashboard\Providers;
 
+use Blade;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Orchid\Dashboard\Http\Composers\DashboardMenuComposer;
 use Orchid\Dashboard\Services\Menu\DashboardMenu;
 use View;
-use Blade;
 
 class DashboardServiceProvider extends ServiceProvider
 {
@@ -37,15 +37,6 @@ class DashboardServiceProvider extends ServiceProvider
             return "<?php echo (new \\Orchid\\Dashboard\\Services\\Widget\\Widget)->get({$key}); ?>";
         });
     }
-
-
-    protected function registerPublic()
-    {
-        $this->publishes([
-            __DIR__.'/../Resources/dist/' => public_path('orchid'),
-        ], 'public');
-    }
-
 
     /**
      * Register migrate.
@@ -93,6 +84,13 @@ class DashboardServiceProvider extends ServiceProvider
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path.'/vendor/orchid/dashboard';
         }, \Config::get('view.paths')), [$sourcePath]), 'dashboard');
+    }
+
+    protected function registerPublic()
+    {
+        $this->publishes([
+            __DIR__ . '/../Resources/dist/' => public_path('orchid'),
+        ], 'public');
     }
 
     /**

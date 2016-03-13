@@ -2,8 +2,8 @@
 
 namespace Orchid\Dashboard\Models;
 
-use Orchid\Dashboard\Services\SEO\SeoTrait;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Dashboard\Services\SEO\SeoTrait;
 use Route;
 
 class SEO extends Model

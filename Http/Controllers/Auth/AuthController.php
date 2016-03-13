@@ -2,11 +2,11 @@
 
 namespace Orchid\Dashboard\Http\Controllers\Auth;
 
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Orchid\Dashboard\Http\Controllers\Controller;
 use Orchid\Dashboard\Models\User;
 use Validator;
-use Orchid\Dashboard\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {

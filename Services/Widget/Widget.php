@@ -2,8 +2,8 @@
 
 namespace Orchid\Dashboard\Services\Widget;
 
-use Config;
 use Cache;
+use Config;
 
 class Widget implements WidgetContractInterface
 {

@@ -27,17 +27,6 @@ class SettingsServiceProvider extends ServiceProvider
 
     protected function registerMenu(DashboardMenu $dashboardMenu = null)
     {
-        $settingsMenu = [
-            'slug' => 'Settings',
-            'icon' => 'fa fa-cog',
-            'url' => route('dashboard.settings.index'), //'/dashboard/#!/settings', //route('settings'),
-            'label' => trans('dashboard::menu.Constants'),
-            'groupname' => null,
-            'childs' => false,
-            'divider' => false,
-        ];
-
-        $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $settingsMenu, 100);
     }
 
     /**

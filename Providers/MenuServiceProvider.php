@@ -24,15 +24,17 @@ class MenuServiceProvider extends ServiceProvider
 
     protected function registerMenu(DashboardMenu $dashboardMenu = null)
     {
-        $domainsMenu = [
-            'slug' => 'Web domains',
-            'icon' => 'fa fa-globe',
-            'url' => route('dashboard.domains.index'),
-            'label' => trans('dashboard::menu.Web domains'),
+
+        $settingsMenu = [
+            'slug' => 'Settings',
+            'icon' => 'fa fa-cog',
+            'url' => route('dashboard.settings.index'),
+            'label' => trans('dashboard::menu.Constants'),
             'groupname' => trans('dashboard::menu.General settings'),
             'childs' => false,
             'divider' => false,
         ];
+
 
         $localizationMenu = [
             'slug' => 'Localization',
@@ -48,7 +50,7 @@ class MenuServiceProvider extends ServiceProvider
         $errorMenu = [
             'slug' => 'Logs',
             'icon' => 'fa fa-bug',
-            'url' => route('dashboard.domains.index'),
+            'url' => route('dashboard.log.index'),
             'label' => trans('dashboard::menu.Logs'),
             'groupname' => trans('dashboard::menu.Errors'),
             'childs' => false,
@@ -59,7 +61,7 @@ class MenuServiceProvider extends ServiceProvider
         $seoMenu = [
             'slug' => 'Static pages',
             'icon' => 'fa fa-list-alt',
-            'url' => route('dashboard.domains.index'),
+            'url' => route('dashboard.index'),
             'label' => trans('dashboard::menu.Static pages'),
             'groupname' => trans('dashboard::menu.Search Engine Optimization'),
             'childs' => false,
@@ -71,7 +73,7 @@ class MenuServiceProvider extends ServiceProvider
         $siteMapMenu = [
             'slug' => 'Site Map',
             'icon' => 'fa fa-sitemap',
-            'url' => route('dashboard.domains.index'),
+            'url' => route('dashboard.index'),
             'label' => trans('dashboard::menu.Site Map'),
             'childs' => false,
             'divider' => true,
@@ -82,7 +84,7 @@ class MenuServiceProvider extends ServiceProvider
         $typePostMenu = [
             'slug' => 'Types posts',
             'icon' => 'fa fa-pencil-square-o',
-            'url' => route('dashboard.domains.index'),
+            'url' => route('dashboard.index'),
             'label' => trans('dashboard::menu.Types posts'),
             'childs' => false,
             'divider' => false,
@@ -91,26 +93,18 @@ class MenuServiceProvider extends ServiceProvider
         $categoryMenu = [
             'slug' => 'Categories',
             'icon' => 'fa fa-briefcase',
-            'url' => route('dashboard.domains.index'),
+            'url' => route('dashboard.index'),
             'label' => trans('dashboard::menu.Categories'),
-            'childs' => false,
-            'divider' => false,
-        ];
-
-
-        $tagsMenu = [
-            'slug' => 'Tags',
-            'icon' => 'fa fa-tags',
-            'url' => route('dashboard.domains.index'),
-            'label' => trans('dashboard::menu.Tags'),
             'childs' => false,
             'divider' => true,
         ];
 
+
+
         $menuMenu = [
             'slug' => 'Menu',
             'icon' => 'fa fa-bars',
-            'url' => route('dashboard.domains.index'),
+            'url' => route('dashboard.index'),
             'label' => trans('dashboard::menu.Menu'),
             'groupname' => trans('dashboard::menu.Posts Managements'),
             'childs' => false,
@@ -123,7 +117,7 @@ class MenuServiceProvider extends ServiceProvider
         $usersMenu = [
             'slug' => 'Users',
             'icon' => 'fa fa-users',
-            'url' => route('dashboard.domains.index'),
+            'url' => route('dashboard.index'),
             'label' => trans('dashboard::menu.Users'),
             'groupname' => trans('dashboard::menu.Users'),
             'childs' => false,
@@ -133,7 +127,7 @@ class MenuServiceProvider extends ServiceProvider
         $groupsMenu = [
             'slug' => 'Groups',
             'icon' => 'fa fa-lock',
-            'url' => route('dashboard.domains.index'),
+            'url' => route('dashboard.index'),
             'label' => trans('dashboard::menu.Groups'),
             'childs' => false,
             'divider' => true,
@@ -145,7 +139,7 @@ class MenuServiceProvider extends ServiceProvider
         $postMenu = [
             'slug' => 'Post',
             'icon' => 'fa fa-pencil',
-            'url' => route('dashboard.domains.index'),
+            'url' => route('dashboard.index'),
             'label' => trans('dashboard::menu.Common posts'),
             'groupname' => trans('dashboard::menu.The interface and data'),
             'childs' => true,
@@ -158,7 +152,7 @@ class MenuServiceProvider extends ServiceProvider
         $blocksMenu = [
             'slug' => 'Block',
             'icon' => 'fa fa-cubes',
-            'url' => route('dashboard.domains.index'),
+            'url' => route('dashboard.index'),
             'label' => trans('dashboard::menu.Common blocks'),
             'childs' => true,
             'divider' => true,
@@ -175,7 +169,6 @@ class MenuServiceProvider extends ServiceProvider
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $menuMenu, 1);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $typePostMenu, 2);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $categoryMenu, 3);
-        $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $tagsMenu, 4);
 
 
 
@@ -185,7 +178,7 @@ class MenuServiceProvider extends ServiceProvider
 
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $errorMenu, 500);
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $localizationMenu, 300);
-        $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $domainsMenu, 1);
+        $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $settingsMenu, 1);
 
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $usersMenu, 501);
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $groupsMenu, 601);

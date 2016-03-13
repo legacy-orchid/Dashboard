@@ -2,8 +2,9 @@
 
 namespace Orchid\Dashboard\Services\SEO;
 
-use Route;
 use App;
+use Illuminate\Support\Facades\Config;
+use Route;
 
 trait SeoTrait
 {
@@ -90,10 +91,11 @@ trait SeoTrait
         //Get запросы без параметров (Статика!)
         $allowGetRoutes = collect();
         foreach ($routeGetMethodCollection as $key => $value) {
-            if (!preg_match('/\{*\}/', $key)) {
+            if (!preg_match('/\{*\}/', $key) && stripos($key, "dashboard") === false) {
                 $allowGetRoutes->push($key);
             }
         }
+
 
         return $allowGetRoutes;
     }

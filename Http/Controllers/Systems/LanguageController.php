@@ -15,9 +15,11 @@ class LanguageController extends Controller
      */
     public function index(Request $request)
     {
-        $languages = Language::search($request->search)->sortable()->orderBy('status', 'Desc')->paginate(15);
-
-        return response()->toJson($languages);
+        $Languages = Language::search($request->search)->sortable()->orderBy('status', 'Desc')->paginate(15);
+        return view('dashboard::container.systems.language', [
+            'Languages' => $Languages,
+        ]);
+        //return response()->toJson($languages);
     }
 
     /**

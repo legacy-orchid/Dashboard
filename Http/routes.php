@@ -7,12 +7,18 @@ Route::get('/',[
 
 
 Route::group(['namespace' => 'Systems'], function () {
-    Route::resource('domains', 'DomainsController');
     Route::resource('settings', 'SettingsController');
     Route::resource('language', 'LanguageController');
 
+    Route::resource('log', 'LogController');
+
     Route::resource('users', 'UsersController');
     Route::resource('roles', 'RolesController');
+});
+
+
+Route::group(['namespace' => 'Tools'], function () {
+    Route::resource('static', 'StaticPagesController');
 });
 
 

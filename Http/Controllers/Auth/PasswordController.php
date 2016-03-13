@@ -2,8 +2,8 @@
 
 namespace Orchid\Dashboard\Http\Controllers\Auth;
 
-use Orchid\Dashboard\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Orchid\Dashboard\Http\Controllers\Controller;
 
 class PasswordController extends Controller
 {

@@ -4,7 +4,6 @@ namespace Orchid\Dashboard\Http\Controllers\Tools;
 
 use Illuminate\Http\Request;
 use Orchid\Dashboard\Http\Controllers\Controller;
-use Orchid\Dashboard\Models\Domain;
 
 class CategoryController extends Controller
 {
