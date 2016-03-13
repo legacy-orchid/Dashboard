@@ -15,6 +15,17 @@
     'Orchid' =>  Orchid\Dashboard\Facades\DashboardFacade::class,
 ```
 
+## Add Config
+
+in config/filesystems.php
+
+```php
+        'logs' => [
+            'driver' => 'local',
+            'root' => storage_path('logs'),
+        ],
+```
+
 ## Vendor Publish
 
 ```php
