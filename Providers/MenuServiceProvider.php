@@ -36,6 +36,7 @@ class MenuServiceProvider extends ServiceProvider
         ];
 
 
+
         $localizationMenu = [
             'slug' => 'Localization',
             'icon' => 'fa fa-language',
@@ -61,7 +62,7 @@ class MenuServiceProvider extends ServiceProvider
         $seoMenu = [
             'slug' => 'Static pages',
             'icon' => 'fa fa-list-alt',
-            'url' => route('dashboard.index'),
+            'url' => route('dashboard.static.index'),
             'label' => trans('dashboard::menu.Static pages'),
             'groupname' => trans('dashboard::menu.Search Engine Optimization'),
             'childs' => false,

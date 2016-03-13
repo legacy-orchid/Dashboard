@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,300&subset=latin,cyrillic' rel='stylesheet'
           type='text/css'>
-    <link rel="stylesheet" href="{{asset('/orchid/css/app.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('/orchid/css/orchid.css')}}" type="text/css"/>
 </head>
 
 
@@ -19,7 +19,7 @@
     @yield('content')
 </div>
 
-<script src="{{asset('/orchid/js/app.js')}}" type="text/javascript"></script>
+<script src="{{asset('/orchid/js/orchid.js')}}" type="text/javascript"></script>
 
 
 </body>

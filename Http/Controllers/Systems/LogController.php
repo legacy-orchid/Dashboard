@@ -2,11 +2,12 @@
 
 namespace Orchid\Dashboard\Http\Controllers\Systems;
 
+use File;
+use Illuminate\Http\Request;
 use Orchid\Dashboard\Http\Controllers\Controller;
 use Orchid\Dashboard\Http\Requests\UsersRequests;
 use Orchid\Dashboard\Models\User;
 use Orchid\Dashboard\Services\Log\LogViewer;
-use Request;
 
 class LogController extends Controller
 {
@@ -15,23 +16,51 @@ class LogController extends Controller
      *
      * @return User
      */
-    public function index()
+    public function getIndex()
     {
-        if (Request::input('l')) {
-            LogViewer::setFile(base64_decode(Request::input('l')));
-        }
-        if (Request::input('dl')) {
-            return Response::download(LogViewer::pathToLogFile(base64_decode(Request::input('dl'))));
-        } elseif (Request::has('del')) {
-            File::delete(LogViewer::pathToLogFile(LogViewer(Request::input('del'))));
-            return Redirect::to(Request::url());
-        }
-        $logs = LogViewer::all();
         return view('dashboard::container.systems.log', [
-            'logs' => $logs,
+            'logs' => LogViewer::all(),
             'files' => LogViewer::getFiles(true),
             'current_file' => LogViewer::getFileName()
         ]);
     }
 
+    /**
+     * @param $file
+     * @param bool $download
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getShow($file)
+    {
+        LogViewer::setFile(base64_decode($file));
+        return view('dashboard::container.systems.log', [
+            'logs' => LogViewer::all(),
+            'files' => LogViewer::getFiles(true),
+            'current_file' => LogViewer::getFileName()
+        ]);
+    }
+
+
+    /**
+     * @param $file
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function getDownload($file)
+    {
+        return response()->download(storage_path('logs/') . base64_decode($file));
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param string $file
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteDestroy($file)
+    {
+        File::delete(storage_path('logs/') . base64_decode($file));
+        return redirect()->route('dashboard.log.index');
+    }
 }

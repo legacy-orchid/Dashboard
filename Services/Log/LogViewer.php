@@ -39,15 +39,20 @@ class LogViewer
      */
     public static function setFile($file)
     {
-        $file = self::pathToLogFile($file);
-        if (File::exists($file)) {
+        if (File::exists(storage_path('logs/') . $file)) {
             self::$file = $file;
         }
     }
 
+    /**
+     * @param $file
+     * @return string
+     * @throws \Exception
+     * @deprecated
+     */
     public static function pathToLogFile($file)
     {
-        $logsPath = storage_path('logs');
+        $logsPath = storage_path('logs/');
         if (!File::exists($file)) { // try the absolute path
             $file = $logsPath . '/' . $file;
         }
@@ -81,10 +86,12 @@ class LogViewer
             }
             self::$file = $log_file[0];
         }
-        if (File::size(self::$file) > self::MAX_FILE_SIZE) {
+
+        if (File::size(storage_path('logs/') . self::$file) > self::MAX_FILE_SIZE) {
             return null;
         }
-        $file = File::get(self::$file);
+
+        $file = File::get(storage_path('logs/') . self::$file);
         preg_match_all($pattern, $file, $headings);
         if (!is_array($headings)) {
             return $log;
@@ -139,7 +146,7 @@ class LogViewer
             if (!stripos($value, '.log')) {
                 unset($files[$key]);
             } else {
-                $files[$key] = storage_path('logs/') . $value;
+                //$files[$key] = storage_path('logs/'). $value;
             }
         }
 
