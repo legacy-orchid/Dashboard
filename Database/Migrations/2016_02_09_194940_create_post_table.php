@@ -14,7 +14,6 @@ class CreatePostTable extends Migration
             $table->increments('id');
             $table->integer('types_id');
             $table->integer('users_id');
-            $table->integer('domains_id');
             $table->timestamps();
         });
     }

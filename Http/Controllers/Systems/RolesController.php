@@ -15,9 +15,8 @@ class RolesController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::search($request->search)->sortable()->paginate(15);
-
-        return response()->toJson($roles);
+        $Roles = Role::search($request->search)->sortable()->paginate(15);
+        return view('dashboard::container.systems.roles', ['Roles' => $Roles]);
     }
 
     /**

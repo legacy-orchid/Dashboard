@@ -10,9 +10,10 @@ class CreatePropertiesValueTable extends Migration
      */
     public function up()
     {
-        Schema::create('properties-value', function (Blueprint $table) {
+        Schema::create('value', function (Blueprint $table) {
             $table->increments('id');
             $table->text('value');
+            $table->integer('posts_id');
             $table->integer('language_id');
             $table->integer('properties_id');
             $table->timestamps();
@@ -24,6 +25,6 @@ class CreatePropertiesValueTable extends Migration
      */
     public function down()
     {
-        Schema::drop('properties-value');
+        Schema::drop('value');
     }
 }

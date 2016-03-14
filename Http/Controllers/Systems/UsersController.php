@@ -2,6 +2,7 @@
 
 namespace Orchid\Dashboard\Http\Controllers\Systems;
 
+use Illuminate\Http\Request;
 use Orchid\Dashboard\Http\Controllers\Controller;
 use Orchid\Dashboard\Http\Requests\UsersRequests;
 use Orchid\Dashboard\Models\User;
@@ -13,11 +14,10 @@ class UsersController extends Controller
      *
      * @return User
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(
-            User::sortable()->paginate(15)
-        );
+        $Users = User::search($request->search)->sortable()->paginate(15);
+        return view('dashboard::container.systems.users', ['Users' => $Users]);
     }
 
     /**

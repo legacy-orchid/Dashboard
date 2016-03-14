@@ -24,10 +24,13 @@ class Language extends Model
         ],
     ];
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'name',
         'code',
-        'status',
+        'status'
     ];
 
     protected $casts = [

@@ -14,8 +14,6 @@ class CreateTypesTable extends Migration
             $table->increments('id');
             $table->integer('dictionary_id');
             $table->string('slug')->unique();
-            $table->integer('types-property_id');
-            $table->integer('domains_id');
             $table->timestamps();
         });
     }

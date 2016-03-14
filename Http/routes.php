@@ -22,6 +22,8 @@ Route::group(['namespace' => 'Systems'], function () {
 
 
 Route::group(['namespace' => 'Tools'], function () {
+
+    Route::resource('types', 'TypesController');
     Route::resource('static', 'StaticPagesController');
 });
 

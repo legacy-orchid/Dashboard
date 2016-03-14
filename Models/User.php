@@ -9,10 +9,12 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Dashboard\Services\Access\UserAccess;
 use Orchid\Dashboard\Services\Access\UserInterface;
+use Nicolaslopezj\Searchable\SearchableTrait;
+use Kyslik\ColumnSortable\Sortable;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract, UserInterface
 {
-    use Authenticatable, CanResetPassword, UserAccess;
+    use Authenticatable, CanResetPassword, UserAccess, SearchableTrait, Sortable;
 
     /**
      * @var
@@ -30,10 +32,20 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $fillable = [
+        'name',
         'email',
         'permissions',
     ];
 
+    /**
+     * @var array
+     */
+    protected $searchable = [
+        'columns' => [
+            'name' => 3,
+            'email' => 1,
+        ],
+    ];
     /**
      * The attributes excluded from the model's JSON form.
      *

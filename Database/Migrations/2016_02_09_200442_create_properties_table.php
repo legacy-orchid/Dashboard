@@ -15,6 +15,7 @@ class CreatePropertiesTable extends Migration
             $table->integer('dictionary_id');
             $table->string('type');
             $table->string('default');
+            $table->text('options');
             $table->timestamps();
         });
     }

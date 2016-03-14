@@ -2,15 +2,17 @@
 
 @section('content')
 
+
+
     <div class="bg-light lter b-b wrapper-md">
-        <h1 class="m-n font-thin h3">Локализация</h1>
-        <small class="text-muted">Языки поддерживаемые системой</small>
+        <h1 class="m-n font-thin h3">Пользователи</h1>
+        <small class="text-muted">Системные активные аккаунты</small>
     </div>
 
-    <div class="wrapper-md" id="language-container">
+    <div class="wrapper-md" id="users-container">
 
         <div class="panel panel-default">
-            <div class="panel-heading font-bold">Языки</div>
+            <div class="panel-heading font-bold">Участники системы</div>
 
 
             <div class="row wrapper">
@@ -21,8 +23,7 @@
                     <button class="btn btn-sm btn-default">{{trans('dashboard::common.Apply')}}</button>
                 </div>
                 <div class="col-sm-4">
-                    <button class="btn m-b-xs btn-sm btn-default btn-addon" data-toggle="modal"
-                            data-target="#language-modal"><i
+                    <button class="btn m-b-xs btn-sm btn-default btn-addon" data-toggle="modal" data-target="#settings-modal"><i
                                 class="fa fa-plus"></i>{{trans('dashboard::common.Create')}}</button>
                 </div>
                 <div class="col-sm-3">
@@ -46,43 +47,35 @@
                         <thead>
                         <tr>
                             <th>@sortablelink ('id','#')</th>
-                            <th>@sortablelink ('name','Имя')</th>
-                            <th>@sortablelink ('code','Код')</th>
-                            <th>@sortablelink ('status','Статус')</th>
+                            <th>@sortablelink ('name','name')</th>
+                            <th>@sortablelink ('email','email')</th>
                             <th>@sortablelink ('created_at',trans('dashboard::common.Created'))</th>
                             <th>@sortablelink ('updated_at',trans('dashboard::common.Last edit'))</th>
                             <th>{{trans('dashboard::common.Manage')}}</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($Languages as $lang)
+                        @foreach ($Users as $user)
                             <tr>
                                 <td>
                                     <label class="i-checks m-b-none">
                                         <input type="checkbox"
-                                               name="language[{{ $lang->id }}]"><i></i>
+                                               name="settings[{{ $user->id }}]"><i></i>
                                     </label>
                                 </td>
-                                <td>{{ $lang->name }}</td>
-                                <td>{{ $lang->code }}</td>
-                                <td>@if($lang->status)
-                                        <i class="fa fa-check text-success"></i>
-                                    @else
-                                        <i class="fa fa-times text-danger"></i>
-                                    @endif</td>
-                                <td>{{ $lang->created_at }}</td>
-                                <td>{{ $lang->updated_at }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->created_at }}</td>
+                                <td>{{ $user->updated_at }}</td>
                                 <td>
-
                                     <div class="btn-group pull-right btn-group-sm" role="group" aria-label="...">
-                                        <a href="{{ route('dashboard.language.edit',$lang->id) }}"
+                                        <a href="{{ route('dashboard.users.edit',$user->id) }}"
                                            class="btn btn-default"><span class="fa fa-edit"></span> </a>
-                                        <a href="#" data-toggle="modal" data-target="#Modal-{{$lang->id}}"
+                                        <a href="#" data-toggle="modal" data-target="#Modal-{{$user->id}}"
                                            class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-
                                 </td>
                             </tr>
 
@@ -102,11 +95,11 @@
                         <button class="btn btn-sm btn-default">{{trans('dashboard::common.Apply')}}</button>
                     </div>
                     <div class="col-sm-4 text-center">
-                        <small class="text-muted inline m-t-sm m-b-sm">{{trans('dashboard::common.show')}} {{$Languages->total()}}
-                            -{{$Languages->perPage()}} {{trans('dashboard::common.of')}} {!! $Languages->count() !!} {{trans('dashboard::common.elements')}}</small>
+                        <small class="text-muted inline m-t-sm m-b-sm">{{trans('dashboard::common.show')}} {{$Users->total()}}
+                            -{{$Users->perPage()}} {{trans('dashboard::common.of')}} {!! $Users->count() !!} {{trans('dashboard::common.elements')}}</small>
                     </div>
                     <div class="col-sm-4 text-right text-center-xs">
-                        {!! $Languages->render() !!}
+                        {!! $Users->render() !!}
                     </div>
                 </div>
             </footer>
@@ -123,8 +116,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade slide-down disable-scroll" id="language-modal" tabindex="-1" role="dialog"
-         aria-hidden="false">
+    <div class="modal fade slide-down disable-scroll" id="settings-modal" tabindex="-1" role="dialog" aria-hidden="false">
         <div class="modal-dialog">
             <div class="modal-content-wrapper">
                 <div class="modal-content">
@@ -132,62 +124,42 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"><i class="fa fa-times"></i></span>
                         </button>
-                        <h5>Домен</h5>
+                        <h5>Константа</h5>
                         <p class="p-b-10">Системная универсальная опция для хранения различных значений</p>
                     </div>
                     <div class="modal-body">
-
-
-                        <form class="form-horizontal" action="{{route('dashboard.language.store')}}" method="post">
+                        <form class="form-horizontal" action="#" method="post">
 
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">Название</label>
-
                                 <div class="col-lg-10">
-                                    <input type="text" name="name" class="form-control">
+                                    <input type="text" name="key" class="form-control">
                                 </div>
                             </div>
 
                             <div class="line line-dashed b-b line-lg"></div>
 
                             <div class="form-group">
-                                <label class="col-lg-2 control-label">Код</label>
+                                <label class="col-lg-2 control-label">Значение</label>
 
                                 <div class="col-lg-10">
-                                    <input type="text" name="code" class="form-control">
+                                    <input type="text" name="value" class="form-control">
                                 </div>
                             </div>
 
+
                             <div class="line line-dashed b-b line-lg"></div>
 
-                            <div class="form-group">
-                                <label class="col-lg-2 control-label">Статус</label>
-
-                                <div class="col-lg-4">
-                                    <label class="i-switch bg-success m-t-xs m-r">
-                                        <input type="radio" name="status" value="1" checked>
-                                        <i></i>
-                                    </label>
-                                    <label class="i-switch bg-danger m-t-xs m-r">
-                                        <input type="radio" name="status" value="0">
-                                        <i></i>
-                                    </label>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    {!! csrf_field() !!}
+                            <div class="row">
+                                <div class="col-md-offset-8 col-sm-4 m-t-10 sm-m-t-10">
                                     <button type="button" class="btn btn-primary btn-addon btn-block m-t-5">
                                         <i class="fa fa-plus"></i>
                                         Создать
                                     </button>
                                 </div>
-
                             </div>
 
-
                         </form>
-
-
                     </div>
                 </div>
             </div>
@@ -195,6 +167,4 @@
         </div>
     </div>
 
-
 @endsection
-

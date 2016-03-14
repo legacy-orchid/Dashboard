@@ -4,6 +4,7 @@ namespace Orchid\Dashboard\Http\Controllers\Tools;
 
 use Illuminate\Http\Request;
 use Orchid\Dashboard\Http\Controllers\Controller;
+use Orchid\Dashboard\Models\Types;
 
 class TypesController extends Controller
 {
@@ -14,6 +15,9 @@ class TypesController extends Controller
      */
     public function index(Request $request)
     {
+        return view('dashboard::container.tools.types', [
+            'Types' => Types::all(),
+        ]);
     }
 
     /**
@@ -45,7 +49,9 @@ class TypesController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('dashboard::container.tools.types', [
+            'Types' => Types::all(),
+        ]);
     }
 
     /**

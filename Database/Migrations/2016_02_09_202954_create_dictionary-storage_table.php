@@ -10,7 +10,7 @@ class CreateDictionaryStorageTable extends Migration
      */
     public function up()
     {
-        Schema::create('dictionary-storage', function (Blueprint $table) {
+        Schema::create('storage', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('dictionary_id');
             $table->string('value');
@@ -24,6 +24,6 @@ class CreateDictionaryStorageTable extends Migration
      */
     public function down()
     {
-        Schema::drop('dictionary-storage');
+        Schema::drop('storage');
     }
 }

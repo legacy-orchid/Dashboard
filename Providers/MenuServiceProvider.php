@@ -84,7 +84,7 @@ class MenuServiceProvider extends ServiceProvider
         $typePostMenu = [
             'slug' => 'Types posts',
             'icon' => 'fa fa-pencil-square-o',
-            'url' => route('dashboard.index'),
+            'url' => route('dashboard.types.index'),
             'label' => trans('dashboard::menu.Types posts'),
             'childs' => false,
             'divider' => false,
@@ -117,7 +117,7 @@ class MenuServiceProvider extends ServiceProvider
         $usersMenu = [
             'slug' => 'Users',
             'icon' => 'fa fa-users',
-            'url' => route('dashboard.index'),
+            'url' => route('dashboard.users.index'),
             'label' => trans('dashboard::menu.Users'),
             'groupname' => trans('dashboard::menu.Users'),
             'childs' => false,
@@ -127,7 +127,7 @@ class MenuServiceProvider extends ServiceProvider
         $groupsMenu = [
             'slug' => 'Groups',
             'icon' => 'fa fa-lock',
-            'url' => route('dashboard.index'),
+            'url' => route('dashboard.roles.index'),
             'label' => trans('dashboard::menu.Groups'),
             'childs' => false,
             'divider' => true,

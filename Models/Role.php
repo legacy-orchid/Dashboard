@@ -5,10 +5,12 @@ namespace Orchid\Dashboard\Models;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Dashboard\Services\Access\RoleAccess;
 use Orchid\Dashboard\Services\Access\RoleInterface;
+use Kyslik\ColumnSortable\Sortable;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Role extends Model implements RoleInterface
 {
-    use RoleAccess;
+    use RoleAccess, Sortable, SearchableTrait;
 
     /**
      * @var
@@ -29,4 +31,15 @@ class Role extends Model implements RoleInterface
         'slug',
         'permissions',
     ];
+
+    /**
+     * @var array
+     */
+    protected $searchable = [
+        'columns' => [
+            'slug' => 3,
+            'name' => 3,
+        ],
+    ];
+
 }
