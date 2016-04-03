@@ -1,5 +1,7 @@
 ## Content Management Framework
 
+[![Join the chat at https://gitter.im/TheOrchid/Dashboard](https://badges.gitter.im/TheOrchid/Dashboard.svg)](https://gitter.im/TheOrchid/Dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Install composer
 ```php
   "require": {
