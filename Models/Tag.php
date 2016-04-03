@@ -2,8 +2,8 @@
 
 namespace Orchid\Dashboard\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
@@ -12,7 +12,7 @@ class Tag extends Model
      *
      * @var string
      */
-    protected static $taggedModel = 'Cartalyst\Tags\IlluminateTagged';
+    protected static $taggedModel = Tagged::class;
     /**
      * @var bool
      */

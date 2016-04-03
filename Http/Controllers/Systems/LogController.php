@@ -18,35 +18,36 @@ class LogController extends Controller
         return view('dashboard::container.systems.log', [
             'logs' => LogViewer::all(),
             'files' => LogViewer::getFiles(true),
-            'current_file' => LogViewer::getFileName()
+            'current_file' => LogViewer::getFileName(),
         ]);
     }
 
     /**
      * @param $file
      * @param bool $download
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getShow($file)
     {
         LogViewer::setFile(base64_decode($file));
+
         return view('dashboard::container.systems.log', [
             'logs' => LogViewer::all(),
             'files' => LogViewer::getFiles(true),
-            'current_file' => LogViewer::getFileName()
+            'current_file' => LogViewer::getFileName(),
         ]);
     }
 
-
     /**
      * @param $file
+     *
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      */
     public function getDownload($file)
     {
         return response()->download(storage_path('logs/') . base64_decode($file));
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -58,6 +59,7 @@ class LogController extends Controller
     public function deleteDestroy($file)
     {
         File::delete(storage_path('logs/') . base64_decode($file));
+
         return redirect()->route('dashboard.log.index');
     }
 }

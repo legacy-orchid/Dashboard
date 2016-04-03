@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Services\Log;
+<?php
+
+namespace Orchid\Dashboard\Services\Log;
 
 use Illuminate\Support\Facades\File;
 use Psr\Log\LogLevel;
@@ -7,7 +9,6 @@ use Storage;
 
 class LogViewer
 {
-
     const MAX_FILE_SIZE = 10485760;
     /**
      * @var string file
@@ -46,8 +47,11 @@ class LogViewer
 
     /**
      * @param $file
+     *
      * @return string
+     *
      * @throws \Exception
+     *
      * @deprecated
      */
     public static function pathToLogFile($file)
@@ -60,6 +64,7 @@ class LogViewer
         if (dirname($file) !== $logsPath) {
             throw new \Exception('No such log file');
         }
+
         return $file;
     }
 
@@ -88,7 +93,7 @@ class LogViewer
         }
 
         if (File::size(storage_path('logs/') . self::$file) > self::MAX_FILE_SIZE) {
-            return null;
+            return;
         }
 
         $file = File::get(storage_path('logs/') . self::$file);
@@ -101,7 +106,7 @@ class LogViewer
             array_shift($log_data);
         }
         foreach ($headings as $h) {
-            for ($i = 0, $j = count($h); $i < $j; $i++) {
+            for ($i = 0, $j = count($h); $i < $j; ++$i) {
                 foreach ($log_levels as $level_key => $level_value) {
                     if (strpos(strtolower($h[$i]), '.' . $level_value)) {
                         preg_match('/^\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\].*?\.' . $level_key . ': (.*?)( in .*?:[0-9]+)?$/',
@@ -116,13 +121,12 @@ class LogViewer
                             'date' => $current[1],
                             'text' => $current[2],
                             'in_file' => isset($current[3]) ? $current[3] : null,
-                            'stack' => preg_replace("/^\n*/", '', $log_data[$i])
+                            'stack' => preg_replace("/^\n*/", '', $log_data[$i]),
                         );
                     }
                 }
             }
         }
-
 
         return array_reverse($log);
     }
@@ -132,7 +136,8 @@ class LogViewer
      */
     private static function getLogLevels()
     {
-        $class = new ReflectionClass(new LogLevel);
+        $class = new ReflectionClass(new LogLevel());
+
         return $class->getConstants();
     }
 
