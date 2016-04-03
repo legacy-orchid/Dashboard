@@ -4,7 +4,6 @@ namespace Orchid\Dashboard\Http\Controllers\Tools;
 
 use Config;
 use Illuminate\Http\Request;
-use Orchid;
 use Orchid\Dashboard\Http\Controllers\Controller;
 use SEO;
 
@@ -34,6 +33,7 @@ class StaticPagesController extends Controller
     {
         $url = base64_decode($url);
         $meta = SEO::where('route', $url)->first();
+
         return $meta->toJson();
     }
 

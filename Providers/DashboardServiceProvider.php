@@ -128,8 +128,6 @@ class DashboardServiceProvider extends ServiceProvider
             'childs' => true,
         ];
 
-
-
         $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $panelMenu, 1);
         $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $postMenu, 100);
         $dashboardMenu->add('leftMenu', 'dashboard::partials.leftMenu', $toolsMenu, 500);

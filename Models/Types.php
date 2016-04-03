@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Models;
+<?php
+
+namespace Orchid\Dashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
@@ -14,8 +16,4 @@ class Types extends Model
         'name',
         'slug',
     ];
-
-
-
-
 }

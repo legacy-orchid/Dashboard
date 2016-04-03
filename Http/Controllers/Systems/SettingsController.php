@@ -16,7 +16,7 @@ class SettingsController extends Controller
     public function index()
     {
         return view('dashboard::container.systems.settings', [
-           'Settings' => Setting::search(Request::input('search'))->sortable()->paginate(15)
+            'Settings' => Setting::search(Request::input('search'))->sortable()->paginate(15),
         ]);
     }
 

@@ -16,6 +16,7 @@ class LanguageController extends Controller
     public function index(Request $request)
     {
         $Languages = Language::search($request->search)->sortable()->orderBy('status', 'Desc')->paginate(15);
+
         return view('dashboard::container.systems.language', [
             'Languages' => $Languages,
         ]);

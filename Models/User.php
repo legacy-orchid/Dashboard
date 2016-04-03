@@ -7,10 +7,10 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
+use Nicolaslopezj\Searchable\SearchableTrait;
 use Orchid\Dashboard\Services\Access\UserAccess;
 use Orchid\Dashboard\Services\Access\UserInterface;
-use Nicolaslopezj\Searchable\SearchableTrait;
-use Kyslik\ColumnSortable\Sortable;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract, UserInterface
 {

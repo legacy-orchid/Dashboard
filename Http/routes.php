@@ -1,10 +1,8 @@
 <?php
 
 Route::get('/', [
-    'as' => 'dashboard.index', 'uses' => 'DashboardController@index'
+    'as' => 'dashboard.index', 'uses' => 'DashboardController@index',
 ]);
-
-
 
 Route::group(['namespace' => 'Systems'], function () {
     Route::resource('settings', 'SettingsController');
@@ -20,12 +18,10 @@ Route::group(['namespace' => 'Systems'], function () {
     Route::resource('roles', 'RolesController');
 });
 
-
 Route::group(['namespace' => 'Tools'], function () {
 
     Route::resource('types', 'TypesController');
     Route::resource('static', 'StaticPagesController');
 });
-
 
 Route::auth();

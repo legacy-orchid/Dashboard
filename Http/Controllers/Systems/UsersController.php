@@ -17,6 +17,7 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $Users = User::search($request->search)->sortable()->paginate(15);
+
         return view('dashboard::container.systems.users', ['Users' => $Users]);
     }
 

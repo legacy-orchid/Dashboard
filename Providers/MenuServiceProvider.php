@@ -34,8 +34,6 @@ class MenuServiceProvider extends ServiceProvider
             'divider' => false,
         ];
 
-
-
         $localizationMenu = [
             'slug' => 'Localization',
             'icon' => 'fa fa-language',
@@ -45,7 +43,6 @@ class MenuServiceProvider extends ServiceProvider
             'childs' => false,
             'divider' => true,
         ];
-
 
         $errorMenu = [
             'slug' => 'Logs',
@@ -57,7 +54,6 @@ class MenuServiceProvider extends ServiceProvider
             'divider' => true,
         ];
 
-
         $seoMenu = [
             'slug' => 'Static pages',
             'icon' => 'fa fa-list-alt',
@@ -68,8 +64,6 @@ class MenuServiceProvider extends ServiceProvider
             'divider' => false,
         ];
 
-
-
         $siteMapMenu = [
             'slug' => 'Site Map',
             'icon' => 'fa fa-sitemap',
@@ -78,8 +72,6 @@ class MenuServiceProvider extends ServiceProvider
             'childs' => false,
             'divider' => true,
         ];
-
-
 
         $typePostMenu = [
             'slug' => 'Types posts',
@@ -99,8 +91,6 @@ class MenuServiceProvider extends ServiceProvider
             'divider' => true,
         ];
 
-
-
         $menuMenu = [
             'slug' => 'Menu',
             'icon' => 'fa fa-bars',
@@ -110,9 +100,6 @@ class MenuServiceProvider extends ServiceProvider
             'childs' => false,
             'divider' => false,
         ];
-
-
-
 
         $usersMenu = [
             'slug' => 'Users',
@@ -133,9 +120,6 @@ class MenuServiceProvider extends ServiceProvider
             'divider' => true,
         ];
 
-
-
-
         $postMenu = [
             'slug' => 'Post',
             'icon' => 'fa fa-pencil',
@@ -146,9 +130,6 @@ class MenuServiceProvider extends ServiceProvider
             'divider' => false,
         ];
 
-
-
-
         $blocksMenu = [
             'slug' => 'Block',
             'icon' => 'fa fa-cubes',
@@ -158,23 +139,15 @@ class MenuServiceProvider extends ServiceProvider
             'divider' => true,
         ];
 
-
-
-
         $dashboardMenu->add('Posts', 'dashboard::partials.leftMenu', $postMenu, 1);
         $dashboardMenu->add('Posts', 'dashboard::partials.leftMenu', $blocksMenu, 2);
-
-
 
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $menuMenu, 1);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $typePostMenu, 2);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $categoryMenu, 3);
 
-
-
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $seoMenu, 10);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $siteMapMenu, 30);
-
 
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $errorMenu, 500);
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $localizationMenu, 300);

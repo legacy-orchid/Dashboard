@@ -16,6 +16,7 @@ class RolesController extends Controller
     public function index(Request $request)
     {
         $Roles = Role::search($request->search)->sortable()->paginate(15);
+
         return view('dashboard::container.systems.roles', ['Roles' => $Roles]);
     }
 

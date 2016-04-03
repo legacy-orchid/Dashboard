@@ -41,5 +41,4 @@ class Role extends Model implements RoleInterface
             'name' => 3,
         ],
     ];
-
 }
