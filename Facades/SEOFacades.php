@@ -16,4 +16,17 @@ class SEOFacades extends Facade
     {
         return SEO::class;
     }
+
+    /**
+     * @param $method
+     * @param $args
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        $seo = new SEO();
+        return $seo->$method($args);
+    }
+
+
 }

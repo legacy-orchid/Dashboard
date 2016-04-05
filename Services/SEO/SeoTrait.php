@@ -24,7 +24,7 @@ trait SeoTrait
      */
     public function generate($id = null)
     {
-        if (is_null($id)) {
+        if (is_null($id) || empty($id)) {
             if (is_null(Route::current())) {
                 return [
                     'title' => [],
@@ -90,10 +90,11 @@ trait SeoTrait
         //Get запросы без параметров (Статика!)
         $allowGetRoutes = collect();
         foreach ($routeGetMethodCollection as $key => $value) {
-            if (!preg_match('/\{*\}/', $key) && stripos($key, 'dashboard') === false) {
+            if (!preg_match('/\{*\}/', $key) && stripos($key, "dashboard") === false) {
                 $allowGetRoutes->push($key);
             }
         }
+
 
         return $allowGetRoutes;
     }
