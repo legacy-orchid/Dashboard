@@ -50,7 +50,7 @@
             <div class="navi-wrap">
 
                 <!-- nav -->
-                <nav ui-nav="" class="navi clearfix">
+                <nav class="navi clearfix">
                     <ul class="nav">
                         <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                             <span>{{trans('dashboard::menu.Navigation')}}</span>
