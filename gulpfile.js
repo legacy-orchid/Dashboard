@@ -1,6 +1,5 @@
 var elixir = require('laravel-elixir');
-var gulp = require('gulp');
-
+require('laravel-elixir-vueify');
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -14,25 +13,17 @@ var gulp = require('gulp');
 
 elixir(function(mix) {
     mix.less('./Resources/assets/less/app.less', './Resources/dist/css/orchid.css');
-
     mix.copy('./Resources/assets/vendor/bootstrap/dist/fonts/', './Resources/dist/fonts');
     mix.copy('./Resources/assets/vendor/font-awesome/fonts/', './Resources/dist/fonts');
     mix.copy('./Resources/assets/vendor/summernote/dist//fonts/', './Resources/dist/fonts');
 
     mix.scripts([
-        "./Resources/assets/vendor/angular/angular.min.js",
-        "./Resources/assets/vendor/angular-animate/angular-animate.min.js",
-        "./Resources/assets/vendor/angular-route/angular-route.min.js",
         "./Resources/assets/vendor/jquery/dist/jquery.min.js",
         "./Resources/assets/vendor/bootstrap/dist/js/bootstrap.min.js",
-        "./Resources/assets/js/app.js",
-        "./Resources/assets/js/plugins/**",
-        "./Resources/assets/js/controller/**",
-        "./Resources/assets/js/service/**",
-        "./Resources/assets/js/directive/**",
-
-
-
+        "./Resources/assets/js/components/**",
+        "./Resources/assets/js/directives/**",
         "./Resources/assets/vendor/summernote/dist/summernote.min.js"
     ], './Resources/dist/js/orchid.js');
+
+    mix.browserify('./Resources/dist/js/orchid.js', './Resources/dist/js/orchid.js');
 });
