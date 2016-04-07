@@ -12,18 +12,18 @@ require('laravel-elixir-vueify');
  */
 
 elixir(function(mix) {
-    mix.less('./Resources/assets/less/app.less', './Resources/dist/css/orchid.css');
-    mix.copy('./Resources/assets/vendor/bootstrap/dist/fonts/', './Resources/dist/fonts');
-    mix.copy('./Resources/assets/vendor/font-awesome/fonts/', './Resources/dist/fonts');
-    mix.copy('./Resources/assets/vendor/summernote/dist//fonts/', './Resources/dist/fonts');
+    mix.less('./src/Resources/assets/less/app.less', './src/Resources/dist/css/orchid.css');
+    mix.copy('./src/Resources/assets/vendor/bootstrap/dist/fonts/', './src/Resources/dist/fonts');
+    mix.copy('./src/Resources/assets/vendor/font-awesome/fonts/', './src/Resources/dist/fonts');
+    mix.copy('./src/Resources/assets/vendor/summernote/dist/fonts/', './src/Resources/dist/fonts');
 
     mix.scripts([
-        "./Resources/assets/vendor/jquery/dist/jquery.min.js",
-        "./Resources/assets/vendor/bootstrap/dist/js/bootstrap.min.js",
-        "./Resources/assets/js/components/**",
-        "./Resources/assets/js/directives/**",
-        "./Resources/assets/vendor/summernote/dist/summernote.min.js"
-    ], './Resources/dist/js/orchid.js');
+        "./src/Resources/assets/vendor/jquery/dist/jquery.min.js",
+        "./src/Resources/assets/vendor/bootstrap/dist/js/bootstrap.min.js",
+        "./src/Resources/assets/js/components/**",
+        "./src/Resources/assets/js/directives/**",
+        "./src/Resources/assets/vendor/summernote/dist/summernote.min.js"
+    ], './src/Resources/dist/js/orchid.js');
 
-    mix.browserify('./Resources/dist/js/orchid.js', './Resources/dist/js/orchid.js');
+    mix.browserify('./src/Resources/dist/js/orchid.js', './src/Resources/dist/js/orchid.js');
 });

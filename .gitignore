@@ -1,10 +1,10 @@
-/vendor
-/node_modules
+vendor
+node_modules
 Homestead.yaml
 Homestead.json
 .env
 .idea
 .phpstorm.meta.php
 _ide_helper.php
-/public/bower_components
-Resources/assets/vendor
+src/public/bower_components
+src/Resources/assets/vendor
