@@ -1,7 +1,6 @@
 ## Content Management Framework
 
 [![Join the chat at https://gitter.im/TheOrchid/Dashboard](https://badges.gitter.im/TheOrchid/Dashboard.svg)](https://gitter.im/TheOrchid/Dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Latest Stable Version](https://poser.pugx.org/orchid/orchid/v/stable)](https://packagist.org/packages/orchid/orchid)
 [![Total Downloads](https://poser.pugx.org/orchid/orchid/downloads)](https://packagist.org/packages/orchid/orchid)
 [![License](https://poser.pugx.org/orchid/orchid/license)](https://packagist.org/packages/orchid/orchid)
