@@ -25,7 +25,7 @@
     "tag": "v0.6.16",
     "commit": "4a988eebc69b783f649e16e44511bea5afa73df8"
   },
-  "_source": "git://github.com/summernote/summernote.git",
+  "_source": "https://github.com/summernote/summernote.git",
   "_target": "~0.6.16",
   "_originalSource": "summernote"
 }

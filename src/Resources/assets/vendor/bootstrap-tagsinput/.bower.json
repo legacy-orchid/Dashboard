@@ -45,7 +45,7 @@
     "tag": "0.5.0",
     "commit": "f05627192fabceb3ea35bf13398c0d1afdd89e02"
   },
-  "_source": "git://github.com/TimSchlechter/bootstrap-tagsinput.git",
+  "_source": "https://github.com/TimSchlechter/bootstrap-tagsinput.git",
   "_target": "0.5.*",
   "_originalSource": "bootstrap-tagsinput"
 }

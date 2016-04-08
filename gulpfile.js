@@ -20,10 +20,13 @@ elixir(function(mix) {
     mix.scripts([
         "./src/Resources/assets/vendor/jquery/dist/jquery.min.js",
         "./src/Resources/assets/vendor/bootstrap/dist/js/bootstrap.min.js",
+        "./src/Resources/assets/vendor/vue/dist/vue.js",
+        "./src/Resources/assets/vendor/vue-resource/dist/vue-resource.js",
+        "./src/Resources/assets/js/modules/**",
         "./src/Resources/assets/js/components/**",
         "./src/Resources/assets/js/directives/**",
         "./src/Resources/assets/vendor/summernote/dist/summernote.min.js"
     ], './src/Resources/dist/js/orchid.js');
 
-    mix.browserify('./src/Resources/dist/js/orchid.js', './src/Resources/dist/js/orchid.js');
+    //mix.browserify('./src/Resources/dist/js/orchid.js', './src/Resources/dist/js/orchid.js');
 });

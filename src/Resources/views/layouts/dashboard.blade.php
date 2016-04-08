@@ -15,7 +15,11 @@
 
 
 <body>
-<div class="app app-header-fixed app-aside-fixed">
+<div id="app" class="app app-header-fixed app-aside-fixed">
+
+    <loading-bar :progress.sync="progress" :direction="direction ? 'left' : 'right'" :error.sync="error"></loading-bar>
+
+
 
 
     <!-- header -->
@@ -106,6 +110,8 @@
     <!-- content -->
     <div id="content" class="app-content" role="main">
         <div class="app-content-body" id="app-content-body">
+
+
 
 
             @yield('content')

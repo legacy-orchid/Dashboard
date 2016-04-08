@@ -28,7 +28,7 @@
     "tag": "v1.0.1",
     "commit": "cf483567783f5d03401b4e3a75ebe46cbee15f24"
   },
-  "_source": "git://github.com/alxlit/bootstrap-chosen.git",
+  "_source": "https://github.com/alxlit/bootstrap-chosen.git",
   "_target": "1.*",
   "_originalSource": "bootstrap-chosen"
 }

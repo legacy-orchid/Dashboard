@@ -7,7 +7,7 @@
     "branch": "master",
     "commit": "8ed46f2f51ee7dca3c1045dd3895720aa3525b8a"
   },
-  "_source": "git://github.com/mindmup/bootstrap-wysiwyg.git",
+  "_source": "https://github.com/mindmup/bootstrap-wysiwyg.git",
   "_target": "*",
   "_originalSource": "bootstrap-wysiwyg"
 }
