@@ -17,11 +17,6 @@
 <body>
 <div id="app" class="app app-header-fixed app-aside-fixed">
 
-    <loading-bar :progress.sync="progress" :direction="direction ? 'left' : 'right'" :error.sync="error"></loading-bar>
-
-
-
-
     <!-- header -->
     <header id="header" class="app-header navbar" role="menu">
         <!-- navbar header -->
@@ -111,6 +106,7 @@
     <div id="content" class="app-content" role="main">
         <div class="app-content-body" id="app-content-body">
 
+            <loading-bar :progress.sync="progress" :direction="direction ? 'left' : 'right'" :error.sync="error"></loading-bar>
 
 
 
