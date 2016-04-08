@@ -138,7 +138,7 @@ trait TaggableTrait
         $tags = (new static)->prepareTags($tags);
 
         foreach ($tags as $tag) {
-            $query->whereHas('tags', function ($query) use ($type, $tag) {
+            $query->whereHas('tags', function (Builder $query) use ($type, $tag) {
                 $query->where($type, $tag);
             });
         }
@@ -181,7 +181,7 @@ trait TaggableTrait
     {
         $tags = (new static)->prepareTags($tags);
 
-        return $query->whereHas('tags', function ($query) use ($type, $tags) {
+        return $query->whereHas('tags', function (Builder $query) use ($type, $tags) {
             $query->whereIn($type, $tags);
         });
     }
@@ -215,7 +215,8 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * @param null $tags
+     * @return bool
      */
     public function untag($tags = null)
     {
@@ -229,7 +230,7 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * @param $name
      */
     public function removeTag($name)
     {
@@ -253,7 +254,8 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * @param $tags
+     * @return bool
      */
     public function tag($tags)
     {
@@ -265,7 +267,7 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * @param $name
      */
     public function addTag($name)
     {

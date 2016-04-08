@@ -28,14 +28,11 @@ class SettingsTest extends TestCase
         //Проверяем это значение
         $result = Settings::get($key);
         $this->assertEquals(null, $result);
-
-
     }
 
 
     public function manyValue()
     {
-
         $valueArray = [
             'test-1' => "value-" . str_random(40),
             'test-2' => "value-" . str_random(40),
@@ -62,7 +59,5 @@ class SettingsTest extends TestCase
             'test-3'
         ]);
         $this->assertTrue($result);
-
     }
-
 }

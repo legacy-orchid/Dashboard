@@ -34,7 +34,7 @@ trait RoleAccess
      * Get mutator for the "permissions" attribute.
      *
      * @param mixed $permissions
-     *
+     * @deprecated
      * @return array
      */
     public function getPermissionsAttribute($permissions)
@@ -44,7 +44,7 @@ trait RoleAccess
 
     /**
      * Set mutator for the "permissions" attribute.
-     *
+     * @deprecated
      * @param mixed $permissions
      */
     public function setPermissionsAttribute(array $permissions)

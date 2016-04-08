@@ -19,7 +19,6 @@ class SocketServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerConfig();
-//        $this->registerProviders();
     }
 
     /**

@@ -41,4 +41,12 @@ class Role extends Model implements RoleInterface
             'name' => 3,
         ],
     ];
+
+    
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'permissions' => 'array',
+    ];
 }

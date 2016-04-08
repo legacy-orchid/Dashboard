@@ -28,7 +28,7 @@ trait UserAccess
      * Get mutator for the "permissions" attribute.
      *
      * @param mixed $permissions
-     *
+     * @deprecated
      * @return array
      */
     public function getPermissionsAttribute($permissions)
@@ -38,7 +38,7 @@ trait UserAccess
 
     /**
      * Set mutator for the "permissions" attribute.
-     *
+     * @deprecated
      * @param mixed $permissions
      */
     public function setPermissionsAttribute(array $permissions)
@@ -105,7 +105,7 @@ trait UserAccess
     /**
      * @param $Role
      */
-    public function addRole($Role)
+    public function addRole(RoleInterface $Role)
     {
         $this->roles()->save($Role);
     }
@@ -113,7 +113,7 @@ trait UserAccess
     /**
      * @param $Role
      */
-    public function removeRole($Role)
+    public function removeRole(RoleInterface $Role)
     {
         $this->roles()->where('slug', $Role)->first()->remove();
     }
@@ -121,7 +121,7 @@ trait UserAccess
     /**
      * @param array|object $Roles
      */
-    public function replaceRoles($Roles)
+    public function replaceRoles(RoleInterface $Roles)
     {
         $this->roles()->remove();
         $this->roles()->saveMany($Roles);

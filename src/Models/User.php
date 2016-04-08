@@ -55,4 +55,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         'password',
         'remember_token',
     ];
+
+
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'permissions' => 'array',
+    ];
 }

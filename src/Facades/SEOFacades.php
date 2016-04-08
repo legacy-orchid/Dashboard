@@ -27,6 +27,4 @@ class SEOFacades extends Facade
         $seo = new SEO();
         return $seo->$method($args);
     }
-
-
 }
