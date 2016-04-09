@@ -38,7 +38,7 @@ class Log extends Collection
     }
 
     /**
-     * Все логи по дате и типу лога.
+     * Все логи по имени файла и типу логов.
      */
     public function entries($filename, $level = 'all')
     {
@@ -46,7 +46,7 @@ class Log extends Collection
     }
 
     /**
-     * Статиска логов.
+     * Статистика логов.
      */
     public function stats()
     {
