@@ -1,21 +1,28 @@
 <?php namespace Orchid\Dashboard\Services\Log;
 
-use Orchid\Dashboard\Services\Log\Utilities\LogItemCollection;
+use Illuminate\Support\Collection;
+use Illuminate\Filesystem\Filesystem;
+use Orchid\Dashboard\Services\Log\Utilities\LogItem;
 use Orchid\Dashboard\Services\Log\Utilities\LogParser;
 
-class Log
+class Log extends Collection
 {
-    private $items;
+    private $storagePath;
+    private $filesystem;
+    private $filesPattern = 'laravel*.log';
     
-    public function __construct(LogItemCollection $log_colletion)
+    public function __construct($items = [])
     {
-        $this->items = $log_colletion::make();
+        $this->storagePath = storage_path('logs');
+        $this->filesystem = new Filesystem(app('files'), $this->storagePath);
+
+        parent::__construct($items);
+
+        $this->load();
     }
 
     /**
      * Все логи.
-     *
-     * @return Entities\LogCollection
      */
     public function all()
     {
@@ -23,62 +30,50 @@ class Log
     }
 
     /**
-     * Лог по дате.
-     *
-     * @param  string  $date
-     * @return Entities\LogCollection
+     * Логи по имени файла.
      */
-    public function get($date)
+    public function get($filename, $default = null)
     {
-        return $this->items->get($date);
+        return parent::get($filename, $default);
     }
 
     /**
      * Все логи по дате и типу лога.
-     *
-     * @param  string  $date
-     * @param  string  $level
-     * @return Entities\LogEntryCollection
      */
-    public function entries($date, $level = 'all')
+    public function entries($filename, $level = 'all')
     {
-        return $this->items->get($date)->entries($level);
+        return $this->get($filename)->entries($level);
     }
 
     /**
-     * Статиска лого.
-     *
-     * @return array
+     * Статиска логов.
      */
     public function stats()
     {
-        return $this->items->stats();
+        $stats = [];
+
+        foreach ($this->items as $filename => $log) {
+            /** @var LogItem $log */
+            $stats[$filename] = $log->stats();
+        }
+
+        return $stats;
     }
 
     /**
      * Список лог файлов.
-     *
-     * @return array
      */
     public function logs()
     {
-        return $this->items->logs();
+        $pattern = $this->storagePath . '\\' . $this->filesPattern;
+        $glob = glob($pattern, GLOB_BRACE);
+        $files = array_map('realpath', $glob);
+
+        return array_filter($files);
     }
 
     /**
-     * Список лог файлов с датами.
-     *
-     * @return array
-     */
-    public function dates()
-    {
-        return array_keys($this->items->toArray());
-    }
-
-    /**
-     * Кол-во логов.
-     *
-     * @return int
+     * Кол-во лог файлов.
      */
     public function count()
     {
@@ -87,19 +82,21 @@ class Log
 
     /**
      * Дерево логов.
-     *
-     * @param  bool|false  $trans
-     * @return array
      */
     public function tree($trans = false)
     {
-        return $this->items->tree($trans);
+        $tree = [];
+
+        foreach ($this->items as $date => $log) {
+            /** @var Log $log */
+            $tree[$date] = $log->tree($trans);
+        }
+
+        return $tree;
     }
     
     /**
-     * Determine if the log folder is empty or not.
-     *
-     * @return bool
+     * Проверка на существование логов
      */
     public function isEmpty()
     {
@@ -108,12 +105,38 @@ class Log
 
     /**
      * PSR уровни логов.
-     *
-     * @param  bool|false  $flip
-     * @return array
      */
     public function levels($flip = false)
     {
-        return LogParser::levels();
+        return LogParser::levels($flip);
+    }
+
+    /**
+     * Удаление файла с логами по имени
+     */
+    public function delete($filename)
+    {
+        $path_info = pathinfo($this->filesPattern);
+        return $this->filesystem->delete($this->storagePath . '\\' . $filename . '.' . $path_info['extension']);
+    }
+
+    /*
+     * Создание коллекции логов
+     */
+    private function load()
+    {
+        $paths = array_reverse($this->logs());
+
+        $names = array_map(function ($file) {
+            $path_info = pathinfo($file);
+            return $path_info['filename'];
+        }, $paths);
+
+        $files = array_combine($names, $paths);
+
+        foreach($files as $name => $path) {
+            $raw = $this->filesystem->get($path);
+            $this->put($name, LogItem::make($name, $path, $raw));
+        }
     }
 }

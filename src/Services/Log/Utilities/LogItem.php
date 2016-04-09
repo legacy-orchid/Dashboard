@@ -1,17 +1,10 @@
 <?php namespace Orchid\Dashboard\Services\Log\Utilities;
 
 use Carbon\Carbon;
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Contracts\Support\Jsonable;
-use JsonSerializable;
 use SplFileInfo;
 
 class LogItem
 {
-    /* ------------------------------------------------------------------------------------------------
-     |  Properties
-     | ------------------------------------------------------------------------------------------------
-     */
     /** @var string */
     public $date;
 
@@ -27,10 +20,6 @@ class LogItem
     /** @var string */
     private $raw;
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Constructor
-     | ------------------------------------------------------------------------------------------------
-     */
     /**
      * Constructor
      *
