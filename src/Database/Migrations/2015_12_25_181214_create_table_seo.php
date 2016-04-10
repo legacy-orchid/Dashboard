@@ -12,7 +12,7 @@ class CreateTableSeo extends Migration
     {
         Schema::create('seo', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('story_id')->unique()->nullable();
+            $table->integer('post_id')->unique()->nullable();
             $table->text('url');
             $table->text('route');
             $table->string('title');
