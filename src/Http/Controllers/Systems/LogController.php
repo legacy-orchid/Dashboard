@@ -4,17 +4,25 @@ namespace Orchid\Dashboard\Http\Controllers\Systems;
 
 use File;
 use Orchid\Dashboard\Http\Controllers\Controller;
-use Orchid\Dashboard\Services\Log\LogViewer;
+use LogParse;
 
 class LogController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return User
+     * @return mixed
      */
     public function getIndex()
     {
+        $test = Orchid::LogParse()->all();
+        $test2 = Orchid::logParse()->stats();
+        $test3 = Orchid::logParse()->logs();
+        $test4 = Orchid::LogParse()->tree();
+        $test5 = Orchid::LogParse()->levels();
+        dd($test, $test2, $test3, $test4, $test5);
+
+
         return view('dashboard::container.systems.log', [
             'logs' => LogViewer::all(),
             'files' => LogViewer::getFiles(true),

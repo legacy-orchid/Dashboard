@@ -134,7 +134,7 @@ class Log extends Collection
 
         $files = array_combine($names, $paths);
 
-        foreach($files as $name => $path) {
+        foreach ($files as $name => $path) {
             $raw = $this->filesystem->get($path);
             $this->put($name, LogItem::make($name, $path, $raw));
         }
