@@ -65,7 +65,7 @@ class Log extends Collection
      */
     public function logs()
     {
-        $pattern = $this->storagePath . '\\' . $this->filesPattern;
+        $pattern = $this->storagePath . DIRECTORY_SEPARATOR . $this->filesPattern;
         $glob = glob($pattern, GLOB_BRACE);
         $files = array_map('realpath', $glob);
 
@@ -117,7 +117,7 @@ class Log extends Collection
     public function delete($filename)
     {
         $path_info = pathinfo($this->filesPattern);
-        return $this->filesystem->delete($this->storagePath . '\\' . $filename . '.' . $path_info['extension']);
+        return $this->filesystem->delete($this->storagePath . DIRECTORY_SEPARATOR . $filename . '.' . $path_info['extension']);
     }
 
     /*
