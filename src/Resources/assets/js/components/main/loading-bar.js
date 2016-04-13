@@ -1,5 +1,5 @@
 new Vue({
-    el: '#app',
+    el: '#loading-bar',
     ready: function(){
         var self = this;
         self.progress = 10;

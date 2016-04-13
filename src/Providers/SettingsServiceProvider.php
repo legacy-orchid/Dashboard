@@ -21,7 +21,6 @@ class SettingsServiceProvider extends ServiceProvider
      */
     public function boot(DashboardMenu $dashboardMenu)
     {
-        Setting::observe(new SettingObserver());
         $this->registerMenu($dashboardMenu);
     }
 

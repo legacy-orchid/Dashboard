@@ -7,11 +7,16 @@
         <small class="text-muted">Поисковая оптимизация для статических страниц</small>
     </div>
 
-    <div class="wrapper-md" id="language-container">
+    <div class="wrapper-md" id="static-container">
+
+
+<pre>
+    @{{$data | json}}
+</pre>
+
 
         <div class="panel panel-default">
             <div class="panel-heading font-bold">Адреса</div>
-
 
             <div class="row wrapper">
                 <div class="col-sm-12">
@@ -39,118 +44,116 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($routes as $url)
-                            <tr>
-                                <td><a href="{{($url == '/') ? $baseUrl : $baseUrl. "/".$url }}"
-                                       target="_blank">{{$url}}</a></td>
-                                <td class="pull-right">
+        <tr v-for="url in routes">
+            <td><a href="{{--($url == '/') ? $baseUrl : $baseUrl. "/".$url --}}"
+                   target="_blank">@{{url}}</a></td>
+            <td class="pull-right">
 
-                                    <div class="btn-group pull-right btn-group-sm" role="group" aria-label="...">
-                                        <button href="#{{URL::route('dashboard.static.edit', base64_encode($url))}}"
-                                                class="btn btn-primary" data-toggle="modal" data-target="#static-modal">
-                                            <span class="fa fa-edit"></span></button>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                <div class="btn-group pull-right btn-group-sm" role="group" aria-label="...">
+                    <button href="#{{--URL::route('dashboard.static.edit', base64_encode($url))--}}"
+                            class="btn btn-primary" data-toggle="modal" data-target="#static-modal">
+                        <span class="fa fa-edit"></span></button>
                 </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
 
-            </div>
+</div>
 
 
 
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade slide-down disable-scroll" id="static-modal" tabindex="-1" role="dialog" aria-hidden="false">
+<div class="modal-dialog">
+<div class="modal-content-wrapper">
+<div class="modal-content">
+<div class="modal-header clearfix text-left">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"><i class="fa fa-times"></i></span>
+    </button>
+    <h5>Домен</h5>
+    <p class="p-b-10">Системная универсальная опция для хранения различных значений</p>
+</div>
+<div class="modal-body">
+
+
+    <form class="form-horizontal" action="{{route('dashboard.static.index')}}" method="post">
+
+        <div class="form-group">
+            <label>Заголовок</label>
+            <input class="form-control" type="text" maxlength="255" required name="title"
+                   value="">
         </div>
 
 
-    </div>
+        <div class="line line-dashed b-b line-lg"></div>
+
+        <div class="form-group">
+            <label>Теги</label>
+            <input ui-jq="tagsinput" ui-options="" class="form-control w-md" data-role="tagsinput"
+                   type="text" maxlength="255"
+                   required name="keywords">
+        </div>
 
 
+        <div class="line line-dashed b-b line-lg"></div>
+
+        <div class="form-group">
+            <label>Описание</label>
+
+        <textarea class="form-control" rows="5" maxlength="255" required
+                  name="description"></textarea>
+        </div>
 
 
+        <div class="line line-dashed b-b line-lg"></div>
 
+        <div class="form-group">
+            <label>Робот</label>
 
-
-    <!-- Modal -->
-    <div class="modal fade slide-down disable-scroll" id="static-modal" tabindex="-1" role="dialog" aria-hidden="false">
-        <div class="modal-dialog">
-            <div class="modal-content-wrapper">
-                <div class="modal-content">
-                    <div class="modal-header clearfix text-left">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><i class="fa fa-times"></i></span>
-                        </button>
-                        <h5>Домен</h5>
-                        <p class="p-b-10">Системная универсальная опция для хранения различных значений</p>
-                    </div>
-                    <div class="modal-body">
-
-
-                        <form class="form-horizontal" action="{{route('dashboard.static.index')}}" method="post">
-
-                            <div class="form-group">
-                                <label>Заголовок</label>
-                                <input class="form-control" type="text" maxlength="255" required name="title"
-                                       value="">
-                            </div>
-
-
-                            <div class="line line-dashed b-b line-lg"></div>
-
-                            <div class="form-group">
-                                <label>Теги</label>
-                                <input ui-jq="tagsinput" ui-options="" class="form-control w-md" data-role="tagsinput"
-                                       type="text" maxlength="255"
-                                       required name="keywords">
-                            </div>
-
-
-                            <div class="line line-dashed b-b line-lg"></div>
-
-                            <div class="form-group">
-                                <label>Описание</label>
-
-                            <textarea class="form-control" rows="5" maxlength="255" required
-                                      name="description"></textarea>
-                            </div>
-
-
-                            <div class="line line-dashed b-b line-lg"></div>
-
-                            <div class="form-group">
-                                <label>Робот</label>
-
-                                <select class="form-control" name="robots">
-                                    <option value="all">Разрешено индексировать текст и ссылки на странице</option>
-                                    <option value="noindex">Не индексировать текст страницы</option>
-                                    <option value="nofollow">Запрещено индексировать текст и переходить по ссылкам на
-                                        странице
-                                    </option>
-                                </select>
-
-                            </div>
-                            <div class="line line-dashed b-b line-lg"></div>
-
-                            <div class="row">
-                                <div class="col-md-offset-8 col-sm-4 m-t-10 sm-m-t-10">
-                                    <button type="button" class="btn btn-primary btn-addon btn-block m-t-5">
-                                        <i class="fa fa-plus"></i>
-                                        Создать
-                                    </button>
-                                </div>
-                            </div>
-
-
-                        </form>
-
-
-                    </div>
-                </div>
-            </div>
+            <select class="form-control" name="robots">
+                <option value="all">Разрешено индексировать текст и ссылки на странице</option>
+                <option value="noindex">Не индексировать текст страницы</option>
+                <option value="nofollow">Запрещено индексировать текст и переходить по ссылкам на
+                    странице
+                </option>
+            </select>
 
         </div>
-    </div>
+        <div class="line line-dashed b-b line-lg"></div>
+
+        <div class="row">
+            <div class="col-md-offset-8 col-sm-4 m-t-10 sm-m-t-10">
+                <button type="button" class="btn btn-primary btn-addon btn-block m-t-5">
+                    <i class="fa fa-plus"></i>
+                    Создать
+                </button>
+            </div>
+        </div>
+
+
+    </form>
+
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
 
 
 @endsection

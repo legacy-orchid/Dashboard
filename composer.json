@@ -16,10 +16,10 @@
   "require": {
     "php": ">=5.5.9",
     "laravel/framework": "5.*",
-    "cboden/ratchet": "^0.3.4",
     "guzzlehttp/guzzle": "~6.0",
     "kyslik/column-sortable": "~5.0.0",
-    "nicolaslopezj/searchable": "1.*"
+    "nicolaslopezj/searchable": "1.*",
+    "watson/active": "^2.0"
   },
   "files": [
     "helpers.php"

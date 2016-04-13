@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}" id="csrf-token">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Orchid - @yield('title')</title>
 
     <link rel="stylesheet" href="/orchid/css/orchid.css">
@@ -106,8 +106,9 @@
     <div id="content" class="app-content" role="main">
         <div class="app-content-body" id="app-content-body">
 
+            <div id="loading-bar">
             <loading-bar :progress.sync="progress" :direction="direction ? 'left' : 'right'" :error.sync="error"></loading-bar>
-
+</div>
 
 
             @yield('content')

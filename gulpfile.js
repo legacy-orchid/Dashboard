@@ -22,6 +22,7 @@ elixir(function(mix) {
         "./src/Resources/assets/vendor/bootstrap/dist/js/bootstrap.min.js",
         "./src/Resources/assets/vendor/vue/dist/vue.js",
         "./src/Resources/assets/vendor/vue-resource/dist/vue-resource.js",
+        "./src/Resources/assets/js/app.js",
         "./src/Resources/assets/js/modules/**",
         "./src/Resources/assets/js/components/**",
         "./src/Resources/assets/js/directives/**",

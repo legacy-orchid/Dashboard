@@ -16,10 +16,14 @@ class StaticPagesController extends Controller
      */
     public function index(Request $request)
     {
-        return view('dashboard::container.tools.static', [
-            'routes' => SEO::staticGetRoute(),
-            'baseUrl' => Config::get('app.url'),
-        ]);
+        if ($request->input('json',false)) {
+            return response()->json([
+                'routes' => SEO::staticGetRoute(),
+                'baseUrl' => Config::get('app.url'),
+            ]);
+        } else {
+            return view('dashboard::container.tools.static');
+        }
     }
 
     /**
@@ -33,7 +37,6 @@ class StaticPagesController extends Controller
     {
         $url = base64_decode($url);
         $meta = SEO::where('route', $url)->first();
-
         return $meta->toJson();
     }
 
