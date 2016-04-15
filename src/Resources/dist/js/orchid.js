@@ -11618,8 +11618,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-
 Vue.http.headers.common['X-CSRF-TOKEN'] = $('[name="csrf_token"]').attr('content');
+
 (function ($) {
     $(document).ready(function () {
         $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
@@ -11785,6 +11785,22 @@ if (document.querySelector('#static-container')) {
     new Vue({
         el: '#static-container',
         data: {
+            'active': {
+                audio: "",
+                created_at: "",
+                custom: null,
+                description: "",
+                id: "",
+                image: "",
+                keywords: "",
+                robots: "",
+                route: "",
+                story_id: "",
+                title: "Тестовая запись, проверка бинда",
+                updated_at: "",
+                url: "",
+                video: "",
+            },
             'routes': [],
             'baseUrl': '',
         },
@@ -11795,7 +11811,23 @@ if (document.querySelector('#static-container')) {
                 console.log(this);
             });
         },
-        methods: {}
+        methods: {
+            show: function (index) {
+                this.$http.get('/dashboard/static/' + index).then(function (response) {
+                    if(response.data)
+                    {
+                        this.$set('active', response.data);
+                    }
+                    $('#static-modal').modal("show");
+                });
+            },
+            update: function() {
+                this.$http.put('/dashboard/static',this.active).then(function (response) {
+                    console.log(response);
+                    $('#static-modal').modal("hide");
+                });
+            }
+        }
     });
 }
 /*! Summernote v0.6.16 | (c) 2013-2015 Alan Hong and other contributors | MIT license */

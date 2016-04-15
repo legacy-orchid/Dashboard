@@ -9,6 +9,7 @@
     "laravel-elixir": "^4.2.1",
     "laravel-elixir-vueify": "~1.0.2",
     "vue": "~1.0.20",
+    "vue-progressbar": "^0.2.4",
     "vue-resource": "^0.7.0",
     "vue-select": "github:sagalbot/vue-select"
   }

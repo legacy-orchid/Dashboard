@@ -12532,8 +12532,8 @@ fieldset[disabled] .i-checks input + i:before {
   -o-transition: all 0.3s ease;
 }
 .loading-bar {
-  position: relative;
-  top: 0;
+  position: fixed;
+  top: 50px;
   background: #7266ba;
   height: 2px;
   opacity: 1;
@@ -12548,7 +12548,7 @@ fieldset[disabled] .i-checks input + i:before {
   box-shadow: -3px 0 15px 1px rgba(0, 255, 231, 0.4);
 }
 .to-right.loading-bar {
-  left: 0;
+  left: 200px;
 }
 .to-right .glow-bar {
   right: 0;

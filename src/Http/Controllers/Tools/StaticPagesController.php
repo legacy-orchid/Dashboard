@@ -17,8 +17,14 @@ class StaticPagesController extends Controller
     public function index(Request $request)
     {
         if ($request->input('json',false)) {
+            $staticRoute = [];
+            foreach (SEO::staticGetRoute() as $value)
+            {
+                $base64 = base64_encode($value);
+                $staticRoute[$base64] = $value;
+            }
             return response()->json([
-                'routes' => SEO::staticGetRoute(),
+                'routes' => $staticRoute,
                 'baseUrl' => Config::get('app.url'),
             ]);
         } else {
