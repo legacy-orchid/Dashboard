@@ -75,7 +75,7 @@ class MenuServiceProvider extends ServiceProvider
 
 
 
-        $typePostMenu = [
+        $CRUDMenu = [
             'slug' => 'CRUD',
             'icon' => 'fa fa-clone',
             'url' => route('dashboard.crud.index'),
@@ -159,7 +159,7 @@ class MenuServiceProvider extends ServiceProvider
 
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $seoMenu, 10);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $siteMapMenu, 30);
-        $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $typePostMenu, 40);
+        $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $CRUDMenu, 40);
 
 
 
