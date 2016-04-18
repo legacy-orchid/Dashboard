@@ -73,6 +73,17 @@ class MenuServiceProvider extends ServiceProvider
             'divider' => true,
         ];
 
+
+
+        $typePostMenu = [
+            'slug' => 'CRUD',
+            'icon' => 'fa fa-clone',
+            'url' => route('dashboard.crud.index'),
+            'label' => 'CRUD',
+            'childs' => false,
+            'divider' => false,
+        ];
+
         $typePostMenu = [
             'slug' => 'Types posts',
             'icon' => 'fa fa-pencil-square-o',
@@ -148,6 +159,10 @@ class MenuServiceProvider extends ServiceProvider
 
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $seoMenu, 10);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $siteMapMenu, 30);
+        $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $typePostMenu, 40);
+
+
+
 
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $errorMenu, 500);
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $localizationMenu, 300);
