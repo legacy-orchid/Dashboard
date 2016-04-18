@@ -3,7 +3,7 @@
 namespace Orchid\Dashboard\Http\Controllers\Tools;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use Orchid\Dashboard\Http\Controllers\Controller;
 
 class CRUDController extends Controller
 {
