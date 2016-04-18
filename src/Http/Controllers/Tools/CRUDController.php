@@ -10,7 +10,7 @@ class CRUDController extends Controller
     /**
      * 
      */
-    public function getIndex()
+    public function index()
     {
         return view('dashboard::container.tools.crud');
     }
@@ -19,7 +19,7 @@ class CRUDController extends Controller
      * @param $type
      * @param array $arg
      */
-    public function postStore($type, $arg = [])
+    public function store($type, Request $request)
     {
     }
 }

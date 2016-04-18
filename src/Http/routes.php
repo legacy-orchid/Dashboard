@@ -22,7 +22,8 @@ Route::group(['namespace' => 'Tools'], function () {
 
     Route::resource('types', 'TypesController');
     Route::resource('static', 'StaticPagesController');
-    Route::controller('crud', 'CRUDController');
+    Route::resource('crud', 'CRUDController', ['only' => [
+        'index', 'store']]);
 });
 
 Route::auth();
