@@ -224,5 +224,4 @@ class CrudMigrationCommand extends GeneratorCommand
 
         return $this;
     }
-
 }

@@ -104,5 +104,4 @@ class CrudModelCommand extends GeneratorCommand
 
         return $this;
     }
-
 }

@@ -346,5 +346,4 @@ EOD;
 
         return $this->wrapField($item, sprintf($field, $item['name']));
     }
-
 }

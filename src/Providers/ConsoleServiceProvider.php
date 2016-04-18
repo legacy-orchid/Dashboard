@@ -29,6 +29,11 @@ class ConsoleServiceProvider extends ServiceProvider
         'Server',
         'MakeListener',
         'MakeWidget',
+        'Crud\\CrudCommand',
+        'Crud\\CrudControllerCommand',
+        'Crud\\CrudModelCommand',
+        'Crud\\CrudMigrationCommand',
+        'Crud\\CrudViewCommand',
     ];
 
     /**

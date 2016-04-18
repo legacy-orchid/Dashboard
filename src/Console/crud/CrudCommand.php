@@ -104,5 +104,4 @@ class CrudCommand extends Command
             }
         }
     }
-
 }

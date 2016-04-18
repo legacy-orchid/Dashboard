@@ -16,10 +16,9 @@ class StaticPagesController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->input('json',false)) {
+        if ($request->input('json', false)) {
             $staticRoute = [];
-            foreach (SEO::staticGetRoute() as $value)
-            {
+            foreach (SEO::staticGetRoute() as $value) {
                 $base64 = base64_encode($value);
                 $staticRoute[$base64] = $value;
             }
