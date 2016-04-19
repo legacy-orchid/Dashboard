@@ -89,7 +89,7 @@ class DashboardServiceProvider extends ServiceProvider
     protected function registerPublic()
     {
         $this->publishes([
-            __DIR__ . '/../Resources/dist/' => public_path('orchid'),
+            __DIR__.'/../Resources/dist/' => public_path('orchid'),
         ], 'public');
     }
 
@@ -140,7 +140,7 @@ class DashboardServiceProvider extends ServiceProvider
 
         $this->app->register(\Orchid\Dashboard\Providers\RouteServiceProvider::class);
         $this->app->register(\Orchid\Dashboard\Providers\ConsoleServiceProvider::class);
-       // $this->app->register(\Orchid\Dashboard\Providers\SocketServiceProvider::class);
+        // $this->app->register(\Orchid\Dashboard\Providers\SocketServiceProvider::class);
         $this->app->register(\Orchid\Dashboard\Providers\SettingsServiceProvider::class);
         $this->app->register(\Orchid\Dashboard\Providers\MenuServiceProvider::class);
     }

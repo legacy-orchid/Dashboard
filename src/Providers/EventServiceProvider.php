@@ -9,7 +9,6 @@ use Orchid\Dashboard\Observer\SettingObserver;
 
 class EventServiceProvider extends ServiceProvider
 {
-
     /**
      * The event handler mappings for the application.
      *
@@ -20,12 +19,11 @@ class EventServiceProvider extends ServiceProvider
     /**
      * Register any other events for your application.
      *
-     * @param  \Illuminate\Contracts\Events\Dispatcher  $events
-     * @return void
+     * @param \Illuminate\Contracts\Events\Dispatcher $events
      */
     public function boot(DispatcherContract $events)
     {
         parent::boot($events);
-        Setting::observe(new SettingObserver);
+        Setting::observe(new SettingObserver());
     }
 }

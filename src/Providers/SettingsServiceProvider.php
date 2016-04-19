@@ -3,8 +3,6 @@
 namespace Orchid\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Orchid\Dashboard\Models\Setting;
-use Orchid\Dashboard\Observer\SettingObserver;
 use Orchid\Dashboard\Services\Menu\DashboardMenu;
 
 class SettingsServiceProvider extends ServiceProvider

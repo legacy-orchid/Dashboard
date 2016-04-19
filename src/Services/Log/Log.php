@@ -1,7 +1,9 @@
-<?php namespace Orchid\Dashboard\Services\Log;
+<?php
 
-use Illuminate\Support\Collection;
+namespace Orchid\Dashboard\Services\Log;
+
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Collection;
 use Orchid\Dashboard\Services\Log\Utilities\LogItem;
 use Orchid\Dashboard\Services\Log\Utilities\LogParser;
 
@@ -10,7 +12,7 @@ class Log extends Collection
     private $storagePath;
     private $filesystem;
     private $filesPattern = 'laravel*.log';
-    
+
     public function __construct($items = [])
     {
         $this->storagePath = storage_path('logs');
@@ -53,7 +55,7 @@ class Log extends Collection
         $stats = [];
 
         foreach ($this->items as $filename => $log) {
-            /** @var LogItem $log */
+            /* @var LogItem $log */
             $stats[$filename] = $log->stats();
         }
 
@@ -65,7 +67,7 @@ class Log extends Collection
      */
     public function logs()
     {
-        $pattern = $this->storagePath . DIRECTORY_SEPARATOR . $this->filesPattern;
+        $pattern = $this->storagePath.DIRECTORY_SEPARATOR.$this->filesPattern;
         $glob = glob($pattern, GLOB_BRACE);
         $files = array_map('realpath', $glob);
 
@@ -88,15 +90,15 @@ class Log extends Collection
         $tree = [];
 
         foreach ($this->items as $date => $log) {
-            /** @var Log $log */
+            /* @var Log $log */
             $tree[$date] = $log->tree($trans);
         }
 
         return $tree;
     }
-    
+
     /**
-     * Проверка на существование логов
+     * Проверка на существование логов.
      */
     public function isEmpty()
     {
@@ -112,12 +114,13 @@ class Log extends Collection
     }
 
     /**
-     * Удаление файла с логами по имени
+     * Удаление файла с логами по имени.
      */
     public function delete($filename)
     {
         $path_info = pathinfo($this->filesPattern);
-        return $this->filesystem->delete($this->storagePath . DIRECTORY_SEPARATOR . $filename . '.' . $path_info['extension']);
+
+        return $this->filesystem->delete($this->storagePath.DIRECTORY_SEPARATOR.$filename.'.'.$path_info['extension']);
     }
 
     /*
@@ -129,6 +132,7 @@ class Log extends Collection
 
         $names = array_map(function ($file) {
             $path_info = pathinfo($file);
+
             return $path_info['filename'];
         }, $paths);
 

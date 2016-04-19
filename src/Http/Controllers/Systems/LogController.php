@@ -3,8 +3,8 @@
 namespace Orchid\Dashboard\Http\Controllers\Systems;
 
 use File;
-use Orchid\Dashboard\Http\Controllers\Controller;
 use LogParse;
+use Orchid\Dashboard\Http\Controllers\Controller;
 
 class LogController extends Controller
 {
@@ -21,7 +21,6 @@ class LogController extends Controller
         $test4 = Orchid::LogParse()->tree();
         $test5 = Orchid::LogParse()->levels();
         dd($test, $test2, $test3, $test4, $test5);
-
 
         return view('dashboard::container.systems.log', [
             'logs' => LogViewer::all(),
@@ -54,7 +53,7 @@ class LogController extends Controller
      */
     public function getDownload($file)
     {
-        return response()->download(storage_path('logs/') . base64_decode($file));
+        return response()->download(storage_path('logs/').base64_decode($file));
     }
 
     /**
@@ -66,7 +65,7 @@ class LogController extends Controller
      */
     public function deleteDestroy($file)
     {
-        File::delete(storage_path('logs/') . base64_decode($file));
+        File::delete(storage_path('logs/').base64_decode($file));
 
         return redirect()->route('dashboard.log.index');
     }

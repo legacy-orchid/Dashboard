@@ -3,10 +3,10 @@
 namespace Orchid\Dashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Orchid\Dashboard\Services\Access\RoleAccess;
-use Orchid\Dashboard\Services\Access\RoleInterface;
 use Kyslik\ColumnSortable\Sortable;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Orchid\Dashboard\Services\Access\RoleAccess;
+use Orchid\Dashboard\Services\Access\RoleInterface;
 
 class Role extends Model implements RoleInterface
 {
@@ -42,7 +42,6 @@ class Role extends Model implements RoleInterface
         ],
     ];
 
-    
     /**
      * @var array
      */

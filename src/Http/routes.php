@@ -1,7 +1,8 @@
 <?php
 
 Route::get('/', [
-    'as' => 'dashboard.index', 'uses' => 'DashboardController@index',
+    'as' => 'dashboard.index',
+    'uses' => 'DashboardController@index',
 ]);
 
 Route::group(['namespace' => 'Systems'], function () {
@@ -22,8 +23,12 @@ Route::group(['namespace' => 'Tools'], function () {
 
     Route::resource('types', 'TypesController');
     Route::resource('static', 'StaticPagesController');
-    Route::resource('crud', 'CRUDController', ['only' => [
-        'index', 'store']]);
+    Route::resource('crud', 'CRUDController', [
+        'only' => [
+            'index',
+            'sto',
+        ],
+    ]);
 });
 
 Route::auth();

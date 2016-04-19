@@ -9,12 +9,6 @@
 
     <div class="wrapper-md" id="static-container">
 
-
-<pre>
-    @{{$data | json}}
-</pre>
-
-
         <div class="panel panel-default">
             <div class="panel-heading font-bold">Адреса</div>
 
@@ -22,7 +16,7 @@
                 <div class="col-sm-12">
                     <form action="">
                         <div class="input-group">
-                            <input type="text" class="input-sm form-control" name="search"
+                            <input type="text" class="input-sm form-control" v-model="query" name="query"
                                    placeholder="{{trans('dashboard::common.Find')}} ...">
           <span class="input-group-btn">
             <button class="btn btn-sm btn-default" type="submit">{{trans('dashboard::common.Find')}}</button>
@@ -44,7 +38,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(index,url) in routes">
+                        <tr v-for="(index,url) in routes | filterBy query">
                             <td><a href="@{{ baseUrl + '/' + url}}"
                                    target="_blank">@{{url}}</a></td>
                             <td class="pull-right">
@@ -63,16 +57,12 @@
             </div>
 
 
-
         </div>
 
 
-
-
-
-
         <!-- Modal -->
-        <div class="modal fade slide-down disable-scroll" id="static-modal" tabindex="-1" role="dialog" aria-hidden="false">
+        <div class="modal fade slide-down disable-scroll" id="static-modal" tabindex="-1" role="dialog"
+             aria-hidden="false">
             <div class="modal-dialog">
                 <div class="modal-content-wrapper">
                     <div class="modal-content">
@@ -90,7 +80,8 @@
 
                                 <div class="form-group">
                                     <label>Заголовок</label>
-                                    <input class="form-control" type="text" maxlength="255" required v-model="active.title" name="title">
+                                    <input class="form-control" type="text" maxlength="255" required
+                                           v-model="active.title" name="title">
                                 </div>
 
 
@@ -98,7 +89,7 @@
 
                                 <div class="form-group">
                                     <label>Теги</label>
-                                    <input ui-jq="tagsinput" ui-options="" v-model="active.keywords" class="form-control w-md" data-role="tagsinput"
+                                    <input v-model="active.keywords" class="form-control w-md" data-role="tagsinput"
                                            type="text" maxlength="255"
                                            required name="keywords">
                                 </div>
@@ -122,7 +113,8 @@
                                     <select class="form-control" name="robots" v-model="active.robots">
                                         <option value="all">Разрешено индексировать текст и ссылки на странице</option>
                                         <option value="noindex">Не индексировать текст страницы</option>
-                                        <option value="nofollow">Запрещено индексировать текст и переходить по ссылкам на
+                                        <option value="nofollow">Запрещено индексировать текст и переходить по ссылкам
+                                            на
                                             странице
                                         </option>
                                     </select>
@@ -132,7 +124,8 @@
 
                                 <div class="row">
                                     <div class="col-md-offset-8 col-sm-4 m-t-10 sm-m-t-10">
-                                        <button type="button" class="btn btn-primary btn-addon btn-block m-t-5" v-on:click="update">
+                                        <button type="button" class="btn btn-primary btn-addon btn-block m-t-5"
+                                                v-on:click="update">
                                             <i class="fa fa-plus"></i>
                                             Создать
                                         </button>
@@ -150,10 +143,6 @@
             </div>
         </div>
         <!-- Modal -->
-
-
-
-
 
 
     </div>

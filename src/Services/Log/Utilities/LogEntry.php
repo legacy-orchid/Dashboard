@@ -1,9 +1,8 @@
-<?php namespace Orchid\Dashboard\Services\Log\Utilities;
+<?php
+
+namespace Orchid\Dashboard\Services\Log\Utilities;
 
 use Carbon\Carbon;
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Contracts\Support\Jsonable;
-use JsonSerializable;
 
 class LogEntry
 {
@@ -33,9 +32,9 @@ class LogEntry
     /**
      * Construct the log entry instance.
      *
-     * @param  string  $level
-     * @param  string  $header
-     * @param  string  $stack
+     * @param string $level
+     * @param string $header
+     * @param string $stack
      */
     public function __construct($level, $header, $stack)
     {
@@ -51,7 +50,7 @@ class LogEntry
     /**
      * Set the entry level.
      *
-     * @param  string  $level
+     * @param string $level
      *
      * @return self
      */
@@ -65,7 +64,7 @@ class LogEntry
     /**
      * Set the entry header.
      *
-     * @param  string  $header
+     * @param string $header
      *
      * @return self
      */
@@ -86,23 +85,9 @@ class LogEntry
     }
 
     /**
-     * Set entry environment.
-     *
-     * @param  string  $env
-     *
-     * @return self
-     */
-    private function setEnv($env)
-    {
-        $this->env = head(explode('.', $env));
-
-        return $this;
-    }
-
-    /**
      * Set the entry date time.
      *
-     * @param  string  $datetime
+     * @param string $datetime
      *
      * @return self
      */
@@ -117,9 +102,47 @@ class LogEntry
     }
 
     /**
+     * Extract datetime from the header.
+     *
+     * @param string $header
+     *
+     * @return string
+     */
+    private function extractDatetime($header)
+    {
+        return preg_replace('/^\[(\d{4}(-\d{2}){2} \d{2}(:\d{2}){2})\].*/', '$1', $header);
+    }
+
+    /**
+     * Clean the entry header.
+     *
+     * @param string $header
+     *
+     * @return string
+     */
+    private function cleanHeader($header)
+    {
+        return preg_replace('/\[\d{4}(-\d{2}){2} \d{2}(:\d{2}){2}\][ ]/', '', $header);
+    }
+
+    /**
+     * Set entry environment.
+     *
+     * @param string $env
+     *
+     * @return self
+     */
+    private function setEnv($env)
+    {
+        $this->env = head(explode('.', $env));
+
+        return $this;
+    }
+
+    /**
      * Set the entry stack.
      *
-     * @param  string  $stack
+     * @param string $stack
      *
      * @return self
      */
@@ -130,18 +153,28 @@ class LogEntry
         return $this;
     }
 
+    /* ------------------------------------------------------------------------------------------------
+     |  Check Functions
+     | ------------------------------------------------------------------------------------------------
+     */
+
     /**
-     * Get translated level name with icon
+     * Get translated level name with icon.
      *
      * @return string
      */
     public function level()
     {
-        return $this->icon() . ' ' . $this->name();
+        return $this->icon().' '.$this->name();
     }
 
+    /* ------------------------------------------------------------------------------------------------
+     |  Convert Functions
+     | ------------------------------------------------------------------------------------------------
+     */
+
     /**
-     * Get level icon
+     * Get level icon.
      *
      * @return string
      */
@@ -150,14 +183,10 @@ class LogEntry
         return log_styler()->icon($this->level);
     }
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Check Functions
-     | ------------------------------------------------------------------------------------------------
-     */
     /**
-     * Check if same log level
+     * Check if same log level.
      *
-     * @param  string  $level
+     * @param string $level
      *
      * @return bool
      */
@@ -166,29 +195,10 @@ class LogEntry
         return $this->level === $level;
     }
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Convert Functions
-     | ------------------------------------------------------------------------------------------------
-     */
-    /**
-     * Get the log entry as an array.
-     *
-     * @return array
-     */
-    public function toArray()
-    {
-        return [
-            'level'     => $this->level,
-            'datetime'  => $this->datetime->format('Y-m-d H:i:s'),
-            'header'    => $this->header,
-            'stack'     => $this->stack
-        ];
-    }
-
     /**
      * Convert the log entry to its JSON representation.
      *
-     * @param  int  $options
+     * @param int $options
      *
      * @return string
      */
@@ -197,8 +207,33 @@ class LogEntry
         return json_encode($this->toArray(), $options);
     }
 
+    /* ------------------------------------------------------------------------------------------------
+     |  Check Functions
+     | ------------------------------------------------------------------------------------------------
+     */
+
     /**
-     * Serialize the log entry object to json data
+     * Get the log entry as an array.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'level' => $this->level,
+            'datetime' => $this->datetime->format('Y-m-d H:i:s'),
+            'header' => $this->header,
+            'stack' => $this->stack,
+        ];
+    }
+
+    /* ------------------------------------------------------------------------------------------------
+     |  Other Functions
+     | ------------------------------------------------------------------------------------------------
+     */
+
+    /**
+     * Serialize the log entry object to json data.
      *
      * @return array
      */
@@ -207,10 +242,6 @@ class LogEntry
         return $this->toArray();
     }
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Check Functions
-     | ------------------------------------------------------------------------------------------------
-     */
     /**
      * Check if the entry has a stack.
      *
@@ -219,33 +250,5 @@ class LogEntry
     public function hasStack()
     {
         return $this->stack !== "\n";
-    }
-
-    /* ------------------------------------------------------------------------------------------------
-     |  Other Functions
-     | ------------------------------------------------------------------------------------------------
-     */
-    /**
-     * Clean the entry header.
-     *
-     * @param  string  $header
-     *
-     * @return string
-     */
-    private function cleanHeader($header)
-    {
-        return preg_replace('/\[\d{4}(-\d{2}){2} \d{2}(:\d{2}){2}\][ ]/', '', $header);
-    }
-
-    /**
-     * Extract datetime from the header.
-     *
-     * @param  string  $header
-     *
-     * @return string
-     */
-    private function extractDatetime($header)
-    {
-        return preg_replace('/^\[(\d{4}(-\d{2}){2} \d{2}(:\d{2}){2})\].*/', '$1', $header);
     }
 }

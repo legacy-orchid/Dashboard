@@ -22,6 +22,7 @@ class StaticPagesController extends Controller
                 $base64 = base64_encode($value);
                 $staticRoute[$base64] = $value;
             }
+
             return response()->json([
                 'routes' => $staticRoute,
                 'baseUrl' => Config::get('app.url'),
@@ -42,14 +43,15 @@ class StaticPagesController extends Controller
     {
         $url = base64_decode($url);
         $meta = SEO::where('route', $url)->first();
-        return $meta->toJson();
+
+        return response()->json($meta);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param string $url
+     * @param string                   $url
      *
      * @return \Illuminate\Http\Response
      */

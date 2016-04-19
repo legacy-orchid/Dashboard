@@ -10,11 +10,12 @@
  * This source file is subject to the 3-clause BSD License that is
  * bundled with this package in the LICENSE file.
  *
- * @package    Tags
  * @version    2.0.2
+ *
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
  * @copyright  (c) 2011-2015, Cartalyst LLC
+ *
  * @link       http://cartalyst.com
  */
 
@@ -47,7 +48,7 @@ trait TaggableTrait
     protected static $slugGenerator = 'Illuminate\Support\Str::slug';
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function setTagsDelimiter($delimiter)
     {
@@ -57,7 +58,7 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function getTagsModel()
     {
@@ -65,7 +66,7 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function setTagsModel($model)
     {
@@ -73,7 +74,7 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function getSlugGenerator()
     {
@@ -81,7 +82,7 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function setSlugGenerator($slugGenerator)
     {
@@ -89,11 +90,11 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function allTags()
     {
-        $instance = new static;
+        $instance = new static();
 
         return $instance->createTagsModel()->whereNamespace(
             $instance->getEntityClassName()
@@ -101,11 +102,11 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function createTagsModel()
     {
-        return new static::$tagsModel;
+        return new static::$tagsModel();
     }
 
     /**
@@ -123,7 +124,7 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function tags()
     {
@@ -131,11 +132,11 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function scopeWhereTag(Builder $query, $tags, $type = 'slug')
     {
-        $tags = (new static)->prepareTags($tags);
+        $tags = (new static())->prepareTags($tags);
 
         foreach ($tags as $tag) {
             $query->whereHas('tags', function (Builder $query) use ($type, $tag) {
@@ -147,7 +148,7 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function prepareTags($tags)
     {
@@ -167,7 +168,7 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function getTagsDelimiter()
     {
@@ -175,11 +176,11 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function scopeWithTag(Builder $query, $tags, $type = 'slug')
     {
-        $tags = (new static)->prepareTags($tags);
+        $tags = (new static())->prepareTags($tags);
 
         return $query->whereHas('tags', function (Builder $query) use ($type, $tags) {
             $query->whereIn($type, $tags);
@@ -187,7 +188,7 @@ trait TaggableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setTags($tags, $type = 'name')
     {
@@ -216,6 +217,7 @@ trait TaggableTrait
 
     /**
      * @param null $tags
+     *
      * @return bool
      */
     public function untag($tags = null)
@@ -255,6 +257,7 @@ trait TaggableTrait
 
     /**
      * @param $tags
+     *
      * @return bool
      */
     public function tag($tags)
@@ -292,7 +295,8 @@ trait TaggableTrait
     /**
      * Generate the tag slug using the given name.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return string
      */
     protected function generateTagSlug($name)

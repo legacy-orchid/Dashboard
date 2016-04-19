@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Services\Log\Utilities;
+<?php
+
+namespace Orchid\Dashboard\Services\Log\Utilities;
 
 use Carbon\Carbon;
 use SplFileInfo;
@@ -21,19 +23,19 @@ class LogItem
     private $raw;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param  string  $date
-     * @param  string  $path
-     * @param  string  $raw
+     * @param string $date
+     * @param string $path
+     * @param string $raw
      */
     public function __construct($date, $path, $raw)
     {
-        $this->entries = new LogEntryCollection;
-        $this->date    = $date;
-        $this->path    = $path;
-        $this->file    = new SplFileInfo($path);
-        $this->raw     = $raw;
+        $this->entries = new LogEntryCollection();
+        $this->date = $date;
+        $this->path = $path;
+        $this->file = new SplFileInfo($path);
+        $this->raw = $raw;
 
         $this->entries->load($raw);
     }
@@ -42,76 +44,13 @@ class LogItem
      |  Getters & Setters
      | ------------------------------------------------------------------------------------------------
      */
-    /**
-     * Get log path
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
 
     /**
-     * Get raw log content
+     * Make a log object.
      *
-     * @return string
-     */
-    public function getRaw()
-    {
-        return $this->raw;
-    }
-
-    /**
-     * Get file info
-     *
-     * @return SplFileInfo
-     */
-    public function file()
-    {
-        return $this->file;
-    }
-
-    /**
-     * Get file size
-     *
-     * @return string
-     */
-    public function size()
-    {
-        return $this->formatSize($this->file->getSize());
-    }
-
-    /**
-     * Get file creation date
-     *
-     * @return \Carbon\Carbon
-     */
-    public function createdAt()
-    {
-        return Carbon::createFromTimestamp($this->file()->getATime());
-    }
-
-    /**
-     * Get file modification date
-     *
-     * @return \Carbon\Carbon
-     */
-    public function updatedAt()
-    {
-        return Carbon::createFromTimestamp($this->file()->getMTime());
-    }
-
-    /* ------------------------------------------------------------------------------------------------
-     |  Main functions
-     | ------------------------------------------------------------------------------------------------
-     */
-    /**
-     * Make a log object
-     *
-     * @param  string  $date
-     * @param  string  $path
-     * @param  string  $raw
+     * @param string $date
+     * @param string $path
+     * @param string $raw
      *
      * @return self
      */
@@ -121,9 +60,93 @@ class LogItem
     }
 
     /**
-     * Get log entries
+     * Get log path.
      *
-     * @param  string  $level
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Get raw log content.
+     *
+     * @return string
+     */
+    public function getRaw()
+    {
+        return $this->raw;
+    }
+
+    /**
+     * Get file size.
+     *
+     * @return string
+     */
+    public function size()
+    {
+        return $this->formatSize($this->file->getSize());
+    }
+
+    /**
+     * Format the file size.
+     *
+     * @param int $bytes
+     * @param int $precision
+     *
+     * @return string
+     */
+    private function formatSize($bytes, $precision = 2)
+    {
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+        $bytes = max($bytes, 0);
+        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+        $pow = min($pow, count($units) - 1);
+
+        return round($bytes / pow(1024, $pow), $precision).' '.$units[$pow];
+    }
+
+    /**
+     * Get file creation date.
+     *
+     * @return \Carbon\Carbon
+     */
+    public function createdAt()
+    {
+        return Carbon::createFromTimestamp($this->file()->getATime());
+    }
+
+    /* ------------------------------------------------------------------------------------------------
+     |  Main functions
+     | ------------------------------------------------------------------------------------------------
+     */
+
+    /**
+     * Get file info.
+     *
+     * @return SplFileInfo
+     */
+    public function file()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Get file modification date.
+     *
+     * @return \Carbon\Carbon
+     */
+    public function updatedAt()
+    {
+        return Carbon::createFromTimestamp($this->file()->getMTime());
+    }
+
+    /**
+     * Get log entries.
+     *
+     * @param string $level
      *
      * @return LogEntryCollection
      */
@@ -137,9 +160,9 @@ class LogItem
     }
 
     /**
-     * Get filtered log entries by level
+     * Get filtered log entries by level.
      *
-     * @param  string  $level
+     * @param string $level
      *
      * @return LogEntryCollection
      */
@@ -158,10 +181,15 @@ class LogItem
         return $this->entries->stats();
     }
 
+    /* ------------------------------------------------------------------------------------------------
+     |  Convert Functions
+     | ------------------------------------------------------------------------------------------------
+     */
+
     /**
      * Get the log navigation tree.
      *
-     * @param  bool|false  $trans
+     * @param bool|false $trans
      *
      * @return array
      */
@@ -170,28 +198,10 @@ class LogItem
         return $this->entries->tree($trans);
     }
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Convert Functions
-     | ------------------------------------------------------------------------------------------------
-     */
-    /**
-     * Get the log as a plain array.
-     *
-     * @return array
-     */
-    public function toArray()
-    {
-        return [
-            'date'    => $this->date,
-            'path'    => $this->path,
-            'entries' => $this->entries->toArray()
-        ];
-    }
-
     /**
      * Convert the object to its JSON representation.
      *
-     * @param  int  $options
+     * @param int $options
      *
      * @return string
      */
@@ -201,35 +211,31 @@ class LogItem
     }
 
     /**
-     * Serialize the log object to json data
+     * Get the log as a plain array.
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function toArray()
     {
-        return $this->toArray();
+        return [
+            'date' => $this->date,
+            'path' => $this->path,
+            'entries' => $this->entries->toArray(),
+        ];
     }
 
     /* ------------------------------------------------------------------------------------------------
      |  Other functions
      | ------------------------------------------------------------------------------------------------
      */
+
     /**
-     * Format the file size
+     * Serialize the log object to json data.
      *
-     * @param  int  $bytes
-     * @param  int  $precision
-     *
-     * @return string
+     * @return array
      */
-    private function formatSize($bytes, $precision = 2)
+    public function jsonSerialize()
     {
-        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
-
-        $bytes = max($bytes, 0);
-        $pow   = floor(($bytes ? log($bytes) : 0) / log(1024));
-        $pow   = min($pow, count($units) - 1);
-
-        return round($bytes / pow(1024, $pow), $precision) . ' ' . $units[$pow];
+        return $this->toArray();
     }
 }

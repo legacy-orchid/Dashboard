@@ -1,6 +1,7 @@
-<?php namespace Orchid\Dashboard\Services\Log\Utilities;
+<?php
 
-use Orchid\Dashboard\Services\Log\Utilities\LogParser;
+namespace Orchid\Dashboard\Services\Log\Utilities;
+
 use Illuminate\Support\Collection;
 
 class LogEntryCollection extends Collection
@@ -10,9 +11,9 @@ class LogEntryCollection extends Collection
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Load raw log entries
+     * Load raw log entries.
      *
-     * @param  string  $raw
+     * @param string $raw
      *
      * @return self
      */
@@ -28,9 +29,9 @@ class LogEntryCollection extends Collection
     }
 
     /**
-     * Get filtered log entries by level
+     * Get filtered log entries by level.
      *
-     * @param  string  $level
+     * @param string $level
      *
      * @return LogEntryCollection
      */
@@ -39,6 +40,27 @@ class LogEntryCollection extends Collection
         return $this->filter(function (LogEntry $entry) use ($level) {
             return $entry->isSameLevel($level);
         });
+    }
+
+    /**
+     * Get the log entries navigation tree.
+     *
+     * @param bool|false $trans
+     *
+     * @return array
+     */
+    public function tree()
+    {
+        $tree = $this->stats();
+
+        array_walk($tree, function (&$count, $level) {
+            $count = [
+                'name' => $level,
+                'count' => $count,
+            ];
+        });
+
+        return $tree;
     }
 
     /**
@@ -58,31 +80,11 @@ class LogEntryCollection extends Collection
         return $counters;
     }
 
-    /**
-     * Get the log entries navigation tree.
-     *
-     * @param  bool|false  $trans
-     *
-     * @return array
-     */
-    public function tree()
-    {
-        $tree = $this->stats();
-
-        array_walk($tree, function (&$count, $level) {
-            $count = [
-                'name'  => $level,
-                'count' => $count,
-            ];
-        });
-
-        return $tree;
-    }
-
     /* ------------------------------------------------------------------------------------------------
      |  Other Functions
      | ------------------------------------------------------------------------------------------------
      */
+
     /**
      * Init stats counters.
      *

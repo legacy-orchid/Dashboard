@@ -1,4 +1,4 @@
-var VueLoadingBar = Vue.extend ({
+var VueLoadingBar = Vue.extend({
     template: '<div v-if="show" class="loading-bar to-{{ direction }} {{ full }} {{ class != undefined ? class : \'\' }} {{ error ? \'error\' : \'\' }}" :id="id != undefined ? \'loading-bar-\'+id : \'\'" :style="styling()"> <div class="glow-bar"></div> </div>',
 
     props: {
@@ -16,7 +16,7 @@ var VueLoadingBar = Vue.extend ({
         error: Boolean // Loading Bar error state
     },
 
-    data: function() {
+    data: function () {
         return {
             // To show
             show: true,
@@ -32,23 +32,23 @@ var VueLoadingBar = Vue.extend ({
         };
     },
 
-    watch:{
+    watch: {
 
-        progress: function(val,old){
+        progress: function (val, old) {
             var self = this;
 
-            if(old == 0 && val > 0){
+            if (old == 0 && val > 0) {
                 // Callback Event when it's started
                 this.$dispatch('loading-bar:started');
             }
 
-            if(val > 1 && val < 100){
+            if (val > 1 && val < 100) {
                 // Callback Event when it's loading
                 this.$dispatch('loading-bar:loading');
             }
 
             // When the progress end
-            if(this.progress == 100){
+            if (this.progress == 100) {
 
                 // Prevent new progress change
                 this.wait = true;
@@ -56,7 +56,7 @@ var VueLoadingBar = Vue.extend ({
                 // Start animate it
                 this.width = 100;
 
-                setTimeout(function(){
+                setTimeout(function () {
                     // animate when element removed
                     self.full = 'full';
                     self.error = false;
@@ -79,13 +79,13 @@ var VueLoadingBar = Vue.extend ({
                         });
 
                         // Duration to Waiting for slick hiding animation
-                    },250);
+                    }, 250);
 
                     // Duration is depend on css animation-duration of loading-bar
-                },700);
+                }, 700);
 
                 // When the progress doesn't end yet
-            }else{
+            } else {
 
                 // Do normaly loading bar animation
                 this.full = '';
@@ -95,7 +95,7 @@ var VueLoadingBar = Vue.extend ({
 
         },
 
-        error: function(val,old){
+        error: function (val, old) {
             this.progress = 100;
             // Callback Event when it's error
             this.$dispatch('loading-bar:error');
@@ -104,15 +104,15 @@ var VueLoadingBar = Vue.extend ({
     },
 
     methods: {
-        styling: function(){
+        styling: function () {
             // When loading bar still in progress
-            if(!this.wait){
-                return { width: this.width+'%' };
+            if (!this.wait) {
+                return {width: this.width + '%'};
 
                 // When loading bar end
-            }else{
+            } else {
                 // Make it stuck at 100 to waiting the animation
-                return{ width: '100%' };
+                return {width: '100%'};
             }
 
         }
@@ -121,4 +121,4 @@ var VueLoadingBar = Vue.extend ({
 });
 
 // Register
-Vue.component('loading-bar',VueLoadingBar);
+Vue.component('loading-bar', VueLoadingBar);

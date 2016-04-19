@@ -23,7 +23,8 @@
                     <button class="btn btn-sm btn-default">{{trans('dashboard::common.Apply')}}</button>
                 </div>
                 <div class="col-sm-4">
-                    <button class="btn m-b-xs btn-sm btn-default btn-addon" data-toggle="modal" data-target="#settings-modal"><i
+                    <button class="btn m-b-xs btn-sm btn-default btn-addon" data-toggle="modal"
+                            data-target="#settings-modal"><i
                                 class="fa fa-plus"></i>{{trans('dashboard::common.Create')}}</button>
                 </div>
                 <div class="col-sm-3">
@@ -116,7 +117,8 @@
 
 
     <!-- Modal -->
-    <div class="modal fade slide-down disable-scroll" id="settings-modal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal fade slide-down disable-scroll" id="settings-modal" tabindex="-1" role="dialog"
+         aria-hidden="false">
         <div class="modal-dialog">
             <div class="modal-content-wrapper">
                 <div class="modal-content">

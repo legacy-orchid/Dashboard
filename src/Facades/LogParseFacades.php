@@ -20,11 +20,13 @@ class LogParseFacades extends Facade
     /**
      * @param $method
      * @param $args
+     *
      * @return mixed
      */
     public function __call($method, $args)
     {
         $log = new Log();
+
         return $log->$method($args);
     }
 }

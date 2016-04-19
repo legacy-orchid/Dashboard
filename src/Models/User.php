@@ -56,7 +56,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         'remember_token',
     ];
 
-
     /**
      * @var array
      */

@@ -61,8 +61,8 @@ interface TaggableInterface
      * Returns the entities with only the given tags.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string|array $tags
-     * @param string $type
+     * @param string|array                          $tags
+     * @param string                                $type
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -72,8 +72,8 @@ interface TaggableInterface
      * Returns the entities with one of the given tags.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string|array $tags
-     * @param string $type
+     * @param string|array                          $tags
+     * @param string                                $type
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -116,7 +116,7 @@ interface TaggableInterface
      * Attaches or detaches the given tags.
      *
      * @param string|array $tags
-     * @param string $type
+     * @param string       $type
      *
      * @return bool
      */

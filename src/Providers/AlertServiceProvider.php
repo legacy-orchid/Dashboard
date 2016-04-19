@@ -1,10 +1,11 @@
-<?php namespace Orchid\Dashboard\Providers;
+<?php
+
+namespace Orchid\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
 class AlertServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -14,8 +15,6 @@ class AlertServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -31,8 +30,6 @@ class AlertServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap the application events.
-     *
-     * @return void
      */
     public function boot()
     {

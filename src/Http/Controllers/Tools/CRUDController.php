@@ -8,7 +8,7 @@ use Orchid\Dashboard\Http\Controllers\Controller;
 class CRUDController extends Controller
 {
     /**
-     * 
+     *
      */
     public function index()
     {

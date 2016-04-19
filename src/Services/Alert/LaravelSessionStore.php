@@ -1,4 +1,6 @@
-<?php namespace Orchid\Dashboard\Services\Alert;
+<?php
+
+namespace Orchid\Dashboard\Services\Alert;
 
 use Illuminate\Session\Store;
 

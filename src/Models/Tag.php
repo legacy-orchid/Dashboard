@@ -89,7 +89,7 @@ class Tag extends Model
      * Finds a tag by its name.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string $name
+     * @param string                                $name
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -102,7 +102,7 @@ class Tag extends Model
      * Finds a tag by its slug.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string $slug
+     * @param string                                $slug
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */

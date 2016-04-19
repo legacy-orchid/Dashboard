@@ -73,8 +73,6 @@ class MenuServiceProvider extends ServiceProvider
             'divider' => true,
         ];
 
-
-
         $CRUDMenu = [
             'slug' => 'CRUD',
             'icon' => 'fa fa-clone',
@@ -160,9 +158,6 @@ class MenuServiceProvider extends ServiceProvider
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $seoMenu, 10);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $siteMapMenu, 30);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $CRUDMenu, 40);
-
-
-
 
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $errorMenu, 500);
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $localizationMenu, 300);
