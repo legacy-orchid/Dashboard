@@ -1,8 +1,9 @@
-<?php namespace Orchid\Dashboard\Services\Alert;
+<?php
+
+namespace Orchid\Dashboard\Services\Alert;
 
 interface SessionStore
 {
-
     /**
      * Flash a message to the session.
      *

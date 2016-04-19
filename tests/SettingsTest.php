@@ -1,19 +1,18 @@
 <?php
+
 use Settings;
 
 class SettingsTest extends TestCase
 {
     /**
      * A basic test example.
-     *
-     * @return void
      */
     public function oneValue()
     {
 
         //Запишем значение
-        $key = "test-" . str_random(40);
-        $value = "value-" . str_random(40);
+        $key = 'test-'.str_random(40);
+        $value = 'value-'.str_random(40);
 
         // Пробуем записать одно значение
         Settings::set($key, $value);
@@ -30,13 +29,12 @@ class SettingsTest extends TestCase
         $this->assertEquals(null, $result);
     }
 
-
     public function manyValue()
     {
         $valueArray = [
-            'test-1' => "value-" . str_random(40),
-            'test-2' => "value-" . str_random(40),
-            'test-3' => "value-" . str_random(40)
+            'test-1' => 'value-'.str_random(40),
+            'test-2' => 'value-'.str_random(40),
+            'test-3' => 'value-'.str_random(40),
         ];
 
         //Добавим несколько значений
@@ -47,7 +45,7 @@ class SettingsTest extends TestCase
         $result = Settings::get([
             'test-1',
             'test-2',
-            'test-3'
+            'test-3',
         ]);
 
         $this->assertEquals(3, $result->count());
@@ -56,7 +54,7 @@ class SettingsTest extends TestCase
         $result = Settings::forget([
             'test-1',
             'test-2',
-            'test-3'
+            'test-3',
         ]);
         $this->assertTrue($result);
     }
