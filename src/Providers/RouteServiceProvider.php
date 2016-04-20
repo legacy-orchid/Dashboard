@@ -47,8 +47,8 @@ class RouteServiceProvider extends ServiceProvider
             function ($router) {
                 require __DIR__.'/../Http/routes.php';
             });
-        
-        $router->group(['middleware' => 'web', 'prefix' => 'dashboard', 'namespace' => $this->namespace],
+
+        $router->group(['middleware' => ['web','guest'], 'prefix' => 'dashboard', 'namespace' => $this->namespace],
             function ($router) {
                 $router->auth();
             });
