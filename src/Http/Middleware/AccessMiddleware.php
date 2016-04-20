@@ -30,10 +30,16 @@ class AccessMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->check() && $this->auth->user()->hasAccess($this->routeActive)) {
+        if ($this->auth->guest()) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return redirect()->guest('/dashboard/login');
+            }
+        } elseif ($this->auth->user()->hasAccess($this->routeActive)) {
             return $next($request);
         } else {
-            abort(404);
+            abort(403);
         }
     }
 }

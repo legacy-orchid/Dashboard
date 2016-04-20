@@ -30,5 +30,3 @@ Route::group(['namespace' => 'Tools'], function () {
         ],
     ]);
 });
-
-Route::auth();
