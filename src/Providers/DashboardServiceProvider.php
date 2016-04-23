@@ -143,6 +143,7 @@ class DashboardServiceProvider extends ServiceProvider
         // $this->app->register(\Orchid\Dashboard\Providers\SocketServiceProvider::class);
         $this->app->register(\Orchid\Dashboard\Providers\SettingsServiceProvider::class);
         $this->app->register(\Orchid\Dashboard\Providers\MenuServiceProvider::class);
+        $this->app->register(\Orchid\Dashboard\Providers\GeneratorsServiceProvider::class);
     }
 
     /**
