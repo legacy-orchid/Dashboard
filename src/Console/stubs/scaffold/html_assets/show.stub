@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('dashboard::layouts.dashboard')
 @section('header')
 <div class="page-header">
         <h1>{{Class}} / Show #{{${{classSingle}}->id}}</h1>
