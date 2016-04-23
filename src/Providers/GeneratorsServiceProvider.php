@@ -28,7 +28,7 @@ class GeneratorsServiceProvider extends ServiceProvider
     private function registerScaffoldGenerator()
     {
         $this->app->singleton('command.dashboard.scaffold', function ($app) {
-            return $app['Orchid\Dashboard\Commands\ScaffoldMakeCommand'];
+            return $app['Orchid\Dashboard\Console\Commands\ScaffoldMakeCommand'];
         });
 
         $this->commands('command.dashboard.scaffold');
