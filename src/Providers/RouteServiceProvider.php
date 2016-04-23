@@ -43,12 +43,12 @@ class RouteServiceProvider extends ServiceProvider
     public function map(Router $router)
     {
         $router->middleware('dashboard', AccessMiddleware::class);
-        $router->group(['middleware' => ['web','dashboard'], 'prefix' => 'dashboard', 'namespace' => $this->namespace],
+        $router->group(['middleware' => ['web', 'dashboard'], 'prefix' => 'dashboard', 'namespace' => $this->namespace],
             function ($router) {
                 require __DIR__.'/../Http/routes.php';
             });
 
-        $router->group(['middleware' => ['web','guest'], 'prefix' => 'dashboard', 'namespace' => $this->namespace],
+        $router->group(['middleware' => ['web', 'guest'], 'prefix' => 'dashboard', 'namespace' => $this->namespace],
             function ($router) {
                 $router->auth();
             });

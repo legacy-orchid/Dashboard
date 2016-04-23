@@ -29,7 +29,7 @@ class ConsoleServiceProvider extends ServiceProvider
         'Server',
         'MakeListener',
         'MakeWidget',
-        'Commands\\CreateAdminCommand'
+        'Commands\\CreateAdminCommand',
     ];
 
     /**

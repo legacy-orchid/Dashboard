@@ -1,22 +1,20 @@
-<?php namespace Orchid\Dashboard\Console\Commands;
+<?php
+
+namespace Orchid\Dashboard\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\QueryException;
 use Route;
 use Orchid\Dashboard\Models\User;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 
 class CreateAdminCommand extends Command
 {
-
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'make:admin';
-
 
     /**
      * @var string
@@ -30,11 +28,8 @@ class CreateAdminCommand extends Command
      */
     protected $description = 'Create user administrator';
 
-
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -64,13 +59,8 @@ class CreateAdminCommand extends Command
             ]);
 
             $this->info('User created successfully.');
-        }
-        catch (QueryException $e)
-        {
+        } catch (QueryException $e) {
             $this->error('User already exists!');
         }
     }
-
-
-
 }
