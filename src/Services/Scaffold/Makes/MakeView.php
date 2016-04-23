@@ -6,12 +6,12 @@
  * Time: 4:58 PM.
  */
 
-namespace Orchid\Dashboard\Scaffold\Makes;
+namespace Orchid\Dashboard\Services\Scaffold\Makes;
 
 use Illuminate\Filesystem\Filesystem;
 use Orchid\Dashboard\Console\Commands\ScaffoldMakeCommand;
-use Orchid\Dashboard\Scaffold\Migrations\SchemaParser;
-use Orchid\Dashboard\Scaffold\Migrations\SyntaxBuilder;
+use Orchid\Dashboard\Services\Scaffold\Migrations\SchemaParser;
+use Orchid\Dashboard\Services\Scaffold\Migrations\SyntaxBuilder;
 
 class MakeView
 {

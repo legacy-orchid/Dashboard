@@ -1,8 +1,8 @@
 <?php
 
-namespace Orchid\Dashboard\Scaffold\Migrations;
+namespace Orchid\Dashboard\Services\Scaffold\Migrations;
 
-use Orchid\Dashboard\Scaffold\GeneratorException;
+use Orchid\Dashboard\Services\Scaffold\GeneratorException;
 
 /**
  * Class SyntaxBuilder with modifications by Fernando.

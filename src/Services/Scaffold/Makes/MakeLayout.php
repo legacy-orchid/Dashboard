@@ -6,7 +6,7 @@
  * Time: 11:49 PM.
  */
 
-namespace Orchid\Dashboard\Scaffold\Makes;
+namespace Orchid\Dashboard\Services\Scaffold\Makes;
 
 use Illuminate\Filesystem\Filesystem;
 use Orchid\Dashboard\Console\Commands\ScaffoldMakeCommand;

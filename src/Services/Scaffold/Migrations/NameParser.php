@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchid\Dashboard\Scaffold\Migrations;
+namespace Orchid\Dashboard\Services\Scaffold\Migrations;
 
 /**
  * Class NameParser.
