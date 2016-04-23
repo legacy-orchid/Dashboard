@@ -1,8 +1,11 @@
-<?php namespace App\Console\Commands;
+<?php namespace Orchid\Dashboard\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Routing\Router;
+use Illuminate\Database\QueryException;
+use Route;
 use Orchid\Dashboard\Models\User;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class CreateAdminCommand extends Command
 {
@@ -13,6 +16,12 @@ class CreateAdminCommand extends Command
      * @var string
      */
     protected $name = 'make:admin';
+
+
+    /**
+     * @var string
+     */
+    protected $signature = 'make:admin {name} {email} {password}';
 
     /**
      * The console command description.
@@ -40,43 +49,28 @@ class CreateAdminCommand extends Command
     public function fire()
     {
         $permissions = [];
-        foreach (Router::getRoutes() as $key => $value) {
-            if (!is_null($value)) {
-                $permissions[$value] = 1;
+        foreach (Route::getRoutes() as $key => $route) {
+            if (!is_null($route->getName())) {
+                $permissions[$route->getName()] = 1;
             }
         }
 
-        User::create([
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('12345'),
-            'permissions' => $permissions,
-        ]);
+        try {
+            User::create([
+                'name' => $this->argument('name'),
+                'email' => $this->argument('email'),
+                'password' => bcrypt($this->argument('password')),
+                'permissions' => $permissions,
+            ]);
+
+            $this->info('User created successfully.');
+        }
+        catch (QueryException $e)
+        {
+            $this->error('User already exists!');
+        }
     }
 
 
-    /**
-     * Get the console command arguments.
-     *
-     * @return array
-     */
-    protected function getArguments()
-    {
-        return [
-            //['example', InputArgument::REQUIRED, 'An example argument.'],
-        ];
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-            //['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
-        ];
-    }
 
 }
