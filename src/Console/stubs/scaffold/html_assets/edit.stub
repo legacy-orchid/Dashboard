@@ -1,7 +1,4 @@
 @extends('dashboard::layouts.dashboard')
-@section('css')
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" rel="stylesheet">
-@endsection
 
 @section('content')
 
@@ -11,31 +8,30 @@
     </div>
 
 
-
-
     @include('error')
 
-    <div class="row">
-        <div class="col-md-12">
+    <div class="wrapper-md">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading font-bold">Edit #{{${{classSingle}}->id}}</div>
+                    <div class="panel-body">
 
-            <form action="{{ route('{{class}}.update', ${{classSingle}}->id) }}" method="POST">
-                <input type="hidden" name="_method" value="PUT">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <form action="{{ route('dashboard.{{class}}.update', ${{classSingle}}->id) }}" method="POST">
+                            <input type="hidden" name="_method" value="PUT">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                {{content_fields}}
-                <div class="well well-sm">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a class="btn btn-link pull-right" href="{{ route('{{class}}.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
+
+                            {{content_fields}}
+
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                            <a class="btn btn-link pull-right" href="{{ route('dashboard.{{class}}.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
+                                </div>
+                        </form>
+                    </div>
                 </div>
-            </form>
-
+            </div>
         </div>
     </div>
-@endsection
-@section('scripts')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
-  <script>
-    $('.date-picker').datepicker({
-    });
-  </script>
 @endsection
