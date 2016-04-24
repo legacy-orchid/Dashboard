@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 
 // composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
+use App\Factory as TestDummy;
 
 class {{class}}TableSeeder extends Seeder {
 

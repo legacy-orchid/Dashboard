@@ -1,16 +1,25 @@
 @extends('dashboard::layouts.dashboard')
 
-@section('header')
+
+@section('content')
+
+
+
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">{{Class}}</h1>
+        <small class="text-muted">Descriptions</small>
+    </div>
+
+
+
     <div class="page-header clearfix">
         <h1>
             <i class="glyphicon glyphicon-align-justify"></i> {{Class}}
             <a class="btn btn-success pull-right" href="{{ route('{{class}}.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>
         </h1>
-
     </div>
-@endsection
 
-@section('content')
+
     <div class="row">
         <div class="col-md-12">
             @if(${{class}}->count())

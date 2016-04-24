@@ -1,5 +1,17 @@
 @extends('dashboard::layouts.dashboard')
-@section('header')
+
+@section('content')
+
+
+
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">{{Class}}</h1>
+        <small class="text-muted">Show #{{${{classSingle}}->id}}</small>
+    </div>
+
+
+
+
 <div class="page-header">
         <h1>{{Class}} / Show #{{${{classSingle}}->id}}</h1>
         <form action="{{ route('{{class}}.destroy', ${{classSingle}}->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
@@ -11,9 +23,8 @@
             </div>
         </form>
     </div>
-@endsection
 
-@section('content')
+
     <div class="row">
         <div class="col-md-12">
 

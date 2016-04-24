@@ -46,17 +46,17 @@ trait MakerTrait
         if ($path == 'controller') {
             return './app/Http/Controllers/'.$file_name.'.php';
         } elseif ($path == 'model') {
-            return './app/'.$file_name.'.php';
+            return './app/Models/'.$file_name.'.php';
         } elseif ($path == 'seed') {
             return './database/seeds/'.$file_name.'.php';
         } elseif ($path == 'view-index') {
-            return './resources/views/'.$file_name.'/index.blade.php';
+            return './resources/views/dashboard/'.$file_name.'/index.blade.php';
         } elseif ($path == 'view-edit') {
-            return './resources/views/'.$file_name.'/edit.blade.php';
+            return './resources/views/dashboard/'.$file_name.'/edit.blade.php';
         } elseif ($path == 'view-show') {
-            return './resources/views/'.$file_name.'/show.blade.php';
+            return './resources/views/dashboard/'.$file_name.'/show.blade.php';
         } elseif ($path == 'view-create') {
-            return './resources/views/'.$file_name.'/create.blade.php';
+            return './resources/views/dashboard/'.$file_name.'/create.blade.php';
         }
     }
 

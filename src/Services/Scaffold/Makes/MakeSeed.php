@@ -58,7 +58,7 @@ class MakeSeed
      */
     protected function compileSeedStub()
     {
-        $stub = $this->files->get(__DIR__.'/../../../Console/stubs/seed.stub');
+        $stub = $this->files->get(__DIR__.'/../../../Console/stubs/scaffold/seed.stub');
 
         $this->replaceClassName($stub);
 

@@ -65,7 +65,7 @@ class MakeMigration
      */
     protected function compileMigrationStub()
     {
-        $stub = $this->files->get(__DIR__.'/../../../Console/stubs/migration.stub');
+        $stub = $this->files->get(__DIR__.'/../../../Console/stubs/scaffold/migration.stub');
 
         $this->replaceClassName($stub)
             ->replaceSchema($stub)
