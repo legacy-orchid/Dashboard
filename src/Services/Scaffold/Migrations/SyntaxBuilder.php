@@ -266,9 +266,9 @@ class SyntaxBuilder
 
             // Fields to show view
             $syntax = sprintf("<div class=\"form-group\">\n".
-                str_repeat(' ', 21)."<label for=\"%s\">%s</label>\n".
+                str_repeat(' ', 21)."<label for=\"%s\"><b>%s</b></label>\n".
                 str_repeat(' ', 21)."<p class=\"form-control-static\">{{\$%s->%s}}</p>\n".
-                str_repeat(' ', 16).'</div>', strtolower($field['name']), strtoupper($field['name']), $meta['var_name'], strtolower($field['name']));
+                str_repeat(' ', 16).'</div><div class="line line-dashed b-b"></div>', strtolower($field['name']), strtoupper($field['name']), $meta['var_name'], strtolower($field['name']));
         } elseif ($type == 'view-edit-content') {
             $syntax = $this->buildField($field, $type, $meta['var_name']);
         } elseif ($type == 'view-create-content') {

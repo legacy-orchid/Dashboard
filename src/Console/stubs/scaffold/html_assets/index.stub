@@ -19,7 +19,7 @@
     <div class="wrapper-md" id="{{Class}}-container">
 
         <div class="panel panel-default">
-            <div class="panel-heading font-bold">Системные параметры</div>
+            <div class="panel-heading font-bold">{{Class}}</div>
 
 
             <div class="row wrapper">
@@ -30,7 +30,7 @@
                     <button class="btn btn-sm btn-default">Apply</button>
                 </div>
                 <div class="col-sm-4">
-                    <a href="{{ route('{{class}}.create') }}" class="btn m-b-xs btn-sm btn-default btn-addon"><i
+                    <a href="{{ route('dashboard.{{class}}.create') }}" class="btn m-b-xs btn-sm btn-default btn-addon"><i
                                 class="fa fa-plus"></i>Create</a>
                 </div>
                 <div class="col-sm-3">
@@ -64,21 +64,21 @@
                                     <td>{{${{classSingle}}->id}}</td>
                                     {{content_fields}}
                                     <td class="text-right">
-                                        <a class="btn btn-xs btn-primary"
-                                           href="{{ route('{{class}}.show', ${{classSingle}}->id) }}"><i
-                                                    class="glyphicon glyphicon-eye-open"></i> View</a>
-                                        <a class="btn btn-xs btn-warning"
-                                           href="{{ route('{{class}}.edit', ${{classSingle}}->id) }}"><i
-                                                    class="glyphicon glyphicon-edit"></i> Edit</a>
-                                        <form action="{{ route('{{class}}.destroy', ${{classSingle}}->id) }}"
-                                              method="POST" style="display: inline;"
-                                              onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <button type="submit" class="btn btn-xs btn-danger"><i
-                                                        class="glyphicon glyphicon-trash"></i> Delete
-                                            </button>
-                                        </form>
+                                        <div class="btn-group pull-right btn-group-sm" role="group" aria-label="...">
+                                            <a href="{{ route('dashboard.{{class}}.show', ${{classSingle}}->id) }}" class="btn btn-default"><i class="fa fa-eye"></i> </a>
+
+                                            <a href="{{ route('dashboard.{{class}}.edit', ${{classSingle}}->id) }}" class="btn btn-default"><i class="fa fa-edit"></i> </a>
+
+
+                                            <form action="{{ route('dashboard.{{class}}.destroy', ${{classSingle}}->id) }}"
+                                                  method="POST" style="display: inline;"
+                                                  onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <button type="submit" class="btn btn-sm btn-danger"> <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

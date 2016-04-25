@@ -15,30 +15,33 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading font-bold">Create
-
-                    <form action="{{ route('{{class}}.destroy', ${{classSingle}}->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <div class="btn-group pull-right btn-sm" role="group" aria-label="...">
-                                    <a class="btn btn-warning btn-group" btn-sm role="group" href="{{ route('{{class}}.edit', ${{classSingle}}->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete <i class="glyphicon glyphicon-trash"></i></button>
-                                </div>
-                    </form>
-
+                    <div class="panel-heading font-bold">Show #{{${{classSingle}}->id}}
 
 
                     </div>
                     <div class="panel-body">
 
-                        <form action="#" method="POST">
 
                             {{content_fields}}
 
-                            <div class="form-group">
+
+
+
+
+
+      <form action="{{ route('dashboard.{{class}}.destroy', ${{classSingle}}->id) }}" method="POST" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <a class="btn btn-default  btn-sm" btn-sm role="group" href="{{ route('dashboard.{{class}}.edit', ${{classSingle}}->id) }}">
+                                    <i class="fa fa-edit"></i></a>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                </div>
+
                                 <a class="btn btn-link pull-right" href="{{ route('dashboard.{{class}}.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
-                            </div>
-                        </form>
+
+                    </form>
+
                     </div>
                 </div>
             </div>

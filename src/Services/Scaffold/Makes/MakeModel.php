@@ -23,6 +23,11 @@ class MakeModel
         $this->start();
     }
 
+    protected function getStub()
+    {
+        return __DIR__.'/../../../stubs/widget.stub';
+    }
+
     protected function start()
     {
         $name = $this->scaffoldCommandObj->getObjName('Name');
@@ -30,7 +35,7 @@ class MakeModel
 
         if (!$this->files->exists($modelPath)) {
             $this->scaffoldCommandObj->call('make:model', [
-                'name' => $name,
+                'name' => 'Models/'.$name,
             ]);
         }
     }

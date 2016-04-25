@@ -85,7 +85,7 @@ class MakeController
      */
     private function replaceModelPath(&$stub)
     {
-        $model_name = $this->getAppNamespace().$this->scaffoldCommandObj->getObjName('Name');
+        $model_name = $this->getAppNamespace().'Models\\'.$this->scaffoldCommandObj->getObjName('Name');
         $stub = str_replace('{{model_path}}', $model_name, $stub);
 
         return $this;
