@@ -18,6 +18,12 @@ class CreateNotificationTable extends Migration
             $table->string('text')->nullable();
             $table->boolean('read')->default(0);
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
         });
     }
 
@@ -26,6 +32,6 @@ class CreateNotificationTable extends Migration
      */
     public function down()
     {
-            Schema::drop('notification');
+        Schema::drop('notification');
     }
 }

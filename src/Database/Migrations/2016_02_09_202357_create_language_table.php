@@ -14,7 +14,7 @@ class CreateLanguageTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('code');
-            $table->boolean('status');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

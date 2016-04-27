@@ -12,9 +12,20 @@ class CreatePostTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('types_id');
-            $table->integer('users_id');
+            $table->integer('type_id');
+            $table->integer('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('type_id')
+                ->references('id')
+                ->on('types')
+                ->onDelete('cascade');
+
         });
     }
 

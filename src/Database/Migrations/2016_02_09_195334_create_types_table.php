@@ -12,7 +12,7 @@ class CreateTypesTable extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('name');
+            $table->string('name');
             $table->string('slug')->unique();
             $table->timestamps();
         });

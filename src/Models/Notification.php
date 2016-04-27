@@ -13,11 +13,10 @@ class Notification extends Model
         'type',
         'url',
         'text',
-        'read'
+        'read',
     ];
 
     protected $casts = [
         'read' => 'boolean',
     ];
-
 }
