@@ -13,8 +13,8 @@ class CreateNotificationTable extends Migration
         Schema::create('notification', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('user_id')->index()->unsigned();
-            $table->string('type')->index()->nullable();
-            $table->string('url');
+            $table->string('type')->index();
+            $table->string('url')->nullable();
             $table->string('text')->nullable();
             $table->boolean('read')->default(0);
             $table->timestamps();

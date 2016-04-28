@@ -135,8 +135,14 @@
 </div>
 
 
-<script src="/orchid/js/orchid.js" type="text/javascript"></script>
 
+
+
+
+@include('partials.quick')
+
+
+<script src="/orchid/js/orchid.js" type="text/javascript"></script>
 
 @stack('scripts')
 

@@ -211,7 +211,7 @@
         </li>
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                <i class="fa fa-bell fa-fw"></i>
+                <i class="fa fa-bars fa-fw"></i>
                 <span class="visible-xs-inline">Notifications</span>
                 <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
             </a>

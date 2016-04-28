@@ -19,4 +19,12 @@ class Notification extends Model
     protected $casts = [
         'read' => 'boolean',
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(Notification::class);
+    }
+    
+    
 }

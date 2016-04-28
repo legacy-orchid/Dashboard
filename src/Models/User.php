@@ -11,10 +11,11 @@ use Kyslik\ColumnSortable\Sortable;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Orchid\Dashboard\Services\Access\UserAccess;
 use Orchid\Dashboard\Services\Access\UserInterface;
+use Orchid\Dashboard\Services\Notification\NotificationTrait;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract, UserInterface
 {
-    use Authenticatable, CanResetPassword, UserAccess, SearchableTrait, Sortable;
+    use Authenticatable, CanResetPassword, UserAccess, SearchableTrait, Sortable, NotificationTrait;
 
     /**
      * @var
