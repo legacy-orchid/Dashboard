@@ -20,11 +20,8 @@ class Notification extends Model
         'read' => 'boolean',
     ];
 
-
     public function user()
     {
-        return $this->belongsTo(Notification::class);
+        return $this->belongsTo(self::class);
     }
-    
-    
 }

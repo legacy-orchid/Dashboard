@@ -2,7 +2,7 @@
 
 namespace Orchid\Dashboard\Services\Alert;
 
-interface SessionStore
+interface SessionStoreInterface
 {
     /**
      * Flash a message to the session.

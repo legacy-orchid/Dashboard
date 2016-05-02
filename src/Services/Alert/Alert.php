@@ -9,9 +9,9 @@ class Alert
     /**
      * Create a new flash notifier instance.
      *
-     * @param SessionStore $session
+     * @param SessionStoreInterface $session
      */
-    public function __construct(SessionStore $session)
+    public function __construct(SessionStoreInterface $session)
     {
         $this->session = $session;
     }

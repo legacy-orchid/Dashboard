@@ -6,11 +6,11 @@ use Orchid\Dashboard\Models\Notification;
 
 trait NotificationTrait
 {
-
     /**
      * @param $type
      * @param $text
      * @param null $url
+     *
      * @return $this
      */
     public function notificationCreate($type, $text, $url = null)
@@ -22,6 +22,7 @@ trait NotificationTrait
             'text' => $text,
             'read' => false,
         ]);
+
         return $this;
     }
 
@@ -38,13 +39,11 @@ trait NotificationTrait
      */
     public function notificationAllRead()
     {
-        if(!is_null($this->notifications()->first())) {
+        if (!is_null($this->notifications()->first())) {
             return $this->notifications()->update([
                 'read' => true,
             ]);
-        }
-        else
-        {
+        } else {
             return $this;
         }
     }
@@ -52,28 +51,27 @@ trait NotificationTrait
     /**
      * @return mixed
      */
-    public function clearNotification(){
-        return $this->notifications()->delete() ;
+    public function clearNotification()
+    {
+        return $this->notifications()->delete();
     }
-
 
     /**
      * @param array $type
+     *
      * @return mixed
      */
-    public function listNotification($type = []){
-        if(empty($type))
-        {
+    public function listNotification($type = [])
+    {
+        if (empty($type)) {
             return $this->notifications()
                 ->get()
                 ->groupBy('type');
-        }
-        else {
+        } else {
             return $this->notifications()
                 ->whereIn('type', $type)
                 ->get()
                 ->groupBy('type');
         }
     }
-    
 }

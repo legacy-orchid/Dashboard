@@ -4,7 +4,7 @@ namespace Orchid\Dashboard\Services\Alert;
 
 use Illuminate\Session\Store;
 
-class LaravelSessionStore implements SessionStore
+class LaravelSessionStore implements SessionStoreInterface
 {
     /**
      * @var Store
