@@ -58,7 +58,6 @@ trait NotificationTrait
 
     /**
      * @param array $type
-     *
      * @return mixed
      */
     public function listNotification($type = [])

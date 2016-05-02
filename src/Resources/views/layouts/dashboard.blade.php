@@ -139,7 +139,7 @@
 
 
 
-@include('partials.quick')
+@include('dashboard::partials.quick')
 
 
 <script src="/orchid/js/orchid.js" type="text/javascript"></script>
