@@ -23,33 +23,6 @@ trait UserAccess
     {
         static::$rolesModel = $rolesModel;
     }
-
-    /**
-     * Get mutator for the "permissions" attribute.
-     *
-     * @param mixed $permissions
-     *
-     * @deprecated
-     *
-     * @return array
-     */
-    public function getPermissionsAttribute($permissions)
-    {
-        return $permissions ? json_decode($permissions, true) : [];
-    }
-
-    /**
-     * Set mutator for the "permissions" attribute.
-     *
-     * @deprecated
-     *
-     * @param mixed $permissions
-     */
-    public function setPermissionsAttribute(array $permissions)
-    {
-        $this->attributes['permissions'] = $permissions ? json_encode($permissions) : '';
-    }
-
     /**
      * @return mixed
      */
