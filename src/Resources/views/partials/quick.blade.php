@@ -276,6 +276,7 @@
                                     </div>
                                     <!-- END List Group Header!-->
                                     <ul>
+                                        @foreach($UserNotification as $notification)
                                         <!-- BEGIN List Group Item!-->
                                         <li class="alert-list">
                                             <!-- BEGIN Alert Item Set Animation using data-view-animation !-->
@@ -286,13 +287,14 @@
                                                                 class="fa fa-circle"></i></span>
                                                 </p>
                                                 <p class="p-l-10 col-xs-height col-middle col-xs-12 overflow-ellipsis fs-12">
-                                                    <span class="text-master link">Jame Smith commented on your status<br></span>
+                                                    <span class="text-master link">{{$notification->text}}<br></span>
                                                     <span class="text-master">“Perfection Simplified - Company Revox"</span>
                                                 </p>
                                             </a>
                                             <!-- END Alert Item!-->
                                         </li>
                                         <!-- END List Group Item!-->
+                                        @endforeach
                                         <!-- BEGIN List Group Item!-->
                                         <li class="alert-list">
                                             <!-- BEGIN Alert Item Set Animation using data-view-animation !-->

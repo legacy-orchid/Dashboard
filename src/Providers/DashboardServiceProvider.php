@@ -6,6 +6,7 @@ use Blade;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Orchid\Dashboard\Http\Composers\DashboardMenuComposer;
+use Orchid\Dashboard\Http\Composers\DashboardNotificationComposer;
 use Orchid\Dashboard\Services\Menu\DashboardMenu;
 use View;
 
@@ -33,6 +34,8 @@ class DashboardServiceProvider extends ServiceProvider
         $this->registerProviders();
         //Композер для меню
         View::composer('dashboard:*', DashboardMenuComposer::class);
+        View::composer('dashboard:*', DashboardNotificationComposer::class);
+
         Blade::directive('widget', function ($key) {
             return "<?php echo (new \\Orchid\\Dashboard\\Services\\Widget\\Widget)->get({$key}); ?>";
         });

@@ -165,9 +165,6 @@ class MenuServiceProvider extends ServiceProvider
 
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $usersMenu, 501);
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $groupsMenu, 601);
-
-
-
     }
 
     /**
