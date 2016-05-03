@@ -36,7 +36,7 @@
     @endif
 
     <li>
-        <a href="{{$url}}">
+        <a href="{{route($route)}}}">
             <i class="{{$icon}}"></i>
             <span>{{$label}}</span>
         </a>

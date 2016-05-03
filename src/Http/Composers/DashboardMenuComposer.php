@@ -41,9 +41,6 @@ class DashboardMenuComposer
      */
     public function compose(View $view)
     {
-        $viewMenu = [];
-
-        if ($this->guard->check()) {
             $viewMenu = Cache::remember('dashboard-menu-user-'.$this->guard->user()->id, 10, function () {
 
                 /*
@@ -51,14 +48,12 @@ class DashboardMenuComposer
                  * элементы к которым их нет
                  */
                 $user = $this->guard->user();
-
                 $accessCollection = $this->dashboardMenu->container->filter(function ($item) use ($user) {
-                    return $user->hasAccess($item['arg']['url']);
+                    return  (isset($item['arg']['route'])) ? $user->hasAccess($item['arg']['route']) : true;
                 });
 
                 return $accessCollection;
             });
-        }
 
         $view->with('DashboardMenu', $viewMenu);
     }
