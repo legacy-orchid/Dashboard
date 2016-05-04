@@ -174,7 +174,7 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle clear">
-                <span class="hidden-sm hidden-md">Черняев Александр</span> <b class="caret"></b>
+                <span class="">Черняев Александр</span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w-full">
@@ -209,11 +209,25 @@
             </ul>
             <!-- / dropdown -->
         </li>
+
+        <li>
+            <a href="#" class="click" data-toggle="open" data-target="#quickview">
+                <i class="fa fa-bars fa-fw"></i>
+                <span class="visible-xs-inline">Notifications</span>
+                <span class="badge badge-sm up bg-danger pull-right-xs">{{
+                $UserNotification->where('read',false)->count() ? $UserNotification->where('read',false)->count() : ""
+                }}</span>
+            </a>
+        </li>
+
+
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                 <i class="fa fa-bars fa-fw"></i>
                 <span class="visible-xs-inline">Notifications</span>
-                <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
+                <span class="badge badge-sm up bg-danger pull-right-xs">{{
+                $UserNotification->where('read',false)->count() ? $UserNotification->where('read',false)->count() : ""
+                }}</span>
             </a>
             <!-- dropdown -->
             <div class="dropdown-menu w-xl animated fadeInUp">

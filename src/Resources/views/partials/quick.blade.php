@@ -1,6 +1,6 @@
 <div id="quickview" class="quickview-wrapper" data-pages="quickview">
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs bg-black">
         <li class="">
             <a href="#quickview-notes" data-toggle="tab">Notes</a>
         </li>
@@ -8,7 +8,7 @@
             <a href="#quickview-alerts" data-toggle="tab">Alerts</a>
         </li>
     </ul>
-    <a class="btn-link quickview-toggle" data-toggle-element="#quickview" data-toggle="quickview"><i
+    <a class="btn-link quickview-toggle click" data-toggle="open" data-target="#quickview"><i
                 class="fa fa-times"></i></a>
     <!-- Tab panes -->
     <div class="tab-content">
@@ -194,168 +194,47 @@
                 <!-- BEGIN Alerts View !-->
                 <div class="view bg-white">
                     <!-- BEGIN View Header !-->
-                    <div class="navbar navbar-default navbar-sm">
-                        <div class="navbar-inner">
+                    <div class="wrapper">
+                        <div class="hbox">
                             <!-- BEGIN Header Controler !-->
-                            <a href="javascript:;" class="inline action p-l-10 link text-master" data-navigate="view"
-                               data-view-port="#chat" data-view-animation="push-parrallax">
-                                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                            </a>
+
+                            <div class="col text-left">
+                                <a href="javascript:;" class="inline action p-l-10 link text-master" data-navigate="view"
+                                   data-view-port="#chat">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </a>
+                            </div>
                             <!-- END Header Controler !-->
-                            <div class="view-heading">
+                            <div class="col text-center">
                                 Notications
                             </div>
-                            <!-- BEGIN Header Controler !-->
-                            <a href="#" class="inline action p-r-10 pull-right link text-master">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </a>
-                            <!-- END Header Controler !-->
+
+                            <div class="col text-right">
+                                <a href="#" class="inline action p-r-10 pull-right link text-master">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                            </div>
+
                         </div>
                     </div>
                     <!-- END View Header !-->
                     <!-- BEGIN Alert List !-->
-                    <div data-init-list-view="ioslist" class="list-view boreded no-top-border"><h2
-                                class="list-view-fake-header">
-                            Sever Status
-                        </h2>
-                        <!-- BEGIN List Group !-->
-                        <div class="scroll-wrapper list-view-wrapper">
-                            <div class="list-view-wrapper scroll-content scroll-scrolly_visible" data-ios="false"
-                            >
-                                <div class="list-view-group-container">
-                                    <!-- BEGIN List Group Header!-->
-                                    <div class="list-view-group-header text-uppercase">
-                                        Calendar
+                    <div class="list-view-wrapper list-view b-t">
+
+                        <div class="streamline b-l m-b wrapper">
+
+                            @foreach($UserNotification as $notification)
+                                <div class="sl-item b-l">
+                                    <div class="m-l">
+                                        <div class="text-muted">
+                                            <abbr title="{{$notification->created_at}}">{{$notification->created_at->diffForHumans()}}</abbr>
+                                        </div>
+                                        <p>{{$notification->text}}</p>
                                     </div>
-                                    <!-- END List Group Header!-->
-                                    <ul>
-                                        <!-- BEGIN List Group Item!-->
-                                        <li class="alert-list">
-                                            <!-- BEGIN Alert Item Set Animation using data-view-animation !-->
-                                            <a href="javascript:;" class="" data-navigate="view" data-view-port="#chat"
-                                               data-view-animation="push-parrallax">
-                                                <p class="col-xs-height col-middle">
-                                                    <span class="text-warning fs-10"><i class="fa fa-circle"></i></span>
-                                                </p>
-                                                <p class="p-l-10 col-xs-height col-middle col-xs-9 overflow-ellipsis fs-12">
-                                                    <span class="text-master">David Nester Birthday</span>
-                                                </p>
-                                                <p class="p-r-10 col-xs-height col-middle fs-12 text-right">
-                                                    <span class="text-warning">Today <br></span>
-                                                    <span class="text-master">All Day</span>
-                                                </p>
-                                            </a>
-                                            <!-- END Alert Item!-->
-                                            <!-- BEGIN List Group Item!-->
-                                        </li>
-                                        <!-- END List Group Item!-->
-                                        <!-- BEGIN List Group Item!-->
-                                        <li class="alert-list">
-                                            <!-- BEGIN Alert Item Set Animation using data-view-animation !-->
-                                            <a href="#" class="" data-navigate="view" data-view-port="#chat"
-                                               data-view-animation="push-parrallax">
-                                                <p class="col-xs-height col-middle">
-                                                    <span class="text-warning fs-10"><i class="fa fa-circle"></i></span>
-                                                </p>
-                                                <p class="p-l-10 col-xs-height col-middle col-xs-9 overflow-ellipsis fs-12">
-                                                    <span class="text-master">Meeting at 2:30</span>
-                                                </p>
-                                                <p class="p-r-10 col-xs-height col-middle fs-12 text-right">
-                                                    <span class="text-warning">Today</span>
-                                                </p>
-                                            </a>
-                                            <!-- END Alert Item!-->
-                                        </li>
-                                        <!-- END List Group Item!-->
-                                    </ul>
                                 </div>
-                                <div class="list-view-group-container">
-                                    <!-- BEGIN List Group Header!-->
-                                    <div class="list-view-group-header text-uppercase">
-                                        Social
-                                    </div>
-                                    <!-- END List Group Header!-->
-                                    <ul>
-                                        @foreach($UserNotification as $notification)
-                                        <!-- BEGIN List Group Item!-->
-                                        <li class="alert-list">
-                                            <!-- BEGIN Alert Item Set Animation using data-view-animation !-->
-                                            <a href="javascript:;" class="p-t-10 p-b-10" data-navigate="view"
-                                               data-view-port="#chat" data-view-animation="push-parrallax">
-                                                <p class="col-xs-height col-middle">
-                                                    <span class="text-complete fs-10"><i
-                                                                class="fa fa-circle"></i></span>
-                                                </p>
-                                                <p class="p-l-10 col-xs-height col-middle col-xs-12 overflow-ellipsis fs-12">
-                                                    <span class="text-master link">{{$notification->text}}<br></span>
-                                                    <span class="text-master">“Perfection Simplified - Company Revox"</span>
-                                                </p>
-                                            </a>
-                                            <!-- END Alert Item!-->
-                                        </li>
-                                        <!-- END List Group Item!-->
-                                        @endforeach
-                                        <!-- BEGIN List Group Item!-->
-                                        <li class="alert-list">
-                                            <!-- BEGIN Alert Item Set Animation using data-view-animation !-->
-                                            <a href="javascript:;" class="p-t-10 p-b-10" data-navigate="view"
-                                               data-view-port="#chat" data-view-animation="push-parrallax">
-                                                <p class="col-xs-height col-middle">
-                                                    <span class="text-complete fs-10"><i
-                                                                class="fa fa-circle"></i></span>
-                                                </p>
-                                                <p class="p-l-10 col-xs-height col-middle col-xs-12 overflow-ellipsis fs-12">
-                                                    <span class="text-master link">Jame Smith commented on your status<br></span>
-                                                    <span class="text-master">“Perfection Simplified - Company Revox"</span>
-                                                </p>
-                                            </a>
-                                            <!-- END Alert Item!-->
-                                        </li>
-                                        <!-- END List Group Item!-->
-                                    </ul>
-                                </div>
-                                <div class="list-view-group-container">
-                                    <!-- BEGIN List Group Header!-->
-                                    <div class="list-view-group-header text-uppercase">
-                                        Sever Status
-                                    </div>
-                                    <!-- END List Group Header!-->
-                                    <ul>
-                                        <!-- BEGIN List Group Item!-->
-                                        <li class="alert-list">
-                                            <!-- BEGIN Alert Item Set Animation using data-view-animation !-->
-                                            <a href="#" class="p-t-10 p-b-10" data-navigate="view"
-                                               data-view-port="#chat" data-view-animation="push-parrallax">
-                                                <p class="col-xs-height col-middle">
-                                                    <span class="text-danger fs-10"><i class="fa fa-circle"></i></span>
-                                                </p>
-                                                <p class="p-l-10 col-xs-height col-middle col-xs-12 overflow-ellipsis fs-12">
-                                                    <span class="text-master link">12:13AM GTM, 10230, ID:WR174s<br></span>
-                                                    <span class="text-master">Server Load Exceeted. Take action</span>
-                                                </p>
-                                            </a>
-                                            <!-- END Alert Item!-->
-                                        </li>
-                                        <!-- END List Group Item!-->
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="scroll-element scroll-x scroll-scrolly_visible">
-                                <div class="scroll-element_outer">
-                                    <div class="scroll-element_size"></div>
-                                    <div class="scroll-element_track"></div>
-                                    <div class="scroll-bar"></div>
-                                </div>
-                            </div>
-                            <div class="scroll-element scroll-y scroll-scrolly_visible">
-                                <div class="scroll-element_outer">
-                                    <div class="scroll-element_size"></div>
-                                    <div class="scroll-element_track"></div>
-                                    <div class="scroll-bar"></div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-                        <!-- END List Group !-->
+
 
 
                     </div>
