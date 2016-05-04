@@ -41,7 +41,8 @@ class DashboardMenuComposer
      */
     public function compose(View $view)
     {
-        $viewMenu = Cache::remember('dashboard-menu-user-'.$this->guard->user()->id, 10, function () {
+        if($this->guard->check()) {
+            $viewMenu = Cache::remember('dashboard-menu-user-' . $this->guard->user()->id, 10, function () {
 
                 /*
                  * Тут надо перебрать всю меню на наличие прав, и удалить
@@ -49,12 +50,13 @@ class DashboardMenuComposer
                  */
                 $user = $this->guard->user();
                 $accessCollection = $this->dashboardMenu->container->filter(function ($item) use ($user) {
-                    return  (isset($item['arg']['route'])) ? $user->hasAccess($item['arg']['route']) : true;
+                    return (isset($item['arg']['route'])) ? $user->hasAccess($item['arg']['route']) : true;
                 });
 
                 return $accessCollection;
             });
 
-        $view->with('DashboardMenu', $viewMenu);
+            $view->with('DashboardMenu', $viewMenu);
+        }
     }
 }
