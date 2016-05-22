@@ -4,6 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/orchid/orchid/downloads)](https://packagist.org/packages/orchid/orchid)
 [![License](https://poser.pugx.org/orchid/orchid/license)](https://packagist.org/packages/orchid/orchid)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/f648409a-850d-421f-b22d-3cc7444db79b/mini.png)](https://insight.sensiolabs.com/projects/f648409a-850d-421f-b22d-3cc7444db79b)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/TheOrchid/Dashboard/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/TheOrchid/Dashboard/?branch=master)
 [![Join the chat at https://gitter.im/TheOrchid/Dashboard](https://badges.gitter.im/TheOrchid/Dashboard.svg)](https://gitter.im/TheOrchid/Dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
