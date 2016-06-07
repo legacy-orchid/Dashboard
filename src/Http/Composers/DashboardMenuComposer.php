@@ -41,7 +41,7 @@ class DashboardMenuComposer
      */
     public function compose(View $view)
     {
-        if($this->guard->check()) {
+        if ($this->guard->check()) {
             $viewMenu = Cache::remember('dashboard-menu-user-' . $this->guard->user()->id, 10, function () {
 
                 /*

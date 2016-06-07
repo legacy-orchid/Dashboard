@@ -27,14 +27,6 @@ trait NotificationTrait
     }
 
     /**
-     * @return mixed
-     */
-    public function notifications()
-    {
-        return $this->belongsTo(Notification::class, 'id', 'user_id');
-    }
-
-    /**
      * @return $this
      */
     public function notificationAllRead()
@@ -46,6 +38,14 @@ trait NotificationTrait
         } else {
             return $this;
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function notifications()
+    {
+        return $this->belongsTo(Notification::class, 'id', 'user_id');
     }
 
     /**

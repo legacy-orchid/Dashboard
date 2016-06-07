@@ -5,7 +5,7 @@ namespace Orchid\Dashboard\Http\Controllers\Installer;
 use Orchid\Dashboard\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
-use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
+use Orchid\Dashboard\Helpers\Install\EnvironmentManager;
 
 class EnvironmentController extends Controller
 {
@@ -31,7 +31,7 @@ class EnvironmentController extends Controller
     {
         $envConfig = $this->EnvironmentManager->getEnvContent();
 
-        return view('vendor.installer.environment', compact('envConfig'));
+        return view('dashboard::container.install.environment', compact('envConfig'));
     }
 
     /**
@@ -46,7 +46,7 @@ class EnvironmentController extends Controller
     {
         $message = $this->EnvironmentManager->saveFile($input);
 
-        return $redirect->route('LaravelInstaller::environment')
+        return $redirect->route('dashboard::environment')
                         ->with(['message' => $message]);
     }
 }

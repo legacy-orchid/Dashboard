@@ -12,26 +12,15 @@ use Orchid\Dashboard\Services\Scaffold\GeneratorException;
 class SyntaxBuilder
 {
     /**
+     * @var bool
+     */
+    protected $illuminate = false;
+    /**
      * A template to be inserted.
      *
      * @var string
      */
     private $template;
-
-    /**
-     * @var bool
-     */
-    protected $illuminate = false;
-
-    /**
-     * Enable/Disable use of Illuminate/Html form facades.
-     *
-     * @param $value
-     */
-    public function setIllumination($value)
-    {
-        $this->illuminate = $value;
-    }
 
     /**
      * Create the PHP syntax for the given schema.
@@ -85,6 +74,16 @@ class SyntaxBuilder
     }
 
     /**
+     * Enable/Disable use of Illuminate/Html form facades.
+     *
+     * @param $value
+     */
+    public function setIllumination($value)
+    {
+        $this->illuminate = $value;
+    }
+
+    /**
      * Create the schema for the "up" method.
      *
      * @param string $schema
@@ -115,6 +114,76 @@ class SyntaxBuilder
 
         // Otherwise, we have no idea how to proceed.
         throw new GeneratorException();
+    }
+
+    /**
+     * Construct the schema fields.
+     *
+     * @param array $schema
+     * @param string $direction
+     *
+     * @return array
+     */
+    private function constructSchema($schema, $direction = 'Add')
+    {
+        if (!$schema) {
+            return '';
+        }
+
+        $fields = array_map(function ($field) use ($direction) {
+            $method = "{$direction}Column";
+
+            return $this->$method($field);
+        }, $schema);
+
+        return implode("\n" . str_repeat(' ', 12), $fields);
+    }
+
+    /**
+     * Get the stored template, and insert into the given wrapper.
+     *
+     * @param string $wrapper
+     * @param string $placeholder
+     *
+     * @return mixed
+     */
+    private function into($wrapper, $placeholder = 'schema_up')
+    {
+        return str_replace('{{' . $placeholder . '}}', $this->template, $wrapper);
+    }
+
+    /**
+     * Store the given template, to be inserted somewhere.
+     *
+     * @param string $template
+     *
+     * @return $this
+     */
+    private function insert($template)
+    {
+        $this->template = $template;
+
+        return $this;
+    }
+
+    /**
+     * Get the wrapper template for a "create" action.
+     *
+     * @return string
+     */
+    private function getCreateSchemaWrapper()
+    {
+        return file_get_contents(__DIR__.'/../../../Console/stubs/scaffold/schema-create.stub');
+    }
+
+    /**
+     * Get the wrapper template for an "add" action.
+     *
+     * @return string
+     */
+    private function getChangeSchemaWrapper()
+    {
+        return file_get_contents(__DIR__.'/../../../Console/stubs/scaffold/schema-change.stub');
     }
 
     /**
@@ -156,73 +225,24 @@ class SyntaxBuilder
     }
 
     /**
-     * Store the given template, to be inserted somewhere.
+     * Construct the controller fields.
      *
-     * @param string $template
-     *
-     * @return $this
-     */
-    private function insert($template)
-    {
-        $this->template = $template;
-
-        return $this;
-    }
-
-    /**
-     * Get the stored template, and insert into the given wrapper.
-     *
-     * @param string $wrapper
-     * @param string $placeholder
-     *
-     * @return mixed
-     */
-    private function into($wrapper, $placeholder = 'schema_up')
-    {
-        return str_replace('{{'.$placeholder.'}}', $this->template, $wrapper);
-    }
-
-    /**
-     * Get the wrapper template for a "create" action.
+     * @param $schema
+     * @param $meta
      *
      * @return string
      */
-    private function getCreateSchemaWrapper()
-    {
-        return file_get_contents(__DIR__.'/../../../Console/stubs/scaffold/schema-create.stub');
-    }
-
-    /**
-     * Get the wrapper template for an "add" action.
-     *
-     * @return string
-     */
-    private function getChangeSchemaWrapper()
-    {
-        return file_get_contents(__DIR__.'/../../../Console/stubs/scaffold/schema-change.stub');
-    }
-
-    /**
-     * Construct the schema fields.
-     *
-     * @param array  $schema
-     * @param string $direction
-     *
-     * @return array
-     */
-    private function constructSchema($schema, $direction = 'Add')
+    private function createSchemaForControllerMethod($schema, $meta)
     {
         if (!$schema) {
             return '';
         }
 
-        $fields = array_map(function ($field) use ($direction) {
-            $method = "{$direction}Column";
-
-            return $this->$method($field);
+        $fields = array_map(function ($field) use ($meta) {
+            return $this->AddColumn($field, 'controller', $meta);
         }, $schema);
 
-        return implode("\n".str_repeat(' ', 12), $fields);
+        return implode("\n" . str_repeat(' ', 8), $fields);
     }
 
     /**
@@ -331,37 +351,31 @@ class SyntaxBuilder
         return implode("\n".str_repeat(' ', 20), $syntax);
     }
 
-    /**
-     * Construct the syntax to drop a column.
-     *
-     * @param string $field
-     *
-     * @return string
-     */
-    private function dropColumn($field)
+    private function htmlField($column, $variable, $field, $type)
     {
-        return sprintf("\$table->dropColumn('%s');", $field['name']);
-    }
+        $value = '{{ old("' . $column . '") }}';
 
-    /**
-     * Construct the controller fields.
-     *
-     * @param $schema
-     * @param $meta
-     *
-     * @return string
-     */
-    private function createSchemaForControllerMethod($schema, $meta)
-    {
-        if (!$schema) {
-            return '';
+        if ($type == 'view-edit-content') {
+            $value = '{{ $' . $variable . '->' . $column . ' }}';
         }
 
-        $fields = array_map(function ($field) use ($meta) {
-            return $this->AddColumn($field, 'controller', $meta);
-        }, $schema);
+        switch ($field['type']) {
+            case 'string':
+            default:
+                $layout = "<input type=\"text\" id=\"$column-field\" name=\"$column\" class=\"form-control\" value=\"$value\"/>";
+                break;
+            case 'date':
+                $layout = "<input type=\"text\" id=\"$column-field\" name=\"$column\" class=\"form-control date-picker\" value=\"$value\"/>";
+                break;
+            case 'boolean':
+                $layout = "<div class=\"btn-group\" data-toggle=\"buttons\"><label class=\"btn btn-primary\"><input type=\"radio\" value=\"true\" name=\"$column-field\" id=\"$column-field\" autocomplete=\"off\"> True</label><label class=\"btn btn-primary active\"><input type=\"radio\" name=\"$column-field\" value=\"false\" id=\"$column-field\" autocomplete=\"off\"> False</label></div>";
+                break;
+            case 'text':
+                $layout = "<textarea class=\"form-control\" id=\"$column-field\" rows=\"3\" name=\"$column\">$value</textarea>";
+                break;
+        }
 
-        return implode("\n".str_repeat(' ', 8), $fields);
+        return $layout;
     }
 
     /**
@@ -392,30 +406,15 @@ class SyntaxBuilder
         }
     }
 
-    private function htmlField($column, $variable, $field, $type)
+    /**
+     * Construct the syntax to drop a column.
+     *
+     * @param string $field
+     *
+     * @return string
+     */
+    private function dropColumn($field)
     {
-        $value = '{{ old("'.$column.'") }}';
-
-        if ($type == 'view-edit-content') {
-            $value = '{{ $'.$variable.'->'.$column.' }}';
-        }
-
-        switch ($field['type']) {
-            case 'string':
-            default:
-                $layout = "<input type=\"text\" id=\"$column-field\" name=\"$column\" class=\"form-control\" value=\"$value\"/>";
-                break;
-            case 'date':
-                $layout = "<input type=\"text\" id=\"$column-field\" name=\"$column\" class=\"form-control date-picker\" value=\"$value\"/>";
-                break;
-            case 'boolean':
-                $layout = "<div class=\"btn-group\" data-toggle=\"buttons\"><label class=\"btn btn-primary\"><input type=\"radio\" value=\"true\" name=\"$column-field\" id=\"$column-field\" autocomplete=\"off\"> True</label><label class=\"btn btn-primary active\"><input type=\"radio\" name=\"$column-field\" value=\"false\" id=\"$column-field\" autocomplete=\"off\"> False</label></div>";
-                break;
-            case 'text':
-                $layout = "<textarea class=\"form-control\" id=\"$column-field\" rows=\"3\" name=\"$column\">$value</textarea>";
-                break;
-        }
-
-        return $layout;
+        return sprintf("\$table->dropColumn('%s');", $field['name']);
     }
 }

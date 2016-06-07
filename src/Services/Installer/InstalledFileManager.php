@@ -5,16 +5,6 @@ namespace Orchid\Dashboard\Services\Installer;
 class InstalledFileManager
 {
     /**
-     * Create installed file.
-     *
-     * @return int
-     */
-    public function create()
-    {
-        file_put_contents(storage_path('installed'), '');
-    }
-
-    /**
      * Update installed file.
      *
      * @return int
@@ -22,5 +12,15 @@ class InstalledFileManager
     public function update()
     {
         return $this->create();
+    }
+
+    /**
+     * Create installed file.
+     *
+     * @return int
+     */
+    public function create()
+    {
+        file_put_contents(storage_path('installed'), '');
     }
 }
