@@ -26,7 +26,7 @@ class InstallerServiceProvider extends ServiceProvider
     {
         $this->publishFiles();
 
-        Route::group(['prefix' => 'install', 'as' => 'Dashboard::', 'namespace' => $this->namespace], function () {
+        Route::group(['prefix' => 'install', 'as' => 'dashboard::', 'namespace' => $this->namespace], function () {
             Route::get('/', [
                 'as' => 'welcome',
                 'uses' => 'WelcomeController@welcome',
