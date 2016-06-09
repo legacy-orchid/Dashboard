@@ -31,7 +31,7 @@ class DashboardNotificationComposer
     public function compose(View $view)
     {
         if ($this->guard->check()) {
-            $UserNotification = Cache::remember('dashboard-notification-user-'.$this->guard->user()->id, 1,
+            $UserNotification = Cache::remember('dashboard-notification-user-' . $this->guard->user()->id, 1,
                 function () {
                     $notification = $this->guard->user()->notifications()
                         ->orderBy('created_at')

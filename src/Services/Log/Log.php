@@ -23,36 +23,6 @@ class Log extends Collection
         $this->load();
     }
 
-    private function load()
-    {
-        $paths = array_reverse($this->logs());
-
-        $names = array_map(function ($file) {
-            $path_info = pathinfo($file);
-
-            return $path_info['filename'];
-        }, $paths);
-
-        $files = array_combine($names, $paths);
-
-        foreach ($files as $name => $path) {
-            $raw = $this->filesystem->get($path);
-            $this->put($name, LogItem::make($name, $path, $raw));
-        }
-    }
-
-    /**
-     * Список лог файлов.
-     */
-    public function logs()
-    {
-        $pattern = $this->storagePath.DIRECTORY_SEPARATOR.$this->filesPattern;
-        $glob = glob($pattern, GLOB_BRACE);
-        $files = array_map('realpath', $glob);
-
-        return array_filter($files);
-    }
-
     /**
      * Все логи.
      */
@@ -62,19 +32,19 @@ class Log extends Collection
     }
 
     /**
-     * Все логи по имени файла и типу логов.
-     */
-    public function entries($filename, $level = 'all')
-    {
-        return $this->get($filename)->entries($level);
-    }
-
-    /**
      * Логи по имени файла.
      */
     public function get($filename, $default = null)
     {
         return parent::get($filename, $default);
+    }
+
+    /**
+     * Все логи по имени файла и типу логов.
+     */
+    public function entries($filename, $level = 'all')
+    {
+        return $this->get($filename)->entries($level);
     }
 
     /**
@@ -90,6 +60,18 @@ class Log extends Collection
         }
 
         return $stats;
+    }
+
+    /**
+     * Список лог файлов.
+     */
+    public function logs()
+    {
+        $pattern = $this->storagePath.DIRECTORY_SEPARATOR.$this->filesPattern;
+        $glob = glob($pattern, GLOB_BRACE);
+        $files = array_map('realpath', $glob);
+
+        return array_filter($files);
     }
 
     /**
@@ -131,10 +113,6 @@ class Log extends Collection
         return LogParser::levels($flip);
     }
 
-    /*
-     * Создание коллекции логов
-     */
-
     /**
      * Удаление файла с логами по имени.
      */
@@ -143,5 +121,26 @@ class Log extends Collection
         $path_info = pathinfo($this->filesPattern);
 
         return $this->filesystem->delete($this->storagePath.DIRECTORY_SEPARATOR.$filename.'.'.$path_info['extension']);
+    }
+
+    /*
+     * Создание коллекции логов
+     */
+    private function load()
+    {
+        $paths = array_reverse($this->logs());
+
+        $names = array_map(function ($file) {
+            $path_info = pathinfo($file);
+
+            return $path_info['filename'];
+        }, $paths);
+
+        $files = array_combine($names, $paths);
+
+        foreach ($files as $name => $path) {
+            $raw = $this->filesystem->get($path);
+            $this->put($name, LogItem::make($name, $path, $raw));
+        }
     }
 }

@@ -62,35 +62,16 @@ class MakeController
     }
 
     /**
-     * Replace the schema for the stub.
+     * Replace the class name in the stub.
      *
      * @param string $stub
-     * @param string $type
      *
      * @return $this
      */
-    protected function replaceSchema(&$stub, $type = 'migration')
+    protected function replaceClassName(&$stub)
     {
-        if ($schema = $this->scaffoldCommandObj->option('schema')) {
-            $schema = (new SchemaParser())->parse($schema);
-        }
-
-        // Create controllers fields
-        $schema = (new SyntaxBuilder())->create($schema, $this->scaffoldCommandObj->getMeta(), 'controller');
-        $stub = str_replace('{{model_fields}}', $schema, $stub);
-
-        return $this;
-    }
-
-    private function replaceModelName(&$stub)
-    {
-        $model_name_uc = $this->scaffoldCommandObj->getObjName('Name');
-        $model_name = $this->scaffoldCommandObj->getObjName('name');
-        $model_names = $this->scaffoldCommandObj->getObjName('names');
-
-        $stub = str_replace('{{model_name_class}}', $model_name_uc, $stub);
-        $stub = str_replace('{{model_name_var_sgl}}', $model_name, $stub);
-        $stub = str_replace('{{model_name_var}}', $model_names, $stub);
+        $className = $this->scaffoldCommandObj->getObjName('Name').'Controller';
+        $stub = str_replace('{{class}}', $className, $stub);
 
         return $this;
     }
@@ -110,17 +91,36 @@ class MakeController
         return $this;
     }
 
+    private function replaceModelName(&$stub)
+    {
+        $model_name_uc = $this->scaffoldCommandObj->getObjName('Name');
+        $model_name = $this->scaffoldCommandObj->getObjName('name');
+        $model_names = $this->scaffoldCommandObj->getObjName('names');
+
+        $stub = str_replace('{{model_name_class}}', $model_name_uc, $stub);
+        $stub = str_replace('{{model_name_var_sgl}}', $model_name, $stub);
+        $stub = str_replace('{{model_name_var}}', $model_names, $stub);
+
+        return $this;
+    }
+
     /**
-     * Replace the class name in the stub.
+     * Replace the schema for the stub.
      *
      * @param string $stub
+     * @param string $type
      *
      * @return $this
      */
-    protected function replaceClassName(&$stub)
+    protected function replaceSchema(&$stub, $type = 'migration')
     {
-        $className = $this->scaffoldCommandObj->getObjName('Name').'Controller';
-        $stub = str_replace('{{class}}', $className, $stub);
+        if ($schema = $this->scaffoldCommandObj->option('schema')) {
+            $schema = (new SchemaParser())->parse($schema);
+        }
+
+        // Create controllers fields
+        $schema = (new SyntaxBuilder())->create($schema, $this->scaffoldCommandObj->getMeta(), 'controller');
+        $stub = str_replace('{{model_fields}}', $schema, $stub);
 
         return $this;
     }

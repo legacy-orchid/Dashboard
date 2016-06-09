@@ -75,6 +75,21 @@ class MakeMigration
     }
 
     /**
+     * Replace the class name in the stub.
+     *
+     * @param string $stub
+     *
+     * @return $this
+     */
+    protected function replaceClassName(&$stub)
+    {
+        $className = ucwords(camel_case('Create'.str_plural($this->scaffoldCommandObj->argument('name')).'Table'));
+        $stub = str_replace('{{class}}', $className, $stub);
+
+        return $this;
+    }
+
+    /**
      * Replace the table name in the stub.
      *
      * @param string $stub
@@ -113,21 +128,6 @@ class MakeMigration
             $stub = str_replace('{{model_fields}}', $schema, $stub);
         } else {
         }
-
-        return $this;
-    }
-
-    /**
-     * Replace the class name in the stub.
-     *
-     * @param string $stub
-     *
-     * @return $this
-     */
-    protected function replaceClassName(&$stub)
-    {
-        $className = ucwords(camel_case('Create'.str_plural($this->scaffoldCommandObj->argument('name')).'Table'));
-        $stub = str_replace('{{class}}', $className, $stub);
 
         return $this;
     }

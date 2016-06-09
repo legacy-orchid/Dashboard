@@ -99,6 +99,101 @@ class ScaffoldMakeCommand extends Command
     }
 
     /**
+     * Generate the desired migration.
+     */
+    protected function makeMigration()
+    {
+        new MakeMigration($this, $this->files);
+    }
+
+    /**
+     * Generate an Eloquent model, if the user wishes.
+     */
+    protected function makeModel()
+    {
+        new MakeModel($this, $this->files);
+    }
+
+    /**
+     * Generate a Seed.
+     */
+    private function makeSeed()
+    {
+        new MakeSeed($this, $this->files);
+    }
+
+    /**
+     * Get the console command arguments.
+     *
+     * @return array
+     */
+    protected function getArguments()
+    {
+        return [
+            ['name', InputArgument::REQUIRED, 'The name of the model. (Ex: Post)'],
+        ];
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return [
+            ['schema', 's', InputOption::VALUE_REQUIRED, 'Schema to generate scaffold files. (Ex: --schema="title:string")', null],
+            ['form', 'f', InputOption::VALUE_OPTIONAL, 'Use Illumintate/Html Form facade to generate input fields', false],
+        ];
+    }
+
+    /**
+     * Make a Controller with default actions.
+     */
+    private function makeController()
+    {
+        new MakeController($this, $this->files);
+    }
+
+    /**
+     * Setup views and assets.
+     */
+    private function makeViews()
+    {
+        foreach ($this->views as $view) {
+            // index, create, show, edit
+            new MakeView($this, $this->files, $view);
+        }
+
+        $this->info('Views created successfully.');
+
+        $this->info('Dump-autoload...');
+        $this->composer->dumpAutoloads();
+
+        $this->info('Route::resource("'.$this->getObjName('names').'","'.$this->getObjName('Name').'Controller"); // Add this line in routes.php');
+    }
+
+    /**
+     * Make a layout.blade.php with bootstrap.
+     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    private function makeViewLayout()
+    {
+        new MakeLayout($this, $this->files);
+    }
+
+    /**
+     * Get access to $meta array.
+     *
+     * @return array
+     */
+    public function getMeta()
+    {
+        return $this->meta;
+    }
+
+    /**
      * Generate names.
      *
      * @param string $config
@@ -126,112 +221,5 @@ class ScaffoldMakeCommand extends Command
         };
 
         return $names[$config];
-    }
-
-    /**
-     * Generate the desired migration.
-     */
-    protected function makeMigration()
-    {
-        new MakeMigration($this, $this->files);
-    }
-
-    /**
-     * Generate a Seed.
-     */
-    private function makeSeed()
-    {
-        new MakeSeed($this, $this->files);
-    }
-
-    /**
-     * Generate an Eloquent model, if the user wishes.
-     */
-    protected function makeModel()
-    {
-        new MakeModel($this, $this->files);
-    }
-
-    /**
-     * Make a Controller with default actions.
-     */
-    private function makeController()
-    {
-        new MakeController($this, $this->files);
-    }
-
-    /**
-     * Make a layout.blade.php with bootstrap.
-     *
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    private function makeViewLayout()
-    {
-        new MakeLayout($this, $this->files);
-    }
-
-    /**
-     * Setup views and assets.
-     */
-    private function makeViews()
-    {
-        foreach ($this->views as $view) {
-            // index, create, show, edit
-            new MakeView($this, $this->files, $view);
-        }
-
-        $this->info('Views created successfully.');
-
-        $this->info('Dump-autoload...');
-        $this->composer->dumpAutoloads();
-
-        $this->info('Route::resource("'.$this->getObjName('names').'","'.$this->getObjName('Name').'Controller"); // Add this line in routes.php');
-    }
-
-    /**
-     * Get access to $meta array.
-     *
-     * @return array
-     */
-    public function getMeta()
-    {
-        return $this->meta;
-    }
-
-    /**
-     * Get the console command arguments.
-     *
-     * @return array
-     */
-    protected function getArguments()
-    {
-        return [
-            ['name', InputArgument::REQUIRED, 'The name of the model. (Ex: Post)'],
-        ];
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-            [
-                'schema',
-                's',
-                InputOption::VALUE_REQUIRED,
-                'Schema to generate scaffold files. (Ex: --schema="title:string")',
-                null,
-            ],
-            [
-                'form',
-                'f',
-                InputOption::VALUE_OPTIONAL,
-                'Use Illumintate/Html Form facade to generate input fields',
-                false,
-            ],
-        ];
     }
 }
