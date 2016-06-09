@@ -34,22 +34,6 @@ class DatabaseManager
     }
 
     /**
-     * Seed the database.
-     *
-     * @return array
-     */
-    private function seed()
-    {
-        try {
-            Artisan::call('db:seed');
-        } catch (Exception $e) {
-            return $this->response($e->getMessage());
-        }
-
-        return $this->response(trans('messages.final.finished'), 'success');
-    }
-
-    /**
      * Return a formatted error messages.
      *
      * @param $message
@@ -63,5 +47,21 @@ class DatabaseManager
             'status' => $status,
             'message' => $message,
         );
+    }
+
+    /**
+     * Seed the database.
+     *
+     * @return array
+     */
+    private function seed()
+    {
+        try {
+            Artisan::call('db:seed');
+        } catch (Exception $e) {
+            return $this->response($e->getMessage());
+        }
+
+        return $this->response(trans('messages.final.finished'), 'success');
     }
 }

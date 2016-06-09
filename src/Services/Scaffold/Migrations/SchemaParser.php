@@ -51,20 +51,6 @@ class SchemaParser
     }
 
     /**
-     * Add a field to the schema array.
-     *
-     * @param array $field
-     *
-     * @return $this
-     */
-    private function addField($field)
-    {
-        $this->schema[] = $field;
-
-        return $this;
-    }
-
-    /**
      * Get an array of fields from the given schema.
      *
      * @param string $schema
@@ -129,6 +115,32 @@ class SchemaParser
     }
 
     /**
+     * Determine if the user wants a foreign constraint for the field.
+     *
+     * @param array $segments
+     *
+     * @return bool
+     */
+    private function fieldNeedsForeignConstraint($segments)
+    {
+        return array_key_exists('foreign', $segments['options']);
+    }
+
+    /**
+     * Add a field to the schema array.
+     *
+     * @param array $field
+     *
+     * @return $this
+     */
+    private function addField($field)
+    {
+        $this->schema[] = $field;
+
+        return $this;
+    }
+
+    /**
      * Add a foreign constraint field to the schema.
      *
      * @param array $segments
@@ -155,17 +167,5 @@ class SchemaParser
     private function getTableNameFromForeignKey($key)
     {
         return str_plural(str_replace('_id', '', $key));
-    }
-
-    /**
-     * Determine if the user wants a foreign constraint for the field.
-     *
-     * @param array $segments
-     *
-     * @return bool
-     */
-    private function fieldNeedsForeignConstraint($segments)
-    {
-        return array_key_exists('foreign', $segments['options']);
     }
 }

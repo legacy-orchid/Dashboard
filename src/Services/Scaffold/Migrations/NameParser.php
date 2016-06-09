@@ -31,28 +31,6 @@ class NameParser
     }
 
     /**
-     * Calculate the table name.
-     *
-     * @param array $segments
-     *
-     * @return array
-     */
-    private function getTableName($segments)
-    {
-        $tableName = [];
-
-        foreach ($segments as $segment) {
-            if ($this->isConnectingWord($segment)) {
-                break;
-            }
-
-            $tableName[] = $segment;
-        }
-
-        return implode('_', array_reverse($tableName));
-    }
-
-    /**
      * Determine the user's desired action for the migration.
      *
      * @param array $segments
@@ -90,6 +68,28 @@ class NameParser
             default:
                 return $action;
         }
+    }
+
+    /**
+     * Calculate the table name.
+     *
+     * @param array $segments
+     *
+     * @return array
+     */
+    private function getTableName($segments)
+    {
+        $tableName = [];
+
+        foreach ($segments as $segment) {
+            if ($this->isConnectingWord($segment)) {
+                break;
+            }
+
+            $tableName[] = $segment;
+        }
+
+        return implode('_', array_reverse($tableName));
     }
 
     /**

@@ -41,8 +41,8 @@ class DashboardMenuComposer
      */
     public function compose(View $view)
     {
-        if($this->guard->check()) {
-            $viewMenu = Cache::remember('dashboard-menu-user-' . $this->guard->user()->id, 10, function () {
+        if ($this->guard->check()) {
+            $viewMenu = Cache::remember('dashboard-menu-user-'.$this->guard->user()->id, 10, function () {
 
                 /*
                  * Тут надо перебрать всю меню на наличие прав, и удалить

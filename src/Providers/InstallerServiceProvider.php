@@ -3,6 +3,7 @@
 namespace Orchid\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Route;
 
 class InstallerServiceProvider extends ServiceProvider
 {
@@ -14,13 +15,18 @@ class InstallerServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
+     * @var string
+     */
+    protected $namespace = 'Orchid\Dashboard\Http\Controllers\Installer';
+
+    /**
      * Register the service provider.
      */
     public function register()
     {
         $this->publishFiles();
 
-        Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' => 'RachidLaasri\LaravelInstaller\Controllers'], function () {
+        Route::group(['prefix' => 'install', 'as' => 'Dashboard::', 'namespace' => $this->namespace], function () {
             Route::get('/', [
                 'as' => 'welcome',
                 'uses' => 'WelcomeController@welcome',
@@ -59,13 +65,6 @@ class InstallerServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap the application events.
-     */
-    public function boot()
-    {
-    }
-
-    /**
      * Publish config file for the installer.
      */
     protected function publishFiles()
@@ -74,16 +73,25 @@ class InstallerServiceProvider extends ServiceProvider
             __DIR__.'/../Config/installer.php' => base_path('config/installer.php'),
         ]);
 
+        /*
         $this->publishes([
-            __DIR__.'/../assets' => public_path('installer'),
+            __DIR__.'/../Resources/assets' => public_path('dashboa'),
         ], 'public');
 
         $this->publishes([
-            __DIR__.'/../Views' => base_path('resources/views/vendor/installer'),
+            __DIR__.'/../Resources/views' => base_path('resources/views/vendor/orchid'),
         ]);
 
         $this->publishes([
-            __DIR__.'/../Lang' => base_path('resources/lang'),
+            __DIR__.'/../Resources/lang' => base_path('resources/lang'),
         ]);
+        */
+    }
+
+    /**
+     * Bootstrap the application events.
+     */
+    public function boot()
+    {
     }
 }

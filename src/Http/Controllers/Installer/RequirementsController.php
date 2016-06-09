@@ -3,7 +3,7 @@
 namespace Orchid\Dashboard\Http\Controllers\Installer;
 
 use Orchid\Dashboard\Http\Controllers\Controller;
-use RachidLaasri\LaravelInstaller\Helpers\RequirementsChecker;
+use Orchid\Dashboard\Helpers\Install\RequirementsChecker;
 
 class RequirementsController extends Controller
 {
@@ -31,6 +31,6 @@ class RequirementsController extends Controller
             config('installer.requirements')
         );
 
-        return view('vendor.installer.requirements', compact('requirements'));
+        return view('dashboard::container.install.requirements', compact('requirements'));
     }
 }

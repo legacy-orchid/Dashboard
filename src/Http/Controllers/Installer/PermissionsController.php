@@ -3,7 +3,7 @@
 namespace Orchid\Dashboard\Http\Controllers\Installer;
 
 use Orchid\Dashboard\Http\Controllers\Controller;
-use RachidLaasri\LaravelInstaller\Helpers\PermissionsChecker;
+use Orchid\Dashboard\Helpers\Install\PermissionsChecker;
 
 class PermissionsController extends Controller
 {
@@ -31,6 +31,6 @@ class PermissionsController extends Controller
             config('installer.permissions')
         );
 
-        return view('vendor.installer.permissions', compact('permissions'));
+        return view('dashboard::container.install.permissions', compact('permissions'));
     }
 }

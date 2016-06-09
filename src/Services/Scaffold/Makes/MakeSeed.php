@@ -46,11 +46,6 @@ class MakeSeed
         }
     }
 
-    protected function getSuccessMsg()
-    {
-        $this->scaffoldCommandObj->info('Seed created successfully.');
-    }
-
     /**
      * Compile the migration stub.
      *
@@ -72,5 +67,10 @@ class MakeSeed
         $stub = str_replace('{{class}}', $name, $stub);
 
         return $this;
+    }
+
+    protected function getSuccessMsg()
+    {
+        $this->scaffoldCommandObj->info('Seed created successfully.');
     }
 }

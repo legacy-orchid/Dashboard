@@ -3,7 +3,7 @@
 namespace Orchid\Dashboard\Http\Controllers\Installer;
 
 use Orchid\Dashboard\Http\Controllers\Controller;
-use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
+use Orchid\Dashboard\Helpers\Install\DatabaseManager;
 
 class DatabaseController extends Controller
 {
@@ -29,7 +29,7 @@ class DatabaseController extends Controller
     {
         $response = $this->databaseManager->migrateAndSeed();
 
-        return redirect()->route('LaravelInstaller::final')
+        return redirect()->route('dashboard::final')
                          ->with(['message' => $response]);
     }
 }
