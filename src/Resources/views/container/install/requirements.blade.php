@@ -25,7 +25,7 @@
 
                 @if(!isset($requirements['errors']))
                     <div class="text-right">
-                        <a href="{{ route('Dashboard::permissions') }}" class="btn btn-primary">
+                        <a href="{{ route('dashboard::permissions') }}" class="btn btn-primary">
                             {{ trans('install.next') }}
                         </a>
                     </div>

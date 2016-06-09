@@ -26,7 +26,7 @@
 
                 @if(!isset($permissions['errors']))
                     <div class="text-right">
-                        <a href="{{ route('Dashboard::database') }}" class="btn btn-primary">
+                        <a href="{{ route('dashboard::database') }}" class="btn btn-primary">
                             {{ trans('install.next') }}
                         </a>
                     </div>

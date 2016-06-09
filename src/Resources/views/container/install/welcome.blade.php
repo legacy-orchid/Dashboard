@@ -30,7 +30,7 @@
 
 
                 <div class="text-right">
-                    <a href="{{ route('Dashboard::environment') }}" class="btn btn-primary">{{ trans('install.next') }}</a>
+                    <a href="{{ route('dashboard::environment') }}" class="btn btn-primary">{{ trans('install.next') }}</a>
                 </div>
 
 

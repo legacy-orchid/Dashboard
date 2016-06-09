@@ -12,7 +12,7 @@
                 @endif
 
 
-                <form class="form" method="post" action="{{ route('Dashboard::environmentSave') }}">
+                <form class="form" method="post" action="{{ route('dashboard::environmentSave') }}">
                     <div class="form-group">
                         <label>Текст</label>
                     <textarea class="form-control no-resize" rows="10" name="envConfig">{{ $envConfig }}</textarea>
@@ -28,7 +28,7 @@
 
                 @if(!isset($environment['errors']))
                     <div class="text-right">
-                        <a href="{{ route('Dashboard::requirements') }}" class="btn btn-primary">
+                        <a href="{{ route('dashboard::requirements') }}" class="btn btn-primary">
                             {{ trans('install.next') }}
                         </a>
                     </div>
