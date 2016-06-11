@@ -7,11 +7,6 @@
         <div class="panel panel-default wrapper-sm">
             <div class="panel-body">
 
-                @if (session('message'))
-                    <p class="alert alert-danger">{{ session('message') }}</p>
-                @endif
-
-
                 <form class="form" method="post" action="{{ route('dashboard::administratorCreate') }}">
                     <div class="form-group">
                         <label>Name</label>
