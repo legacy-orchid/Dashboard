@@ -10,17 +10,17 @@
                 <form class="form" method="post" action="{{ route('dashboard::administratorCreate') }}">
                     <div class="form-group">
                         <label>Name</label>
-                       <input type="text" class="form-controll" placeholder="tabuna" name="name" required>
+                        <input type="text" class="form-control" placeholder="tabuna" name="name" required>
                     </div>
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-controll" placeholder="tabuna@gmail.com" name="email" required>
+                        <input type="email" class="form-control" placeholder="tabuna@gmail.com" name="email" required>
                     </div>
 
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-controll" placeholder="tabuna" name="password" required>
+                        <input type="password" class="form-control" placeholder="tabuna" name="password" required>
                         {!! csrf_field() !!}
                     </div>
 
