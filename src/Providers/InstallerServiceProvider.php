@@ -25,11 +25,10 @@ class InstallerServiceProvider extends ServiceProvider
      * Register the service provider.
      * @param Router $router
      */
-    public function register(Router $router)
+    public function register()
     {
         $this->publishFiles();
-
-        $router->middleware('install', InstallMiddleware::class);
+        Route::middleware('install', InstallMiddleware::class);
         Route::group(['middleware' => ['web', 'install'], 'prefix' => 'install', 'as' => 'dashboard::', 'namespace' => $this->namespace], function () {
             Route::get('/', [
                 'as' => 'welcome',
