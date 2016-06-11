@@ -3,7 +3,8 @@
 namespace Orchid\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Route;
+use Illuminate\Routing\Router;
+use Orchid\Dashboard\Http\Middleware\InstallMiddleware;
 
 class InstallerServiceProvider extends ServiceProvider
 {
@@ -19,14 +20,17 @@ class InstallerServiceProvider extends ServiceProvider
      */
     protected $namespace = 'Orchid\Dashboard\Http\Controllers\Installer';
 
+
     /**
      * Register the service provider.
+     * @param Router $router
      */
-    public function register()
+    public function register(Router $router)
     {
         $this->publishFiles();
 
-        Route::group(['prefix' => 'install', 'as' => 'dashboard::', 'namespace' => $this->namespace], function () {
+        $router->middleware('install', InstallMiddleware::class);
+        Route::group(['middleware' => ['web', 'install'], 'prefix' => 'install', 'as' => 'dashboard::', 'namespace' => $this->namespace], function () {
             Route::get('/', [
                 'as' => 'welcome',
                 'uses' => 'WelcomeController@welcome',

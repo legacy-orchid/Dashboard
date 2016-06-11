@@ -45,7 +45,7 @@ class EnvironmentController extends Controller
     public function save(Request $input, Redirector $redirect)
     {
         $message = $this->EnvironmentManager->saveFile($input);
-
+        
         return $redirect->route('dashboard::environment')
                         ->with(['message' => $message]);
     }

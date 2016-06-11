@@ -17,22 +17,20 @@
 
                 <p class="padder-v">{{ trans('install.welcome.message') }}</p>
 
-
-
-                <form class="form">
+                <form class="form" method="get" action="{{ route('dashboard::environment') }}">
                     <div class="form-group">
                     <label>Select language</label>
                         <select class="form-control">
                             <option value="en">English</option>
+                            <option value="ru">Русский язык</option>
                         </select>
                     </div>
+
+                    <div class="text-right">
+                        <button class="btn btn-primary">{{ trans('install.next') }}</button>
+                    </div>
+
                 </form>
-
-
-                <div class="text-right">
-                    <a href="{{ route('dashboard::environment') }}" class="btn btn-primary">{{ trans('install.next') }}</a>
-                </div>
-
 
             </div>
         </div>
