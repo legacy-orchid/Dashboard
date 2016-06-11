@@ -3,7 +3,6 @@
 namespace Orchid\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Routing\Router;
 use Orchid\Dashboard\Http\Middleware\InstallMiddleware;
 
 class InstallerServiceProvider extends ServiceProvider
