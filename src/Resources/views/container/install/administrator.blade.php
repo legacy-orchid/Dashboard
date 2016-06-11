@@ -20,12 +20,12 @@
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-controll" placeholder="tabuna@gmail.com" name="name" required>
+                        <input type="email" class="form-controll" placeholder="tabuna@gmail.com" name="email" required>
                     </div>
 
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-controll" placeholder="tabuna" name="name" required>
+                        <input type="password" class="form-controll" placeholder="tabuna" name="password" required>
                         {!! csrf_field() !!}
                     </div>
 
