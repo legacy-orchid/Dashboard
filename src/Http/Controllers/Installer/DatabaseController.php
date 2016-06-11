@@ -29,7 +29,7 @@ class DatabaseController extends Controller
     {
         $response = $this->databaseManager->migrateAndSeed();
 
-        return redirect()->route('dashboard::final')
+        return redirect()->route('dashboard::administrator')
                          ->with(['message' => $response]);
     }
 }

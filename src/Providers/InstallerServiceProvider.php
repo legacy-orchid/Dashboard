@@ -59,6 +59,16 @@ class InstallerServiceProvider extends ServiceProvider
                 'uses' => 'DatabaseController@database',
             ]);
 
+            Route::get('administrator', [
+                'as' => 'administrator',
+                'uses' => 'AdministratorController@administrator',
+            ]);
+
+            Route::post('administrator/create', [
+                'as' => 'administratorCreate',
+                'uses' => 'AdministratorController@create',
+            ]);
+
             Route::get('final', [
                 'as' => 'final',
                 'uses' => 'FinalController@finish',
