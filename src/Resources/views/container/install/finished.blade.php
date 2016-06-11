@@ -14,9 +14,10 @@
                 <p class="padder-v">{{ session('message')['message'] }}</p>
 
 
-                <div class="text-center">
-                    <a href="/" class="btn btn-primary">{{ trans('install.final.exit') }}</a>
-                </div>
+                    <div class="btn-group btn-group-justified" role="group">
+                        <a href="/dashboard" class="btn btn-primary">Dashboard</a>
+                        <a href="/" class="btn btn-primary">{{ trans('install.final.exit') }}</a>
+                    </div>
 
 
             </div>
