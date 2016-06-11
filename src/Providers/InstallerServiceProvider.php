@@ -4,7 +4,7 @@ namespace Orchid\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Orchid\Dashboard\Http\Middleware\InstallMiddleware;
-
+use Route;
 class InstallerServiceProvider extends ServiceProvider
 {
     /**
