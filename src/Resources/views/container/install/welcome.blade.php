@@ -20,7 +20,7 @@
                 <form class="form" method="get" action="{{ route('dashboard::environment') }}">
                     <div class="form-group">
                     <label>Select language</label>
-                        <select class="form-control">
+                        <select class="form-control" name="language">
                             <option value="en">English</option>
                             <option value="ru">Русский язык</option>
                         </select>
