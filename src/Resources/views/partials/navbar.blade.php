@@ -154,12 +154,11 @@
     <!-- / link and dropdown -->
 
     <!-- search form -->
-    <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo"
-          data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+    <form class="navbar-form navbar-form-sm navbar-left shift"
+          data-target=".navbar-collapse" role="search">
         <div class="form-group">
             <div class="input-group">
-                <input type="text" ng-model="selected"
-                       typeahead="state for state in states | filter:$viewValue | limitTo:8"
+                <input type="text"
                        class="form-control input-sm bg-light no-border rounded padder"
                        placeholder="Поиск...">
               <span class="input-group-btn">
@@ -174,7 +173,7 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle clear">
-                <span class="">Черняев Александр</span> <b class="caret"></b>
+                <span class="">{{Auth::user()->email}}</span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w-full">

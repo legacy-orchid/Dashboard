@@ -21,10 +21,10 @@
     <header id="header" class="app-header navbar" role="menu">
         <!-- navbar header -->
         <div class="navbar-header bg-black">
-            <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
+            <button class="pull-right visible-xs dk">
                 <i class="fa fa-cog"></i>
             </button>
-            <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
+            <button class="pull-right visible-xs">
                 <i class="fa fa-bars"></i>
             </button>
             <!-- brand -->
