@@ -103,7 +103,7 @@ class MenuServiceProvider extends ServiceProvider
         $menuMenu = [
             'slug' => 'Menu',
             'icon' => 'fa fa-bars',
-            'route' => 'dashboard.index',
+            'route' => route('dashboard.index'),
             'label' => trans('dashboard::menu.Menu'),
             'groupname' => trans('dashboard::menu.Posts Managements'),
             'childs' => false,

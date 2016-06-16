@@ -106,27 +106,27 @@ class DashboardServiceProvider extends ServiceProvider
         $panelMenu = [
             'slug' => 'Dashboard',
             'icon' => 'fa fa-tachometer',
-            'url' => '#',
+            'route' => '#',
             'label' => trans('dashboard::menu.Dashboard'),
         ];
         $postMenu = [
             'slug' => 'Posts',
             'icon' => 'fa fa-pencil-square-o',
-            'url' => '#',
+            'route' => '#',
             'label' => trans('dashboard::menu.Posts'),
             'childs' => true,
         ];
         $toolsMenu = [
             'slug' => 'Tools',
             'icon' => 'fa fa-wrench',
-            'url' => '#',
+            'route' => '#',
             'label' => trans('dashboard::menu.Tools'),
             'childs' => true,
         ];
         $systemsMenu = [
             'slug' => 'Systems',
             'icon' => 'fa fa-cogs',
-            'url' => '#',
+            'route' => '#',
             'label' => trans('dashboard::menu.Systems'),
             'childs' => true,
         ];
