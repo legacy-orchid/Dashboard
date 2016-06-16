@@ -93,11 +93,11 @@ class InstallerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Resources/views' => base_path('resources/views/vendor/orchid'),
         ]);
-
+        */
         $this->publishes([
             __DIR__.'/../Resources/lang' => base_path('resources/lang'),
         ]);
-        */
+
     }
 
     /**
