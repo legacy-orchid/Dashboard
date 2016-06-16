@@ -66,7 +66,7 @@
                             <a href="mail.html">
                                 <b class="badge bg-info pull-right">9</b>
                                 <i class="fa fa-send text-info-lter"></i>
-                                <span class="font-bold">Email</span>
+                                <span>Email</span>
                             </a>
                         </li>
 
