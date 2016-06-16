@@ -11,102 +11,97 @@
 
     <div class="wrapper-md" id="users-container">
 
-        <div class="panel panel-default">
-            <div class="panel-heading font-bold">Участники системы</div>
 
+        <div class="panel ">
+            <div class="panel-heading">
+                <div class="panel-title v-center m-t-md">
 
-            <div class="row wrapper">
-                <div class="col-sm-5 m-b-xs">
-                    <select class="input-sm form-control w-sm inline v-middle">
-                        <option value="delete">{{trans('dashboard::common.Delete')}}</option>
-                    </select>
-                    <button class="btn btn-sm btn-default">{{trans('dashboard::common.Apply')}}</button>
-                </div>
-                <div class="col-sm-4">
-                    <button class="btn m-b-xs btn-sm btn-default btn-addon" data-toggle="modal"
-                            data-target="#settings-modal"><i
-                                class="fa fa-plus"></i>{{trans('dashboard::common.Create')}}</button>
-                </div>
-                <div class="col-sm-3">
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="input-sm form-control" name="search"
-                                   placeholder="{{trans('dashboard::common.Find')}} ...">
-          <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="submit">{{trans('dashboard::common.Find')}}</button>
-          </span>
+                    <div class="col-md-6 font-bold">
+                        Участники системы
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a class="btn btn-default"><i class="fa fa-plus"></i></a>
+                                <a class="btn btn-default"><i class="fa fa-file-excel-o"></i></a>
+                                <a class="btn btn-default"><i class="fa fa-file-pdf-o"></i></a>
+                                <a class="btn btn-default"><i class="fa fa-copy"></i></a>
+                            </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
+
+                <div class="clearfix"></div>
             </div>
-
-
-            <div class="panel-body row">
-
+            <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-striped b-t b-light">
+                    <table class="table table-striped" role="grid">
                         <thead>
                         <tr>
-                            <th>@sortablelink ('id','#')</th>
+                            <th>{{trans('dashboard::common.Manage')}}</th>
                             <th>@sortablelink ('name','name')</th>
                             <th>@sortablelink ('email','email')</th>
                             <th>@sortablelink ('created_at',trans('dashboard::common.Created'))</th>
                             <th>@sortablelink ('updated_at',trans('dashboard::common.Last edit'))</th>
-                            <th>{{trans('dashboard::common.Manage')}}</th>
                         </tr>
                         </thead>
+                        <tbody>
+
                         <tbody>
                         @foreach ($Users as $user)
                             <tr>
                                 <td>
-                                    <label class="i-checks m-b-none">
-                                        <input type="checkbox"
-                                               name="settings[{{ $user->id }}]"><i></i>
-                                    </label>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-bars"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="{{ route('dashboard.users.edit',$user->id) }}"
+                                                   class="">
+                                                    Редактировать <i class="fa fa-edit"></i> </a>
+
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#Modal-{{$user->id}}"
+                                                   class="">
+                                                    Удалить <i class="fa fa-trash"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
                                 </td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at }}</td>
-                                <td>
-                                    <div class="btn-group pull-right btn-group-sm" role="group" aria-label="...">
-                                        <a href="{{ route('dashboard.users.edit',$user->id) }}"
-                                           class="btn btn-default"><span class="fa fa-edit"></span> </a>
-                                        <a href="#" data-toggle="modal" data-target="#Modal-{{$user->id}}"
-                                           class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                </td>
                             </tr>
 
                         @endforeach
                         </tbody>
+                        </tbody>
                     </table>
                 </div>
 
-            </div>
-
-            <footer class="panel-footer">
                 <div class="row">
-                    <div class="col-sm-4 hidden-xs">
-                        <select class="input-sm form-control w-sm inline v-middle">
-                            <option value="delete">{{trans('dashboard::common.Delete')}}</option>
-                        </select>
-                        <button class="btn btn-sm btn-default">{{trans('dashboard::common.Apply')}}</button>
-                    </div>
-                    <div class="col-sm-4 text-center">
-                        <small class="text-muted inline m-t-sm m-b-sm">{{trans('dashboard::common.show')}} {{$Users->total()}}
-                            -{{$Users->perPage()}} {{trans('dashboard::common.of')}} {!! $Users->count() !!} {{trans('dashboard::common.elements')}}</small>
-                    </div>
-                    <div class="col-sm-4 text-right text-center-xs">
-                        {!! $Users->render() !!}
+                    <div class="v-center m-l-md m-r-md">
+
+                        <div class="text-muted inline m-t-sm m-b-sm small col-md-6" role="status">
+                            {{trans('dashboard::common.show')}} {{$Users->total()}}
+                            -{{$Users->perPage()}} {{trans('dashboard::common.of')}} {!! $Users->count() !!} {{trans('dashboard::common.elements')}}
+                        </div>
+
+
+                        <div class="col-md-6 text-right pagination-table">
+                            {!! $Users->render() !!}
+                        </div>
+
                     </div>
                 </div>
-            </footer>
-
+            </div>
         </div>
-
 
     </div>
 
