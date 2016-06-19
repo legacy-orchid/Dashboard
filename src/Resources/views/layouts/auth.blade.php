@@ -15,9 +15,7 @@
 </head>
 
 
-<div class="app app-header-fixed">
     @yield('content')
-</div>
 
 <script src="{{asset('/orchid/js/orchid.js')}}" type="text/javascript"></script>
 
