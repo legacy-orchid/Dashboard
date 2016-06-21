@@ -36,6 +36,8 @@
     "dropzone": "~4.2.0",
     "eonasdan-bootstrap-datetimepicker": "~4.17.37",
     "vue": "~1.0.20",
-    "vue-resource": "~0.7.0"
+    "vue-resource": "~0.7.0",
+    "ace": "~1.2.3",
+    "ace-builds": "~1.2.3"
   }
 }

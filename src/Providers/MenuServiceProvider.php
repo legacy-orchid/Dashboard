@@ -100,6 +100,15 @@ class MenuServiceProvider extends ServiceProvider
             'divider' => true,
         ];
 
+        $EditorMenu = [
+            'slug' => 'Editor',
+            'icon' => 'fa fa-code',
+            'route' => route('dashboard.editor.index'),
+            'label' => 'Редактор',
+            'childs' => false,
+            'divider' => true,
+        ];
+
         $menuMenu = [
             'slug' => 'Menu',
             'icon' => 'fa fa-bars',
@@ -158,6 +167,8 @@ class MenuServiceProvider extends ServiceProvider
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $seoMenu, 10);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $siteMapMenu, 30);
         $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $CRUDMenu, 40);
+
+        $dashboardMenu->add('Tools', 'dashboard::partials.leftMenu', $EditorMenu, 50);
 
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $errorMenu, 500);
         $dashboardMenu->add('Systems', 'dashboard::partials.leftMenu', $localizationMenu, 300);
